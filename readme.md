@@ -1,7 +1,7 @@
 # Animator of Reactive Graphs
 This version have hyper edges starting in hyper edges.
 
-Exeperiments in https://dtinas10.github.io/RG_Paper/lib/caos/tool/index.html
+Exeperiments in https://dtinas10.github.io/MARGe/lib/caos/tool/index.html
 
 # Caos
 
