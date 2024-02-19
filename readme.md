@@ -1,4 +1,4 @@
-# Animator of Reactive Graphs
+# Animator of Multi Action Reactive Graphs (MARGe)
 This version have hyper edges starting in hyper edges.
 
 Exeperiments in https://dtinas10.github.io/MARGe/lib/caos/tool/index.html
