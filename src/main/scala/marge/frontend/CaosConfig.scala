@@ -31,8 +31,8 @@ object CaosConfig extends Configurator[System]:
     "Vending Machine"->  Examples.vendingMachine -> "We have 1$ only to spend in the vending machine and we need to decide the best option between cofee, chocolate and apple.",
     //"Vending Machine 2"->  Examples.vendingMachine2 -> "We have 1$ only to spend in the vending machine and we need to decide the best option between cofee, chocolate and apple.",
     "Inconsistency" -> Examples.inconsistency -> "Example of Reactive Graph with an inconsistency.",
-    "Example" -> Examples.exampleOfReport -> "Example of Report",
-    "Ex1" -> Examples.ex1,
+    // "Example" -> Examples.exampleOfReport -> "Example of Report",
+    // "Ex1" -> Examples.ex1,
     "Bissim" -> Examples.bissimulation,
     )
 
@@ -40,7 +40,7 @@ object CaosConfig extends Configurator[System]:
   val widgets = List(
     "View pretty data" -> view[System](x => Show.toMermaid(x.main,""), Code("haskell")).moveTo(1),
     "Dead Locks" -> view[System](Program.findDeadlockTracePP(_), Text).moveTo(1),
-    "Inconsistency" -> view[System](Program.findIncoPP(_), Text).moveTo(1),
+    "Conflicts / Contradictory effects" -> view[System](Program.findIncoPP(_), Text).moveTo(1),
     "Global structure view" -> view(x =>Show.toMermaid(x.main,"GSV"), Mermaid),
     "Local structure view" -> view(x => Show.toMermaid(x.main.getLevel0,"LSV"), Mermaid),
     // "Run semantics" -> steps(e=>e, Semantics, x => Show.toMermaid(x.main,"RS"), _.toString, Mermaid),
@@ -80,10 +80,10 @@ object CaosConfig extends Configurator[System]:
        |<pre>
        |init = Initial State;
        |l0 = {
-       |    State from  --> State to by action, weigth, 
+       |    State from  --> State to by action, 
        |    };
        |ln = {
-       |    (HE from, HE to, weigth, active, function),
+       |    (HE from, HE to, active, function),
        |    }
        |
        |</pre>
@@ -94,7 +94,6 @@ object CaosConfig extends Configurator[System]:
        |</p><code>ln</code> is a set of hyper edges (GE); these can start and end in either E or another HE. 
        | An HE is defined recursively, i.e., both the "from" and the "to" fields can be another HE, or a simpler E in the base case;</p>
        |</p><code>action</code> is a string that labels an E; it can have only letters in lower or upper case,  digits, and the symbols <code>_</code>, <code><</code>, <code>></code>, <code>.</code>, <code>-</code>, <code>€</code>, and <code>$</code>; </p>
-       |</p><code>weight</code> is a number; can be float or an integer; </p>
        |</p><code>funtion</code> is either <code>ON</code> or <code>OFF</code>; representing whether the HE enables or disables the target edge, respectively.</p>
        """.stripMargin,
     //"Build LTS" -> "More information on the operational rules used here" -> sosRules,
