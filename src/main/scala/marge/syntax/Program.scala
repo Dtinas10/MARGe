@@ -129,7 +129,7 @@ object Program:
 
   def findDeadlockTracePP(g:System,maxit: Int = 500): String =
     findDeadlockTrace(Map(g->None),Map(),maxit)(using marge.backend.Semantics) match
-      case (_,None,0) => s"No deadlocks found, but stopped after $maxit states."
+      case (_,None,0) => s"No deadlocks found, but stopped after $maxit states. "
       case (_,None,n) => s"No deadlocks found after ${maxit-n} states"
       case (trace,Some(g),n) => s"Found deallock @ ${g} ${trace.map(ap=>s"\n   <-[${ap._1}]- ${ap._2}").mkString}"
 

@@ -85,7 +85,6 @@ object CaosConfig extends Configurator[System]:
        |ln = {
        |    (HE from, HE to, active, function),
        |    }
-       |
        |</pre>
        |
        |where:
