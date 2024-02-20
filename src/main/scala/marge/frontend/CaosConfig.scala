@@ -15,7 +15,7 @@ import scala.util.control.Breaks._
 
 /** Object used to configure which analysis appear in the browser */
 object CaosConfig extends Configurator[System]:
-  val name = "Animator of Multi-Action Switch Reactive Graphs"
+  val name = "Animator of Multi-Action Reactive Graphs (MARGe)"
   override val languageName: String = "Input program"
 
   /** Parser, converting a string into a System in rgv3 */
