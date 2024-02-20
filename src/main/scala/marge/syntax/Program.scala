@@ -157,9 +157,9 @@ object Program:
 
   def findIncoPP(g:System,maxit: Int = 500): String =
     findIncoTrace(Map(g-> None),Map(),maxit)(using marge.backend.Semantics) match
-      case (_,None,0) => s"No Inconsistency found, but stopped after $maxit states."
-      case (_,None,n) => s"No Inconsistency found after ${maxit-n} states"
-      case (trace,Some(g),n) => s"Found Inconsistency @ ${g} ${trace.map(ap=>s"\n   <-[${ap._1}]- ${ap._2}").mkString}"
+      case (_,None,0) => s"No Conflits found, but stopped after $maxit states."
+      case (_,None,n) => s"No Conflits found after ${maxit-n} states"
+      case (trace,Some(g),n) => s"Found Conflits @ ${g} ${trace.map(ap=>s"\n   <-[${ap._1}]- ${ap._2}").mkString}"
 
 
   private def findIncoTrace[Act, St](miss: Map[St,Option[(Act,St)]],
