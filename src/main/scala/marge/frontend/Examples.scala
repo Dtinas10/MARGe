@@ -174,6 +174,21 @@ object Examples:
     |2 --> 3 by act};
     |ln = {}
     """.stripMargin
+
+  val VMPaper: String =
+    """init = Insert;
+    |l0 = {
+    |  Insert --> Cofee by 0.5$,
+    |  Insert --> Chocolate by 1$,
+    |  Cofee --> Insert by Get_cofee,
+    |  Chocolate --> Insert by Get_choc};
+    |ln = {
+    |  ((Insert,Chocolate,1$),(Insert,Cofee,0.5$),Bullet,OFF),
+    |  ((Insert,Chocolate,1$),(Insert,Chocolate,1$),Bullet,OFF),
+    |  ((Insert,Cofee,0.5$),(Insert,Cofee,0.5$),Circ,OFF),
+    |  ((Insert,Cofee,0.5$),(Insert,Chocolate,1$),Bullet,OFF),
+    |  ((Insert,Cofee,0.5$),((Insert,Cofee,0.5$),(Insert,Cofee,0.5$),Circ,OFF),Bullet,ON)}
+    """.stripMargin 
     
 // init = 0; 
 // l0={ 
