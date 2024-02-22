@@ -151,7 +151,7 @@ object Examples:
       |  ((Insert,Chips,1$),(Insert,Chocolate,1$),Bullet,OFF)}
     """.stripMargin
 
-  val inconsistency: String =
+  val conflict: String =
     """init = s;
     |l0 = {
     |  s --> s0 by a,

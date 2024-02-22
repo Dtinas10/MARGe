@@ -30,7 +30,7 @@ object CaosConfig extends Configurator[System]:
     "Feature Model"->  Examples.featureModel -> "Fig 1 in Maxime Cordy et al. Model Checking Adaptive Software with Featured Transition Systems",
     "Vending Machine"->  Examples.vendingMachine -> "We have 1$ only to spend in the vending machine and we need to decide the best option between cofee, chocolate and apple.",
     //"Vending Machine 2"->  Examples.vendingMachine2 -> "We have 1$ only to spend in the vending machine and we need to decide the best option between cofee, chocolate and apple.",
-    "Inconsistency" -> Examples.inconsistency -> "Example of Reactive Graph with an inconsistency.",
+    "Conflicts" -> Examples.conflict -> "Example of Reactive Graph with a conflict.",
     // "Example" -> Examples.exampleOfReport -> "Example of Report",
     // "Ex1" -> Examples.ex1,
     "Bissim" -> Examples.bissimulation,
