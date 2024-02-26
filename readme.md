@@ -1,6 +1,7 @@
 # Animator of Multi Action Reactive Graphs (MARGe)
 
-Experiments in https://dtinas10.github.io/MARGe/lib/caos/tool/index.html
+<!-- Experiments in https://dtinas10.github.io/MARGe/lib/caos/tool/index.html -->
+Experiments in https://dtinas10.github.io/MARGe
 
 Tutorial Video: https://www.dropbox.com/scl/fo/cm0tw42zlebqqzh7s054a/h?rlkey=urd0z5ern6akgkc3l8dqq8l7c&dl=0
 
