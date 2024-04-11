@@ -189,6 +189,32 @@ object Examples:
     |  ((Insert,Cofee,0.5$),(Insert,Chocolate,1$),Bullet,OFF),
     |  ((Insert,Cofee,0.5$),((Insert,Cofee,0.5$),(Insert,Cofee,0.5$),Circ,OFF),Bullet,ON)}
     """.stripMargin 
+  val product: String = 
+    """init = A;
+    |l0 = { A --> B by a,
+    |			B --> C by b};
+    |ln = {((A,B,a),(B,C,b),Bullet,OFF),
+    |     (((A,B,a),(B,C,b),Bullet,OFF),(A,B,a),Circ,ON)}
+    |~
+    |init = K;
+    |l0 = { K --> J by c};
+    |ln = {((K,J,c),(K,J,c),Circ,OFF),
+    |      (((K,J,c),(K,J,c),Circ,OFF),(K,J,c),Bullet,ON)}
+    """.stripMargin
+
+
+  val product2: String = 
+    """init = s0;
+    |l0 = { s0 --> s1 by a,
+    |   s1 -.-> s2 by b,
+    |   s2 --> s0 by c};
+    |ln = {((s0,s1,a),(s1,s2,b),Bullet,ON),
+    |      (((s0,s1,a),(s1,s2,b),Bullet,ON),(s2,s0,c),Bullet,OFF)}
+    |~
+    |init = w;
+    |l0 = { w --> w by a};
+    |ln = {((w,w,a),(w,w,a),Bullet,OFF)}
+    """.stripMargin
     
 // init = 0; 
 // l0={ 
@@ -199,4 +225,3 @@ object Examples:
 // 	((0,1,a), (1,2,b),Bullet,ON),
 //   (((0,1,a), (1,2,b),Bullet,ON), (2,c),Bullet,ON),
 //   ((((0,1,a), (1,2,b),Bullet,ON), (2,c),Bullet,ON),(1,2,b),Bullet,OFF)}
-    

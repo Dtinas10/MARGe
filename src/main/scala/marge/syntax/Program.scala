@@ -6,6 +6,8 @@ import marge.syntax.Program.Edge.{HyperEdge, SimpleEdge}
 import scala.annotation.tailrec
 import scala.scalajs.js.`new`
 import cats.instances.boolean
+import javax.swing.event.HyperlinkEvent
+import javax.swing.text.StyledEditorKit.BoldAction
 
 
 object Program:
@@ -35,64 +37,83 @@ object Program:
       case s:SimpleEdge => s.action
       case h:HyperEdge  => ""//h.action
 
-  /** A reactive graph Rx has edges, an initial state, and a set of active edges. */
-  case class RxGr(se:Map[State,Set[SimpleEdge]],// simple edges from st to outgoing edges
-                  he:Map[Edge,Set[Edge]],       // hyperedges, from any edge to another edge (initially was from simple edge to any adge)
+  /** A reactive graph Rx has Edge, an initial state, and a set of active Edge. */
+  case class RxGr(se:Map[State,Set[SimpleEdge]],// simple Edge from st to outgoing Edge
+                  he:Map[Edge,Set[Edge]],       // hyperEdge, from any edge to another edge (initially was from simple edge to any adge)
                   init: State,                  // initial state
-                  active: Set[Edge]):           // set of active edges
+                  active: Set[Edge]):           // set of active Edge
 
     def toString2: String = s"$init${active.map(e=>s"\n${e.pretty}").mkString}"
     override def toString: String = s"$init${""}" 
     /** Auxiliary function to collect all states */
-    def states:Set[State] = se.keySet + init
-    /** Auxiliary function to collect all edges from a given simple edge */
+    // def states:Set[State] = se.keySet + init
+    def states:Set[State] = 
+      var states:Set[State] = Set.empty
+      for ((state, set) <- se ){
+        states += state
+        for (i <- set){
+          states += i.to
+        }
+      } 
+      states
+    /** Auxiliary function to collect all Edge from a given simple edge */
     def getHe(e: Edge): Set[Edge] = he.getOrElse(e, Set())
-    /** Auxiliary function to collect all edges from a given state */
+    /** Auxiliary function to collect all Edge from a given state */
     def getSe(st:State): Set[SimpleEdge] = se.getOrElse(st,Set())
-    /** Returns the set of edges that exist from the initial state */
+    /** Returns the set of Edge that exist from the initial state */
     def nextEdg: Set[SimpleEdge] = getSe(init)
-    /** Returns a new RxGr with SimpleEdges only*/
+    // def nextEdgAction(actions: Set[Action]): Set[SimpleEdge] = for (a <- actions) {for edge  <- nextEdg  if edge.action == a yield edge} 
+    def nextEdgAction(actions: Set[Action]): Set[SimpleEdge] = nextEdg.filter(edge => actions.contains(edge.action)) 
+    /** Returns a new RxGr with SimpleEdge only*/
     def getLevel0: RxGr =  
       val newactive = for case SimpleEdge(f,t,a,w) <- active yield SimpleEdge(f, t, a, w) 
       new RxGr(se,Map.empty,init,newactive)
       
     def empty: RxGr = RxGr(Map.empty, Map.empty,"", Set.empty)
     def isEmpty: Boolean = this == this.empty 
+    def actions: Set[Action] = 
+      var action: Set[Action] = Set.empty
+      for ((s,e) <- se){ 
+        for (edge <- e){
+          action += edge.act
+        }
+      }
+      action
 
   /**
    * Evolves a reactive graph rxGr by performing a simple edge
    * @param rxGr the starting reactive graph
    * @param se the simple edge to be performed
    * @return None if `se` is not active or an inconsistency is found,
-   *         or a new graph by updating the init state and the active edges,
+   *         or a new graph by updating the init state and the active Edge,
    *         together with all action labels involved.
    */
   def step(rxGr: RxGr, se:SimpleEdge): Option[(RxGr,Set[Action])] = // | String =
     // stop if the edge is not active
     if !rxGr.active(se) then return None //"The edge are disable"
-    // collect edges involved
-    val edges =
-      collectEdges(rxGr,rxGr.getHe(se),Set(se))
+    // collect Edge involved
+    val Edge =
+      collectEdge(rxGr,rxGr.getHe(se),Set(se))
     // collect actions
-    val actions = edges.map(_.act)
-    // update active edges
-    val active = updateActive(rxGr,edges)
+    val actions = Edge.map(_.act)
+    // update active Edge
+    val active = updateActive(rxGr,Edge)
     active.map(a => (RxGr(rxGr.se,rxGr.he,se.to,a),actions))
 
-  /** Calculates all edges that are triggered, avoiding loops. */
+  /** Calculates all Edge that are triggered, avoiding loops. */
   @tailrec
-  private def collectEdges(gr: RxGr,
+  private def collectEdge(gr: RxGr,
                            missing: Set[Edge],
                            done: Set[Edge]): Set[Edge] =
     missing.headOption match
       case Some(e) =>
         if gr.active(e) && !done(e)
-        then collectEdges(gr,missing ++ gr.getHe(e) - e,done+e)
-        else collectEdges(gr,missing-e,done)
+        then collectEdge(gr,missing ++ gr.getHe(e) - e,done+e)
+        else collectEdge(gr,missing-e,done)
       case None => done
 
-  /** Given a set of edges that are triggered, calculates a new set of
-   * active edges, returning None if some edge is both activated and deactivated. */
+  /** Given a set of Edge that are triggered, calculates a new set of
+   * active Edge, returning None if some edge is both activated and deactivated. */
   private def updateActive(gr: RxGr, es: Set[Edge]): Option[Set[Edge]] =
     val toActivate   = for case HyperEdge(_,to,_,true)  <-es yield to
     val toDeactivate = for case HyperEdge(_,to,_,false) <-es yield to
@@ -187,8 +208,139 @@ object Program:
         val newMiss = (miss - nextSt) ++ more.map(kv=>(kv._2,Some(kv._1->nextSt)))
         findIncoTrace(newMiss, know + (nextSt->parent), maxit - 1)
 
-
+  
   case class System(main:RxGr, toCompare:Option[RxGr]):
     def apply(newMain:RxGr) = System(newMain,toCompare)
     override def toString: String = s"${main.init}${""}" 
+
+// ------------------------------ EXPERIMENTS
+
+
+  // def pro(st:System):RxGr =
+  //   var g: RxGr = st.main 
+  //   var g2: RxGr = st.toCompare.getOrElse(g.empty)
+  //   union(
+  //     System(
+  //       product(System(g,Option(g2)),true),
+  //       Option(product(System(g2,Option(g)),false))
+  //       )
+  //     )
+
+
+  // def product(g:System, bool: Boolean): RxGr =
+  //   val g1: RxGr = g.main 
+  //   val g2: RxGr = g.toCompare.getOrElse(g1.empty)// match {case Some(x) => x}
+  //   // var newse: Map[State,Set[SimpleEdge]] =  combinedse(expandse(g1.se,g2.states,true), expandse(g2.se, g1.states,false)) 
+  //   var newse: Map[State,Set[SimpleEdge]] =  expandse(g1.se,g2.states,bool) 
+  //   // var newhe: Map[Edge,Set[Edge]] = combinedhe(expandhe(g1.he,g2.states,true), expandhe(g2.he, g1.states,false)) 
+  //   var newhe: Map[Edge,Set[Edge]] = expandhe(g1.he,g2.states,bool) 
+  //   // var newactive: Set[Edge] = expandActive(g1.active,g2.states,true) ++ expandActive(g2.active,g1.states,false)
+  //   var newactive: Set[Edge] = expandActive(g1.active,g2.states,bool)
+  //   var newinit = g1.init+g2.init
+
+  //   RxGr(newse, newhe, newinit, newactive)
+
+
+
+  // def expandse(origise: Map[State, Set[SimpleEdge]],s: Set[State],bool: Boolean): Map[State, Set[SimpleEdge]] = {
+  //   var map : Map[State, Set[SimpleEdge]] = Map.empty
+  //   for (e <- s){
+  //     for ((origiSt, origiSet) <- origise){
+  //       if bool then
+  //         val newSt = origiSt + e 
+  //         val newSet:Set[SimpleEdge] = origiSet.map{case edge:SimpleEdge => SimpleEdge(edge.from + e, edge.to + e, edge.act,edge.weight)}
+  //         map = map + (newSt -> newSet) 
+  //       else
+  //         val newSt = e + origiSt  
+  //         val newSet:Set[SimpleEdge] = origiSet.map{case edge:SimpleEdge => SimpleEdge(e + edge.from, e + edge.to, edge.act,edge.weight)}
+  //         map = map + (newSt -> newSet) 
+  //     }  
+  //   }
+  //   map
+  // }  
+
+  // def expandhe(origihe: Map[Edge, Set[Edge]],s: Set[State],bool: Boolean): Map[Edge, Set[Edge]] = {
+  //   var map : Map[Edge, Set[Edge]] = Map.empty
+  //   for (e <- s){
+  //     for ((origiEd, origiSet) <- origihe){
+  //       if bool then
+  //         val newEd = addAct(origiEd,e) 
+  //         val newSet:Set[Edge] = origiSet.map{case edge:HyperEdge => addAct(edge,e)}
+  //         map = map + (newEd -> newSet) 
+  //       else
+  //         val newEd = addAct2(origiEd,e)  
+  //         val newSet:Set[Edge] = origiSet.map{case edge:HyperEdge => addAct2(edge,e)}
+  //         map = map + (newEd -> newSet) 
+  //     }  
+  //   }
+  //   map
+  // }
+
+  // def expandActive(set: Set[Edge], s: Set[State],bool:Boolean): Set[Edge]= {
+  //   var newset : Set[Edge] = Set.empty
+  //   for (e <- s){
+  //     for (edge <- set){
+  //       if bool then
+  //         newset = newset  + addAct(edge,e) 
+  //       else
+  //         newset = newset  + addAct2(edge,e) 
+  //     }  
+  //   }
+  //   newset
+  // }
+      
+  // def addAct(e: Edge, s: String): Edge = e match {
+  //   case SimpleEdge(from, to, action, weight) =>
+  //     SimpleEdge(from + s, to + s, action, weight)
+  //   case HyperEdge(from, to, weight, activate) =>
+  //     HyperEdge(addAct(from, s), addAct(to, s), weight, activate) 
+  // } 
+
+  // def addAct2(e: Edge, s: String): Edge = e match {
+  //   case SimpleEdge(from, to, action, weight) =>
+  //     SimpleEdge(s + from, s + to, action, weight)
+  //   case HyperEdge(from, to, weight, activate) =>
+  //     HyperEdge(addAct2(from, s), addAct2(to, s), weight, activate) 
+  // }
+
+
+  // def combinedse(map1:Map[State, Set[SimpleEdge]],map2:Map[State, Set[SimpleEdge]]): Map[State, Set[SimpleEdge]] = 
+  //   (map1.keySet ++ map2.keySet).map { key =>
+  //   key -> (map1.getOrElse(key, Set.empty) ++ map2.getOrElse(key, Set.empty))}.toMap
+  
+  // def combinedhe(map1:Map[Edge, Set[Edge]],map2:Map[Edge, Set[Edge]]): Map[Edge, Set[Edge]] = 
+  //   (map1.keySet ++ map2.keySet).map { key =>
+  //   key -> (map1.getOrElse(key, Set.empty) ++ map2.getOrElse(key, Set.empty))}.toMap
+
+  // def union(g:System): RxGr =
+  //   val g1: RxGr = g.main 
+  //   val g2: RxGr = g.toCompare.getOrElse(g1.empty)// match {case Some(x) => x}
+  //   // val e1:SimpleEdge =  SimpleEdge("NIS",g1.init,"-",0)
+  //   // val e2:SimpleEdge =  SimpleEdge("NIS",g2.init,"-",0)
+  //   // var newse: Map[State,Set[SimpleEdge]] =  combinedse(combinedse(g1.se,g2.se), Map("NIS" -> Set(e1,e2)))
+  //   var newse: Map[State,Set[SimpleEdge]] =  combinedse(g1.se,g2.se)
+  //   var newhe: Map[Edge,Set[Edge]] = combinedhe(g1.he, g2.he) 
+  //   var newactive: Set[Edge] = g1.active ++ g2.active //++ Set(e1,e2)
+  //   // RxGr(newse, newhe,"NIS", newactive)
+  //   RxGr(newse, newhe,g1.init+g2.init, newactive)
+
+  // def merge(g:System): RxGr =
+  //   val g1: RxGr = g.main 
+  //   val g2: RxGr = g.toCompare.getOrElse(g1.empty)// match {case Some(x) => x}
+  //   var newmap: Map[State, Set[SimpleEdge]] = Map.empty
+  //   var newactive: Set[Edge] = g1.active ++ g2.active
+  //   for (st <- g1.states){
+  //     newmap = newmap + ( st -> Set(SimpleEdge(st,g2.init,"-",0)))
+  //     newactive += SimpleEdge(st,g2.init,"-",0)
+  //   }
+  //   var newse: Map[State,Set[SimpleEdge]] =  combinedse(combinedse(g1.se,g2.se), newmap)
+  //   var newhe: Map[Edge,Set[Edge]] = combinedhe(g1.he, g2.he) 
+  //   RxGr(newse, newhe,g1.init, newactive)
+
+
+
+
+  // case class SystemT(main:RxGr, prod: RxGr, result: Oprion[RxGr]):
+  //   def apply(newMain:RxGr) = System(newMain,toCompare)
+  //   override def toString: String = s"${main.init}${""}"
 

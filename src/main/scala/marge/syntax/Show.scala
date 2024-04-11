@@ -18,7 +18,7 @@ object Show:
   def toMermaid_twoGraphs_Bissi(st: System, id:String): String = 
     var s: String = st.toCompare match{
       case None => ""
-      case Some(t) => _toMermaid(t,"\n subgraph Second Graph\n direction LR \n",".", "Bissi") + "\n end"
+      case Some(t) => _toMermaid(t,"\n subgraph Second Graph\n direction LR \n",".", "pluslines", countNumLines(st.main)) + "\n end"
     }
     _toMermaid(st.main, "flowchart LR \n subgraph First Graph  \n direction LR \n", "",id)  + "\n end" + s
     
@@ -26,16 +26,16 @@ object Show:
   def toMermaid(g: RxGr,id:String): String = _toMermaid(g,"flowchart LR \n","",id)
 
   /** Put the RG in Mermaid Code + RG with level0 only in Mermaid Code*/ 
-  def toMermaid_twoGraphs(g:RxGr,id:String): String = 
-    _toMermaid(g, "flowchart LR \n subgraph Global View  \n direction LR \n", "",id)   
-    + _toMermaid(g.getLevel0,"\n end \n subgraph Local View \n direction LR \n",".",id) + "\n end"
+  def toMermaid_twoGraphs(g1:RxGr, g2: RxGr, id:String): String = 
+    _toMermaid(g1, "flowchart LR \n subgraph Global View  \n direction LR \n", "",id)   
+    + _toMermaid(g2,"\n end \n subgraph Local View \n direction LR \n",".",id) + "\n end"
   
   /* put the RA in mermaid Code wich  received 4 arguments:
     g:RxGr -> is the RA
     sInital:String ->  is the string two begin a mermaid
     s2:String -> is the string to change name' nodes  for level0 only
     id:String -> is the id to identify nodes in widget*/
-  private def _toMermaid(g: RxGr, sInitial: String, s2:String, id:String): String = {
+  private def _toMermaid(g: RxGr, sInitial: String, s2:String, id:String, nL: Int = 0): String = {
     val colors: List[String] = List("gold", "red","blue","gray","orange","pink","green","purple") //miss and black
     // var mermaid = "```mermaid \nflowchart LR \n"
     var mermaid = sInitial //"flowchart LR \n"
@@ -43,16 +43,16 @@ object Show:
     if g.isEmpty then return mermaid + s"A$s2[\\WARNING/] \n style A$s2 fill:#ff0000,stroke:#333,stroke-width:4px,color:#fff"
 
     //Counter to put style in edges
-    var numLinhas: Int = 0
+    var numLinhas: Int = nL
 
     // Loops to draw edges level0
     for ((from, edge) <- g.se){
       for (e <- edge){
         if haveMiddle(e,g) then{
           if g.active(e) then
-            mermaid = mermaid + e.from + id + "(" + e.from + ") ---"+  n(e) + id + "( ) --> |" + e.act + "|"+ e.to + id + "(" + e.to + ") \n"
+            mermaid = mermaid + s2 + e.from + id + "(" + e.from + ") ---"+  n(e) + id + "( ) --> |" + e.act + "|"+ s2 + e.to + id + "(" + e.to + ") \n"
           else
-            mermaid = mermaid + e.from + id + "(" + e.from + ") -.-"+  n(e) + id + "( ) -.-> |" + e.act + "|"+ e.to + id + "(" + e.to + ") \n"
+            mermaid = mermaid + s2 + e.from + id + "(" + e.from + ") -.-"+  n(e) + id + "( ) -.-> |" + e.act + "|"+ s2 + e.to + id + "(" + e.to + ") \n"
           mermaid = mermaid + "style " + n(e) + id + " width:0px \n"
           mermaid = mermaid + "linkStyle " + numLinhas +" stroke:black"+", stroke-width:2px \n"
           mermaid = mermaid + "linkStyle " + (numLinhas + 1) +" stroke:black"+", stroke-width:2px \n"
@@ -109,9 +109,10 @@ object Show:
       }
     }
 
-    if id != "Bissi" then
+    if id != "pluslines" then
       mermaid +=  "style " + g.init + id + " fill:#8f7,stroke:#363,stroke-width:4px \n" //+"```"
-    mermaid +=  "style " + s2 + g.init + id + " fill:#8f7,stroke:#363,stroke-width:4px \n" //+"```"
+    else
+      mermaid +=  "style " + s2 + g.init + id + " fill:#8f7,stroke:#363,stroke-width:4px \n" //+"```"
     mermaid
   }
 
@@ -153,6 +154,24 @@ object Show:
         }
         f
       }
+  
+  private def countNumLines(g: RxGr): Int =
+    var n: Int = 0
+    for ((st,edgeset) <- g.se){
+      for (edge <- edgeset){
+        if haveMiddle(edge,g) then n = n + 2
+        else n = n + 1  
+      }
+    }    
+    for ((st,edgeset)<- g.he){
+      for (edge <- edgeset){
+        if haveMiddle(edge,g) then n = n + 2
+        else n = n + 1  
+      }
+    }
+    n
+  
+
 
   
 

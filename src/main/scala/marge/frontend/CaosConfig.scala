@@ -35,11 +35,14 @@ object CaosConfig extends Configurator[System]:
     // "Example" -> Examples.exampleOfReport -> "Example of Report",
     // "Ex1" -> Examples.ex1,
     "Bissim" -> Examples.bissimulation,
+    "Product" -> Examples.product,
+    "Product2" -> Examples.product2,
     )
 
   /** Description of the widgets that appear in the dashboard. */
   val widgets = List(
     "View pretty data" -> view[System](x => Show.toMermaid(x.main,""), Code("haskell")).moveTo(1),
+    "actionsssssssss" -> view[System](x => x.main.actions.toString(), Text).moveTo(1),
     "Dead Locks" -> view[System](Program.findDeadlockTracePP(_), Text).moveTo(1),
     "Conflicts / Contradictory effects" -> view[System](Program.findIncoPP(_), Text).moveTo(1),
     "Global structure view" -> view(x =>Show.toMermaid(x.main,"GSV"), Mermaid),
@@ -47,7 +50,7 @@ object CaosConfig extends Configurator[System]:
     // "Run semantics" -> steps(e=>e, Semantics, x => Show.toMermaid(x.main,"RS"), _.toString, Mermaid),
     "Run semantics" -> steps(e=>e, Warnings, x => Show.toMermaid(x.main,"RS"), _.toString, Mermaid),
     // "Run semanticstext" -> steps(e=>e, Semantics, x => Show.toMermaid(x.main,"RS"), _.toString, Text),
-    "Run semantics with local structure" -> steps(e=>e, Semantics, x => Show.toMermaid_twoGraphs(x.main,"RSLS"), _.toString, Mermaid),
+    "Run semantics with local structure" -> steps(e=>e, Semantics, x => Show.toMermaid_twoGraphs(x.main,x.main.getLevel0,"RSLS"), _.toString, Mermaid),
     "Build LTS" -> lts(x=>x, Semantics, x=>x.main.init, _.toString),
     // "Build LTS (explore)" -> ltsExplore(e=>e, Semantics, x=>x.main.init, _.toString),
     "Two Reactive Graphs" -> view(x =>Show.toMermaid_twoGraphs_Bissi(x,"TG"), Mermaid),
@@ -61,6 +64,15 @@ object CaosConfig extends Configurator[System]:
         (e: System) => System(e.main, None),
         (e: System) => System(e.toCompare.getOrElse(RxGr(Map.empty, Map.empty, " ", Set.empty)), None),
         Show.justTerm, Show.justTerm, _.toString),
+    // "Product" -> view[System](x =>Show.toMermaid(Program.pro(x),"TGG"), Mermaid),
+    // "Product" -> view[System](x =>Show.toMermaid(Program.product(x,true),"TGG"), Mermaid),
+    // "Run Product" -> steps(e=>System(Program.product(e),None), Warnings, x => Show.toMermaid(x.main,"RS"), _.toString, Mermaid),
+    // "Union" -> view[System](x =>Show.toMermaid(Program.union(x),"TGG"), Mermaid),
+    // "Run Union" -> steps(e=>System(Program.union(e),None), Warnings, x => Show.toMermaid(x.main,"RS"), _.toString, Mermaid),
+    // "Merge" -> view[System](x =>Show.toMermaid(Program.merge(x),"TGG"), Mermaid),
+    // "Run Merge" -> steps(e=>System(Program.merge(e),None), Warnings, x => Show.toMermaid(x.main,"RS"), _.toString, Mermaid),
+    "Asynchronous Product" -> lts(x=>x, AsynchronousProduct, x=>("<"+ x.main.init+", "+x.toCompare.getOrElse(x.main.empty).init+">"), _.toString),
+    "Synchronous Product" -> lts(x=>x, SynchronousProduct, x=>("<"+ x.main.init+", "+x.toCompare.getOrElse(x.main.empty).init+">"), _.toString),
   )
 
   //// Documentation below
