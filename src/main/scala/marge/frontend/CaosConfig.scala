@@ -42,7 +42,7 @@ object CaosConfig extends Configurator[System]:
   /** Description of the widgets that appear in the dashboard. */
   val widgets = List(
     "View pretty data" -> view[System](x => Show.toMermaid(x.main,""), Code("haskell")).moveTo(1),
-    "actionsssssssss" -> view[System](x => x.main.actions.toString(), Text).moveTo(1),
+    // "actionss" -> view[System](x => x.main.actions.toString(), Text).moveTo(1),
     "Dead Locks" -> view[System](Program.findDeadlockTracePP(_), Text).moveTo(1),
     "Conflicts / Contradictory effects" -> view[System](Program.findIncoPP(_), Text).moveTo(1),
     "Global structure view" -> view(x =>Show.toMermaid(x.main,"GSV"), Mermaid),
@@ -72,7 +72,9 @@ object CaosConfig extends Configurator[System]:
     // "Merge" -> view[System](x =>Show.toMermaid(Program.merge(x),"TGG"), Mermaid),
     // "Run Merge" -> steps(e=>System(Program.merge(e),None), Warnings, x => Show.toMermaid(x.main,"RS"), _.toString, Mermaid),
     "Asynchronous Product" -> lts(x=>x, AsynchronousProduct, x=>("<"+ x.main.init+", "+x.toCompare.getOrElse(x.main.empty).init+">"), _.toString),
+    "Asynchronous Product Explore" -> ltsExplore(x=>x, AsynchronousProduct, x=>("<"+ x.main.init+", "+x.toCompare.getOrElse(x.main.empty).init+">"), _.toString),
     "Synchronous Product" -> lts(x=>x, SynchronousProduct, x=>("<"+ x.main.init+", "+x.toCompare.getOrElse(x.main.empty).init+">"), _.toString),
+    "Synchronous Product Explore" -> ltsExplore(x=>x, SynchronousProduct, x=>("<"+ x.main.init+", "+x.toCompare.getOrElse(x.main.empty).init+">"), _.toString),
   )
 
   //// Documentation below
