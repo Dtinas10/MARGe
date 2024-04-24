@@ -9,6 +9,7 @@ import cats.instances.boolean
 import javax.swing.event.HyperlinkEvent
 import javax.swing.text.StyledEditorKit.BoldAction
 
+import marge.backend.Semantics
 
 object Program:
   type State = String
@@ -79,6 +80,69 @@ object Program:
         }
       }
       action
+
+  // def lts(g: RxGr): RxGr = 
+    // var newse: Map[State, Set[SimpleEdge]] = Map.empty
+    // var allConf: Set[RxGr] = Set.empty
+    // var lessConf: Set[RxGr] = Set(g)
+    // var current:RxGr  = g
+    // while(!lessConf.isEmpty) {
+    //   current = lessConf.head
+    //   for {i <- current.nextEdg}{
+    //     step(current,i) match{
+    //       case None => None
+    //       case next2 =>
+    //         var next = next2.map(_._1).get
+    //         if allConf.contains(next) then
+    //           newse += (current.init -> Set())
+    //         else lessConf += next 
+    //     }
+    //   }
+    //   lessConf -= current
+    // }
+    // RxGr(se = newse, he = Map.empty, init = g.init, active = Set())
+
+
+  def lts(g: RxGr): RxGr = 
+    var newse: Map[State, Set[SimpleEdge]] = Map.empty
+    var newactive: Set[Edge] = Set.empty
+    var allConf: Set[(RxGr,Int)] = Set.empty
+    var lessConf: Set[(RxGr,Int)] = Set((g,0))
+    // var current:RxGr  = g
+    var counter: Int = 1
+    while(!lessConf.isEmpty) {
+      var (current,cid) = lessConf.head
+      var next = Semantics.next(System(current,None))
+      for{(action,i) <- next}{
+        val id: Option[Int] = allConf.find(_._1 == i.main).map(_._2)
+        id match{
+          case None => 
+            var edge:SimpleEdge = SimpleEdge(current.init + ".."+cid,i.main.init + ".."+counter,action)
+            newse = addEdge(newse,edge)
+            newactive += edge
+            lessConf += (i.main,counter)
+            counter += 1
+          case Some(n:Int) =>
+            var edge:SimpleEdge = SimpleEdge(current.init+".."+cid,i.main.init + ".."+n,action)
+            newse = addEdge(newse,edge)
+            newactive += edge
+        }
+      }
+      allConf += (current,cid)
+      lessConf -= (current,cid)
+    }
+    RxGr(se = newse, he = Map.empty, init = g.init+"..0", active = newactive)
+
+  // def addEdge(m: Map[State, Set[SimpleEdge]], e: SimpleEdge): Map[State, Set[SimpleEdge]] = m.get(e.from) match{
+  //     case None => m + (e.from -> Set(e))
+  //     case set: Set[SimpleEdge]  => m + (e.from -> set + e)
+  //   }
+
+  def addEdge(m: Map[State, Set[SimpleEdge]], e: SimpleEdge): Map[State, Set[SimpleEdge]] =
+    val currentEdges = m.getOrElse(e.from, Set.empty[SimpleEdge])
+    m.updated(e.from, currentEdges + e)
+
+
 
   /**
    * Evolves a reactive graph rxGr by performing a simple edge
