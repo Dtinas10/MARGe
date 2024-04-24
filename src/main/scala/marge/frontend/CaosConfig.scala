@@ -66,6 +66,11 @@ object CaosConfig extends Configurator[System]:
         (e: System) => System(e.main, None),
         (e: System) => System(e.toCompare.getOrElse(RxGr(Map.empty, Map.empty, " ", Set.empty)), None),
         Show.justTerm, Show.justTerm, _.toString),
+    "Find strong bisimulation with LTS function" ->
+      compareStrongBisim(Semantics, Semantics,
+        (e: System) => System(e.main, None),
+        (e: System) => System(Program.lts(e.main), None),
+        Show.justTerm, Show.justTerm, _.toString),
     // "Product" -> view[System](x =>Show.toMermaid(Program.pro(x),"TGG"), Mermaid),
     // "Product" -> view[System](x =>Show.toMermaid(Program.product(x,true),"TGG"), Mermaid),
     // "Run Product" -> steps(e=>System(Program.product(e),None), Warnings, x => Show.toMermaid(x.main,"RS"), _.toString, Mermaid),
