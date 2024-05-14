@@ -81,26 +81,6 @@ object Program:
       }
       action
 
-  // def lts(g: RxGr): RxGr = 
-    // var newse: Map[State, Set[SimpleEdge]] = Map.empty
-    // var allConf: Set[RxGr] = Set.empty
-    // var lessConf: Set[RxGr] = Set(g)
-    // var current:RxGr  = g
-    // while(!lessConf.isEmpty) {
-    //   current = lessConf.head
-    //   for {i <- current.nextEdg}{
-    //     step(current,i) match{
-    //       case None => None
-    //       case next2 =>
-    //         var next = next2.map(_._1).get
-    //         if allConf.contains(next) then
-    //           newse += (current.init -> Set())
-    //         else lessConf += next 
-    //     }
-    //   }
-    //   lessConf -= current
-    // }
-    // RxGr(se = newse, he = Map.empty, init = g.init, active = Set())
 
 
   def lts(g: RxGr): RxGr = 
@@ -108,7 +88,6 @@ object Program:
     var newactive: Set[Edge] = Set.empty
     var allConf: Set[(RxGr,Int)] = Set.empty
     var lessConf: Set[(RxGr,Int)] = Set((g,0))
-    // var current:RxGr  = g
     var counter: Int = 1
     while(!lessConf.isEmpty) {
       var (current,cid) = lessConf.head
@@ -272,8 +251,57 @@ object Program:
         val newMiss = (miss - nextSt) ++ more.map(kv=>(kv._2,Some(kv._1->nextSt)))
         findIncoTrace(newMiss, know + (nextSt->parent), maxit - 1)
 
+
+
   
-  case class System(main:RxGr, toCompare:Option[RxGr]):
+  // def AsynchronousProduct(st:System): RxGr = {
+  //   var g1: RxGr = lts(st.main) 
+  //   var g2: RxGr = lts(st.toCompare.getOrElse(g.empty))
+  //   var s: Set[(A,System)] = Set.empty
+  //   for ( i <- g.nextEdg ) {
+  //     var k = step(g,i)
+  //     if k != None then
+  //       s = s ++ Set((i.action,System(k.map(_._1).get,Option(g2))))
+  //   }
+  //   for (i<- g2.nextEdg) {
+  //     var k = step(g2,i)  
+  //     if k != None then
+  //       s = s ++ Set((i.action,System(g,Option(k.map(_._1).get))))
+  //   }
+  //   var newse: Map[State, Set[SimpleEdge]] = Map.empty
+  //   var newactive: Set[Edge] = Set.empty
+  //   var allConf: Set[(RxGr,RxGr,Int)] = Set.empty
+  //   var lessConf: Set[(RxGr,RxGr,Int)] = Set((g1,g2,0))
+  //   var counter: Int = 1
+  //   while(!lessConf.isEmpty) {
+  //     var (c1,c2,id) = lessConf.head
+  //     var next1 = Semantics.next(System(c2,None))
+  //     var next2 = Semantics.next(System(c2,None))
+  //     for{(action,i) <- next}{
+  //       val id: Option[Int] = allConf.find(_._1 == i.main).map(_._3)
+  //       id match{
+  //         case None => 
+  //           var edge:SimpleEdge = SimpleEdge(current.init + ".."+cid,i.main.init + ".."+counter,action)
+  //           newse = addEdge(newse,edge)
+  //           newactive += edge
+  //           lessConf += (i.main,counter)
+  //           counter += 1
+  //         case Some(n:Int) =>
+  //           var edge:SimpleEdge = SimpleEdge(current.init+".."+cid,i.main.init + ".."+n,action)
+  //           newse = addEdge(newse,edge)
+  //           newactive += edge
+  //       }
+  //     }
+  //     allConf += (current,cid)
+  //     lessConf -= (current,cid)
+  //   }
+  //   RxGr(se = newse, he = Map.empty, init = g.init+"..0", active = newactive)
+  // }
+
+
+
+  
+  case class System(main:RxGr, toCompare:Option[RxGr], intro: (Map[Edge,Set[Edge]],Set[Edge]) = (Map.empty,Set.empty)):
     def apply(newMain:RxGr) = System(newMain,toCompare)
     override def toString: String = s"${main.init}${""}" 
 

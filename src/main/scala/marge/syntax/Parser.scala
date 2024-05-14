@@ -163,6 +163,14 @@ object Parser :
         val activeEdgesSet:Set[Edge] = edges.collect { case (edge, true) => edge }.toSet
         (edgesMap, activeEdgesSet)
       })
+  private def levelNI: P[(Map[Edge,Set[Edge]],Set[Edge])] = 
+      (((P.string("lnI") *> P.char('=').surroundedBy(sps)) *> P.char('{').surroundedBy(sps)) *> 
+      (hyperEdge_withoutWeight.repSep0(char(',').surroundedBy(sps))).surroundedBy(sps) <* P.char('}').surroundedBy(sps))
+      .map(edges => {
+        val edgesMap:Map[Edge,Set[Edge]] = edges.collect { case (edge, _) => edge.from -> edge }.groupBy(_._1).view.mapValues(_.map(_._2).toSet).toMap
+        val activeEdgesSet:Set[Edge] = edges.collect { case (edge, true) => edge }.toSet
+        (edgesMap, activeEdgesSet)
+      })
 
   private def init: P[State] = ((P.string("init") *> P.char('=').surroundedBy(sps)) *> state).map(x => String(x))
 
@@ -174,11 +182,18 @@ object Parser :
         RxGr(se._1, he._1, init, se._2 ++ he._2)
   }
 
+  // private def program: P[System] =
+  //   ((oneProgram.surroundedBy(sps)) ~
+  //   ((char('~').surroundedBy(sps) *> oneProgram.surroundedBy(sps)).?))
+  //     .map((x,y) => System(x,y))
+
   private def program: P[System] =
     ((oneProgram.surroundedBy(sps)) ~
-    ((char('~').surroundedBy(sps) *> oneProgram.surroundedBy(sps)).?))
-      .map((x,y) => System(x,y))
+    ((char('~').surroundedBy(sps) *> oneProgram.surroundedBy(sps)).?) ~
+    ((char('~').surroundedBy(sps) *> levelNI.surroundedBy(sps)).?))
+      .map{case (((x,y),z)) => System(x,y,(z.map(_._1).getOrElse(Map.empty),z.map(_._2).getOrElse(Set.empty)))}
 
+      
   //////////////////////////////
   // Examples and experiments //
   //////////////////////////////

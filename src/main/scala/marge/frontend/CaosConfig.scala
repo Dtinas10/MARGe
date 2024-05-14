@@ -37,52 +37,97 @@ object CaosConfig extends Configurator[System]:
     "Bissim" -> Examples.bissimulation,
     "Product" -> Examples.product,
     "Product2" -> Examples.product2,
+    "Intrusive Product" -> Examples.product3,
+    "VM_U" -> Examples.VM_U,
     )
 
-  /** Description of the widgets that appear in the dashboard. */
+  // /** Description of the widgets that appear in the dashboard. */
+  // val widgets = List(
+  //   "View pretty data" -> view[System](x => Show.toMermaid(x.main,""), Code("haskell")).moveTo(1),
+  //   // "actionss" -> view[System](x => x.main.actions.toString(), Text).moveTo(1),
+  //   "Dead Locks" -> view[System](Program.findDeadlockTracePP(_), Text).moveTo(1),
+  //   "Conflicts / Contradictory effects" -> view[System](Program.findIncoPP(_), Text).moveTo(1),
+  //   // "fffffffffffff" -> view[System](x=>Program.lts(x.main).se.toString, Text).moveTo(1),
+  //   "Global structure view" -> view(x =>Show.toMermaid(x.main,"GSV"), Mermaid),
+  //   "Local structure view" -> view(x => Show.toMermaid(x.main.getLevel0,"LSV"), Mermaid),
+  //   // "Run semantics" -> steps(e=>e, Semantics, x => Show.toMermaid(x.main,"RS"), _.toString, Mermaid),
+  //   "Run semantics" -> steps(e=>e, Warnings, x => Show.toMermaid(x.main,"RS"), _.toString, Mermaid),
+  //   "Run semantics2Same" -> steps(e=>e, SemanticsTwo, x => Show.toMermaid_twoGraphs_Bissi(x,"AAAA"), _.toString, Mermaid),
+  //   // "Run semanticstext" -> steps(e=>e, Semantics, x => Show.toMermaid(x.main,"RS"), _.toString, Text),
+  //   "Run semantics with local structure" -> steps(e=>e, Semantics, x => Show.toMermaid_twoGraphs(x.main,x.main.getLevel0,"RSLS"), _.toString, Mermaid),
+  //   "Build LTS" -> lts(x=>x, Semantics, x=>x.main.init, _.toString),
+  //   "Generated LTS" -> view[System](x => Show.toMermaid(Program.lts(x.main),""), Mermaid),
+  //   // "Build LTS (explore)" -> ltsExplore(e=>e, Semantics, x=>x.main.init, _.toString),
+  //   "Two Reactive Graphs" -> view(x =>Show.toMermaid_twoGraphs_Bissi(x,"TG"), Mermaid),
+  //   // "Build LTS" -> lts(x=>x, Semantics, x=>x.init, _.toString),
+  //   // "Check" -> check(x=>Seq(x.toString)),
+  //   // "Build LTS2" -> lts(x=>x, Semantics, x=>x.active.toString, _.toString),
+  //   //  "Build LTS" -> lts((e:System)=>e, Semantics, Show.justTerm, _.toString).expand,
+  //   //  "Build LTS (explore)" -> ltsExplore(e=>e, Semantics, x=>Show(x.main), _.toString),
+  //   "Find strong bisimulation (given a program \"A ~ B\")" ->
+  //     compareStrongBisim(Semantics, Semantics,
+  //       (e: System) => System(e.main, None),
+  //       (e: System) => System(e.toCompare.getOrElse(RxGr(Map.empty, Map.empty, " ", Set.empty)), None),
+  //       Show.justTerm, Show.justTerm, _.toString),
+  //  // "Find strong bisimulation with LTS function" ->
+  //  //   compareStrongBisim(Semantics, Semantics,
+  //  //     (e: System) => System(e.main, None),
+  //  //     (e: System) => System(Program.lts(e.main), None),
+  //  //     Show.justTerm, Show.justTerm, _.toString),
+  //   // "Product" -> view[System](x =>Show.toMermaid(Program.pro(x),"TGG"), Mermaid),
+  //   // "Product" -> view[System](x =>Show.toMermaid(Program.product(x,true),"TGG"), Mermaid),
+  //   // "Run Product" -> steps(e=>System(Program.product(e),None), Warnings, x => Show.toMermaid(x.main,"RS"), _.toString, Mermaid),
+  //   // "Union" -> view[System](x =>Show.toMermaid(Program.union(x),"TGG"), Mermaid),
+  //   // "Run Union" -> steps(e=>System(Program.union(e),None), Warnings, x => Show.toMermaid(x.main,"RS"), _.toString, Mermaid),
+  //   // "Merge" -> view[System](x =>Show.toMermaid(Program.merge(x),"TGG"), Mermaid),
+  //   // "Run Merge" -> steps(e=>System(Program.merge(e),None), Warnings, x => Show.toMermaid(x.main,"RS"), _.toString, Mermaid),
+  //   "Asynchronous Product tesste" -> lts(x=>x, AsynchronousProduct, indexedViewSt, _.toString),
+  //   "Asynchronous Product" -> lts(x=>x, AsynchronousProduct, x=>("<"+ x.main.init+", "+x.toCompare.getOrElse(x.main.empty).init+">"), _.toString),
+  //   "Asynchronous Product Explore" -> ltsExplore(x=>x, AsynchronousProduct, x=>("<"+ x.main.init+", "+x.toCompare.getOrElse(x.main.empty).init+">"), _.toString),
+  //   "Synchronous Product" -> lts(x=>x, SynchronousProduct, x=>("<"+ x.main.init+", "+x.toCompare.getOrElse(x.main.empty).init+">"), _.toString),
+  //   "Synchronous Product Explore" -> ltsExplore(x=>x, SynchronousProduct, x=>("<"+ x.main.init+", "+x.toCompare.getOrElse(x.main.empty).init+">"), _.toString),
+  // )
+
   val widgets = List(
     "View pretty data" -> view[System](x => Show.toMermaid(x.main,""), Code("haskell")).moveTo(1),
-    // "actionss" -> view[System](x => x.main.actions.toString(), Text).moveTo(1),
     "Dead Locks" -> view[System](Program.findDeadlockTracePP(_), Text).moveTo(1),
-    "Conflicts / Contradictory effects" -> view[System](Program.findIncoPP(_), Text).moveTo(1),
-    // "fffffffffffff" -> view[System](x=>Program.lts(x.main).se.toString, Text).moveTo(1),
-    "Global structure view" -> view(x =>Show.toMermaid(x.main,"GSV"), Mermaid),
-    "Local structure view" -> view(x => Show.toMermaid(x.main.getLevel0,"LSV"), Mermaid),
-    // "Run semantics" -> steps(e=>e, Semantics, x => Show.toMermaid(x.main,"RS"), _.toString, Mermaid),
-    "Run semantics" -> steps(e=>e, Warnings, x => Show.toMermaid(x.main,"RS"), _.toString, Mermaid),
-    // "Run semanticstext" -> steps(e=>e, Semantics, x => Show.toMermaid(x.main,"RS"), _.toString, Text),
-    "Run semantics with local structure" -> steps(e=>e, Semantics, x => Show.toMermaid_twoGraphs(x.main,x.main.getLevel0,"RSLS"), _.toString, Mermaid),
-    "Build LTS" -> lts(x=>x, Semantics, x=>x.main.init, _.toString),
+    "Conflicts / Contradictory effects" -> view[System](Program.findIncoPP(_), Text).moveTo(1),    
+    // "Global Structure View" -> view(x =>Show.toMermaid_twoGraphs_Bissi(x,"TG"), Mermaid),
+    "Global Structure View" -> view(x =>Show.toMermaid_Intrusive(x), Mermaid),
+    "Local Structure View" -> view(x =>Show.toMermaid_twoGraphs_Bissi(System(x.main.getLevel0,Option(x.toCompare.getOrElse(x.main.empty).getLevel0)),"TG"), Mermaid),
+    "Run semantics" -> steps(e=>e, SemanticsTwo, x => Show.toMermaid_twoGraphs_Bissi(x,"AAAA"), _.toString, Mermaid),
+    "Run Semantics With Intrusive Edges" -> steps(e=>e, PI, x => Show.toMermaid_Intrusive(x), _.toString, Mermaid),
+    // "Build LTS" -> lts(x=>x, Semantics, x=>x.main.init, _.toString),
     "Generated LTS" -> view[System](x => Show.toMermaid(Program.lts(x.main),""), Mermaid),
     // "Build LTS (explore)" -> ltsExplore(e=>e, Semantics, x=>x.main.init, _.toString),
-    "Two Reactive Graphs" -> view(x =>Show.toMermaid_twoGraphs_Bissi(x,"TG"), Mermaid),
     // "Build LTS" -> lts(x=>x, Semantics, x=>x.init, _.toString),
-    // "Check" -> check(x=>Seq(x.toString)),
-    // "Build LTS2" -> lts(x=>x, Semantics, x=>x.active.toString, _.toString),
-    //  "Build LTS" -> lts((e:System)=>e, Semantics, Show.justTerm, _.toString).expand,
-    //  "Build LTS (explore)" -> ltsExplore(e=>e, Semantics, x=>Show(x.main), _.toString),
     "Find strong bisimulation (given a program \"A ~ B\")" ->
       compareStrongBisim(Semantics, Semantics,
         (e: System) => System(e.main, None),
         (e: System) => System(e.toCompare.getOrElse(RxGr(Map.empty, Map.empty, " ", Set.empty)), None),
         Show.justTerm, Show.justTerm, _.toString),
-    "Find strong bisimulation with LTS function" ->
-      compareStrongBisim(Semantics, Semantics,
-        (e: System) => System(e.main, None),
-        (e: System) => System(Program.lts(e.main), None),
-        Show.justTerm, Show.justTerm, _.toString),
-    // "Product" -> view[System](x =>Show.toMermaid(Program.pro(x),"TGG"), Mermaid),
-    // "Product" -> view[System](x =>Show.toMermaid(Program.product(x,true),"TGG"), Mermaid),
-    // "Run Product" -> steps(e=>System(Program.product(e),None), Warnings, x => Show.toMermaid(x.main,"RS"), _.toString, Mermaid),
-    // "Union" -> view[System](x =>Show.toMermaid(Program.union(x),"TGG"), Mermaid),
-    // "Run Union" -> steps(e=>System(Program.union(e),None), Warnings, x => Show.toMermaid(x.main,"RS"), _.toString, Mermaid),
-    // "Merge" -> view[System](x =>Show.toMermaid(Program.merge(x),"TGG"), Mermaid),
-    // "Run Merge" -> steps(e=>System(Program.merge(e),None), Warnings, x => Show.toMermaid(x.main,"RS"), _.toString, Mermaid),
-    "Asynchronous Product" -> lts(x=>x, AsynchronousProduct, x=>("<"+ x.main.init+", "+x.toCompare.getOrElse(x.main.empty).init+">"), _.toString),
-    "Asynchronous Product Explore" -> ltsExplore(x=>x, AsynchronousProduct, x=>("<"+ x.main.init+", "+x.toCompare.getOrElse(x.main.empty).init+">"), _.toString),
-    "Synchronous Product" -> lts(x=>x, SynchronousProduct, x=>("<"+ x.main.init+", "+x.toCompare.getOrElse(x.main.empty).init+">"), _.toString),
-    "Synchronous Product Explore" -> ltsExplore(x=>x, SynchronousProduct, x=>("<"+ x.main.init+", "+x.toCompare.getOrElse(x.main.empty).init+">"), _.toString),
-  )
+    // "Asynchronous Product tesste" -> lts(x=>x, AsynchronousProduct, indexedViewSt, _.toString),
+    "Asynchronous Product" -> lts(x=>x, AsynchronousProduct, indexedViewSt, _.toString),
+    // "Asynchronous Product" -> lts(x=>x, AsynchronousProduct, x=>("<"+ x.main.init+", "+x.toCompare.getOrElse(x.main.empty).init+">"), _.toString),
+    "Synchronous Product" -> lts(x=>x, SynchronousProduct, indexedViewSt, _.toString),
+    // "Synchronous Product" -> lts(x=>x, SynchronousProduct, x=>("<"+ x.main.init+", "+x.toCompare.getOrElse(x.main.empty).init+">"), _.toString),
+    "Intrusive Product" -> lts(x=>x, PI, indexedViewSt, _.toString),
+   )
+
+    private var index = 0  
+    def indexedViewSt(x: System): String = {
+      index += 1
+      s"<${x.main.init}, ${x.toCompare.getOrElse(x.main.empty).init}>_${index}"
+    }
+
+    // def indexedViewSt(x: System): String = {
+    //   var index = 0  
+    //   def f(x:System):String = 
+    //     index += 1
+    //     s"<${x.main.init}, ${x.toCompare.getOrElse(x.main.empty).init}>_${index}"
+    //   f(x)
+    //   }
+
 
   //// Documentation below
 

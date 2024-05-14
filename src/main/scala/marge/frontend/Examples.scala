@@ -189,17 +189,35 @@ object Examples:
     |  ((Insert,Cofee,0.5$),(Insert,Chocolate,1$),Bullet,OFF),
     |  ((Insert,Cofee,0.5$),((Insert,Cofee,0.5$),(Insert,Cofee,0.5$),Circ,OFF),Bullet,ON)}
     """.stripMargin 
+
   val product: String = 
-    """init = A;
-    |l0 = { A --> B by a,
-    |			B --> C by b};
-    |ln = {((A,B,a),(B,C,b),Bullet,OFF),
-    |     (((A,B,a),(B,C,b),Bullet,OFF),(A,B,a),Circ,ON)}
+    """init = s0;
+    |l0 = { s0 --> s1 by a,
+    |			s1 --> s2 by b,
+    |      s2 --> s0 by d};
+    |ln = {((s0,s1,a),(s1,s2,b),Bullet,OFF)}
     |~
-    |init = K;
-    |l0 = { K --> J by c};
-    |ln = {((K,J,c),(K,J,c),Circ,OFF),
-    |      (((K,J,c),(K,J,c),Circ,OFF),(K,J,c),Bullet,ON)}
+    |init = w0;
+    |l0 = { w0 --> w1 by a,
+    |w1 --> w0 by c};
+    |ln = {((w0,w1,a),(w0,w1,a),Circ,OFF),
+    |      ((w0,w1,a),((w0,w1,a),(w0,w1,a),Circ,OFF),Bullet,ON)}
+    """.stripMargin
+    
+  val product3: String = 
+    """init = s0;
+    |l0 = { s0 --> s1 by a,
+    |			s1 --> s2 by b,
+    |      s2 --> s0 by d};
+    |ln = {((s0,s1,a),(s1,s2,b),Bullet,OFF)}
+    |~
+    |init = w0;
+    |l0 = { w0 --> w1 by a,
+    |w1 --> w0 by c};
+    |ln = {((w0,w1,a),(w0,w1,a),Circ,OFF),
+    |      ((w0,w1,a),((w0,w1,a),(w0,w1,a),Circ,OFF),Bullet,ON)}
+    |~
+    |lnI={((s0,s1,a),(w1,w0,c),Bullet,OFF)}
     """.stripMargin
 
 
@@ -214,6 +232,22 @@ object Examples:
     |init = w;
     |l0 = { w --> w by a};
     |ln = {((w,w,a),(w,w,a),Bullet,OFF)}
+    """.stripMargin
+  val VM_U: String = 
+    """init = pay;
+    |l0 = { pay --> select by insert_coin,
+    |   select --> soda by tau,
+    |   select --> beer by tau,
+    |   soda --> pay by get_soda,
+    |   beer --> pay by get_beer};
+    |ln = {((select,soda,tau),(select,soda,tau),Circ,OFF),
+    |      ((select,beer,tau),(select,beer,tau),Bullet,OFF),
+    |      ((select,soda,tau),((select,soda,tau),(select,soda,tau),Circ,OFF),Bullet,ON)}
+    |~
+    |init = user;
+    |l0 = { user --> select by insert_coin,
+    |       select --> user by get_product};
+    |ln = {}
     """.stripMargin
     
 // init = 0; 

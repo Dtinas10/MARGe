@@ -20,8 +20,28 @@ object Show:
       case None => ""
       case Some(t) => _toMermaid(t,"\n subgraph Second Graph\n direction LR \n",".", "pluslines", countNumLines(st.main)) + "\n end"
     }
+    // _toMermaid(st.main, "flowchart LR \n subgraph First Graph  \n direction LR \n", ".",id,intro = st.intro)  + "\n end" + s
     _toMermaid(st.main, "flowchart LR \n subgraph First Graph  \n direction LR \n", "",id)  + "\n end" + s
-    
+
+  def toMermaid_Intrusive(newst:System): String = 
+    var st: System = System(newst.main,None,newst.intro)
+    var second: RxGr = newst.toCompare.getOrElse(newst.main.empty)
+    if !second.isEmpty then{
+        second = RxGr(second.se,
+        second.he ++ newst.intro._1.map {case (key, newValueSet) => key -> (second.he.getOrElse(key, Set.empty[Edge]) ++ newValueSet)},
+        second.init,
+        second.active ++ newst.intro._2)
+        st = System(newst.main,Option(second),newst.intro)
+      }
+    var s: String = st.toCompare match{
+      case None => ""
+      case Some(t) => _toMermaid(t,"\n subgraph Second Graph\n direction LR \n",".", "pluslines", countNumLines(st.main)) + "\n end"
+    }
+    // _toMermaid(st.main, "flowchart LR \n subgraph First Graph  \n direction LR \n", ".",id,intro = st.intro)  + "\n end" + s
+    _toMermaid(st.main, "flowchart LR \n subgraph First Graph  \n direction LR \n", "","pluslines",intro=newst.intro._1)  + "\n end" + s
+  // +_toMermaid(RxGr(Map.empty,st.intro,"",Set.empty), sInitial=  "", s2= ".", id = "intros")
+
+
   /** Put the reactive graph RxGr in Mermaid Code*/
   def toMermaid(g: RxGr,id:String): String = _toMermaid(g,"flowchart LR \n","",id)
 
@@ -35,7 +55,8 @@ object Show:
     sInital:String ->  is the string two begin a mermaid
     s2:String -> is the string to change name' nodes  for level0 only
     id:String -> is the id to identify nodes in widget*/
-  private def _toMermaid(g: RxGr, sInitial: String, s2:String, id:String, nL: Int = 0): String = {
+  private def _toMermaid(g: RxGr, sInitial: String, s2:String, id:String, nL: Int = 0, intro: Map[Edge,Set[Edge]] = Map.empty): String = {
+  // private def _toMermaid(g: RxGr, sInitial: String, s2:String, id:String, nL: Int = 0): String = {
     val colors: List[String] = List("gold", "red","blue","gray","orange","pink","green","purple") //miss and black
     // var mermaid = "```mermaid \nflowchart LR \n"
     var mermaid = sInitial //"flowchart LR \n"
@@ -48,7 +69,7 @@ object Show:
     // Loops to draw edges level0
     for ((from, edge) <- g.se){
       for (e <- edge){
-        if haveMiddle(e,g) then{
+        if haveMiddle(e,g) || haveIntru(e,intro) then{
           if g.active(e) then
             mermaid = mermaid + s2 + e.from + id + "(" + e.from + ") ---"+  n(e) + id + "( ) --> |" + e.act + "|"+ s2 + e.to + id + "(" + e.to + ") \n"
           else
@@ -75,7 +96,7 @@ object Show:
         ee match {
           case e: SimpleEdge => mermaid = mermaid + " "
           case e: HyperEdge =>
-            if haveMiddle(e,g) then{
+            if haveMiddle(e,g) || haveIntru(e,intro) then{
               if g.active(e) then
                 mermaid = mermaid + n(e.from) + id +"( ) ---" + n(e) + id +"( ) --"+ head(e.activate) + n(e.to) + id +"( ) \n"
               else
@@ -142,6 +163,18 @@ object Show:
   }
 
   /*function wich give true if the edege needs midle*/ 
+  private def haveIntru(e: Edge, m:Map[Edge,Set[Edge]]):Boolean = 
+    m.contains(e) || m.exists{ 
+      case (_, s) => 
+        var f: Boolean   = false
+        for (edge <- s){ 
+          edge match{
+            case ee: SimpleEdge => if (ee == e) then f = true  
+            case ee: HyperEdge => if (ee.to == e) then f = true
+          }
+        }
+        f
+      }
   private def haveMiddle(e: Edge, g: RxGr):Boolean = 
     g.he.contains(e) || g.he.exists{ 
       case (_, s) => 
@@ -170,6 +203,8 @@ object Show:
       }
     }
     n
+
+    
   
 
 
