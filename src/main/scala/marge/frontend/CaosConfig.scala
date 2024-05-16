@@ -15,7 +15,7 @@ import scala.util.control.Breaks._
 
 /** Object used to configure which analysis appear in the browser */
 object CaosConfig extends Configurator[System]:
-  val name = "Animator of Multi-Action Reactive Graphs (MARGe)"
+  val name = "Animator of Labelled Reactive Graphs"
   override val languageName: String = "Input program"
 
   /** Parser, converting a string into a System in rgv3 */
@@ -24,21 +24,21 @@ object CaosConfig extends Configurator[System]:
 
   /** Examples of programs that the user can choose from. The first is the default one. */
   val examples = List(
-    "Gabbay Example" -> Examples.gabbayExample -> "Figure 7.4 in Dov M Gabbay, Cognitive Technologies Reactive Kripke Semantics",
+    "Penguin" -> Examples.gabbayExample -> "Figure 7.4 in Dov M Gabbay, Cognitive Technologies Reactive Kripke Semantics",
     // "Gabbay Example2" -> Example_GabbayExample2-> "Figure 7.9 of Dov M Gabbay, Cognitive Technologies Reactive Kripke Semantics",
     "Counter" ->  Examples.counter-> "Run 3 times only the action *act*",
     "Feature Model"->  Examples.featureModel -> "Fig 1 in Maxime Cordy et al. Model Checking Adaptive Software with Featured Transition Systems",
-    "VM"->  Examples.vendingMachine -> "We have 1$ only to spend in the vending machine and we need to decide the best option between cofee, chocolate and apple.",
-    "VM2"->  Examples.VMPaper -> "Example of Vending Machine presented in Reactive Graphs in action",
+    // "VM"->  Examples.vendingMachine -> "We have 1$ only to spend in the vending machine and we need to decide the best option between cofee, chocolate and apple.",
+    // "VM2"->  Examples.VMPaper -> "Example of Vending Machine presented in Reactive Graphs in action",
     //"Vending Machine 2"->  Examples.vendingMachine2 -> "We have 1$ only to spend in the vending machine and we need to decide the best option between cofee, chocolate and apple.",
     "Conflicts" -> Examples.conflict -> "Example of Reactive Graph with a conflict.",
     // "Example" -> Examples.exampleOfReport -> "Example of Report",
     // "Ex1" -> Examples.ex1,
-    "Bissim" -> Examples.bissimulation,
+    "Bissi" -> Examples.bissimulation,
+    "VM_U" -> Examples.VM_U,	
     "Product" -> Examples.product,
-    "Product2" -> Examples.product2,
+    // "Product2" -> Examples.product2,
     "Intrusive Product" -> Examples.product3,
-    "VM_U" -> Examples.VM_U,
     )
 
   // /** Description of the widgets that appear in the dashboard. */
@@ -89,19 +89,20 @@ object CaosConfig extends Configurator[System]:
   // )
 
   val widgets = List(
-    "View pretty data" -> view[System](x => Show.toMermaid(x.main,""), Code("haskell")).moveTo(1),
+    "View Pretty Data" -> view[System](x => Show.toMermaid(x.main,""), Code("haskell")).moveTo(1),
     "Dead Locks" -> view[System](Program.findDeadlockTracePP(_), Text).moveTo(1),
-    "Conflicts / Contradictory effects" -> view[System](Program.findIncoPP(_), Text).moveTo(1),    
+    "Conflicts / Contradictory Effects" -> view[System](Program.findIncoPP(_), Text).moveTo(1),    
     // "Global Structure View" -> view(x =>Show.toMermaid_twoGraphs_Bissi(x,"TG"), Mermaid),
     "Global Structure View" -> view(x =>Show.toMermaid_Intrusive(x), Mermaid),
     "Local Structure View" -> view(x =>Show.toMermaid_twoGraphs_Bissi(System(x.main.getLevel0,Option(x.toCompare.getOrElse(x.main.empty).getLevel0)),"TG"), Mermaid),
-    "Run semantics" -> steps(e=>e, SemanticsTwo, x => Show.toMermaid_twoGraphs_Bissi(x,"AAAA"), _.toString, Mermaid),
+    "Run Semantics" -> steps(e=>e, SemanticsTwo, x => Show.toMermaid_twoGraphs_Bissi(x,"AAAA"), _.toString, Mermaid),
     "Run Semantics With Intrusive Edges" -> steps(e=>e, PI, x => Show.toMermaid_Intrusive(x), _.toString, Mermaid),
+    "Run WSemantics With Local Structure" -> steps(e=>e, Semantics, x => Show.toMermaid_twoGraphs(x.main,x.main.getLevel0,"RSLS"), _.toString, Mermaid),
     // "Build LTS" -> lts(x=>x, Semantics, x=>x.main.init, _.toString),
     "Generated LTS" -> view[System](x => Show.toMermaid(Program.lts(x.main),""), Mermaid),
     // "Build LTS (explore)" -> ltsExplore(e=>e, Semantics, x=>x.main.init, _.toString),
     // "Build LTS" -> lts(x=>x, Semantics, x=>x.init, _.toString),
-    "Find strong bisimulation (given a program \"A ~ B\")" ->
+    "Find Strong Bisimulation (given a program \"A ~ B\")" ->
       compareStrongBisim(Semantics, Semantics,
         (e: System) => System(e.main, None),
         (e: System) => System(e.toCompare.getOrElse(RxGr(Map.empty, Map.empty, " ", Set.empty)), None),
@@ -132,7 +133,7 @@ object CaosConfig extends Configurator[System]:
   //// Documentation below
 
   override val footer: String =
-    """Simple animator of Multi Action Reactive Graphs, meant to exemplify the
+    """Simple animator of Labelled Reactive Graphs, meant to exemplify the
       | CAOS libraries, used to generate this website.""".stripMargin 
       // Source code available online:
       // | <a target="_blank" href="https://github.com/arcalab/CAOS">

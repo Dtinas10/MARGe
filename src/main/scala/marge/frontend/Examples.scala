@@ -208,7 +208,7 @@ object Examples:
     """init = s0;
     |l0 = { s0 --> s1 by a,
     |			s1 --> s2 by b,
-    |      s2 --> s0 by d};
+    |      s2 -.-> s0 by d};
     |ln = {((s0,s1,a),(s1,s2,b),Bullet,OFF)}
     |~
     |init = w0;

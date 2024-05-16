@@ -28,7 +28,7 @@ object SemanticsTwo extends SOS[String,System]:
     Semantics.next(st) ++ 
     Semantics.next(System(st.toCompare.getOrElse(st.main.empty),Option(st.main)))
 
-  def next1[A>:String](st : System): Set[(A,System)] =
+  def next[A>:String](st : System): Set[(A,System)] =
     val g: RxGr = st.main 
     val g2: RxGr = st.toCompare.getOrElse(g.empty) 
     var s: Set[(A,System)] = Set.empty
@@ -43,7 +43,7 @@ object SemanticsTwo extends SOS[String,System]:
         s = s ++ Set((i.action,System(st.main,Option(k.map(_._1).get))))
     }
     s
-  def next[A >: String](st: System): Set[(A, System)] = st.toCompare match{
+  def next1[A >: String](st: System): Set[(A, System)] = st.toCompare match{
     case None => Warnings.next(st)
     case _ =>
       var g: RxGr = st.main 
