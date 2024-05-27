@@ -71,6 +71,7 @@ object Parser :
   private def edgeweight: P[Weight] = ((char('-').?.with1 ~ digit.rep(1) ~ (char('.').with1 ~ digit.rep(1)).?).string).map(_.toDouble)
   private def edgeactive: P[Boolean] = bullet | circ
   private def edgefunction: P[Boolean] = on | off
+  private def div: P[String] = P.string("||").string
 
   private def bullet2: P[Boolean] = P.string("-->").map(x => true)
   private def circ2:   P[Boolean] = P.string("-.->").map(x => false)
@@ -189,8 +190,8 @@ object Parser :
 
   private def program: P[System] =
     ((oneProgram.surroundedBy(sps)) ~
-    ((char('~').surroundedBy(sps) *> oneProgram.surroundedBy(sps)).?) ~
-    ((char('~').surroundedBy(sps) *> levelNI.surroundedBy(sps)).?))
+    ((div.surroundedBy(sps) *> oneProgram.surroundedBy(sps)).?) ~
+    ((div.surroundedBy(sps) *> levelNI.surroundedBy(sps)).?))
       .map{case (((x,y),z)) => System(x,y,(z.map(_._1).getOrElse(Map.empty),z.map(_._2).getOrElse(Set.empty)))}
 
       

@@ -95,9 +95,11 @@ object CaosConfig extends Configurator[System]:
     // "Global Structure View" -> view(x =>Show.toMermaid_twoGraphs_Bissi(x,"TG"), Mermaid),
     "Global Structure View" -> view(x =>Show.toMermaid_Intrusive(x), Mermaid),
     "Local Structure View" -> view(x =>Show.toMermaid_twoGraphs_Bissi(System(x.main.getLevel0,Option(x.toCompare.getOrElse(x.main.empty).getLevel0)),"TG"), Mermaid),
-    "Run Semantics" -> steps(e=>e, SemanticsTwo, x => Show.toMermaid_twoGraphs_Bissi(x,"AAAA"), _.toString, Mermaid),
-    "Run Semantics With Intrusive Edges" -> steps(e=>e, PI, x => Show.toMermaid_Intrusive(x), _.toString, Mermaid),
-    "Run WSemantics With Local Structure" -> steps(e=>e, Semantics, x => Show.toMermaid_twoGraphs(x.main,x.main.getLevel0,"RSLS"), _.toString, Mermaid),
+    "Run Semantics (First Graph)" -> steps(e=>e, Warnings, x =>  Show.toMermaid(x.main,""), _.toString, Mermaid),
+    "Run Semantics (Second Graph)" -> steps(e=> System(e.toCompare.getOrElse(e.main.empty),None), Warnings, x => Show.toMermaid(x.main,""), _.toString, Mermaid),
+    // "Run Semantics" -> steps(e=>e, SemanticsTwo, x => Show.toMermaid_twoGraphs_Bissi(x,"AAAA"), _.toString, Mermaid),
+    "Run Semantics With Intrusive Edges" -> steps(e=>e, IntrusiveProductA, x => Show.toMermaid_Intrusive(x), _.toString, Mermaid),
+    "Run Semantics With Local Structure" -> steps(e=>e, Semantics, x => Show.toMermaid_twoGraphs(x.main,x.main.getLevel0,"RSLS"), _.toString, Mermaid),
     // "Build LTS" -> lts(x=>x, Semantics, x=>x.main.init, _.toString),
     "Generated LTS" -> view[System](x => Show.toMermaid(Program.lts(x.main),""), Mermaid),
     // "Build LTS (explore)" -> ltsExplore(e=>e, Semantics, x=>x.main.init, _.toString),
@@ -108,12 +110,18 @@ object CaosConfig extends Configurator[System]:
         (e: System) => System(e.toCompare.getOrElse(RxGr(Map.empty, Map.empty, " ", Set.empty)), None),
         Show.justTerm, Show.justTerm, _.toString),
     // "Asynchronous Product tesste" -> lts(x=>x, AsynchronousProduct, indexedViewSt, _.toString),
+    "Run Semantics (Asynchornous Product)" -> steps(e=>e, AsynchronousProduct, x => Show.toMermaid_twoGraphs_Bissi(x,"AAAA"), _.toString, Mermaid),
     "Asynchronous Product" -> lts(x=>x, AsynchronousProduct, indexedViewSt, _.toString),
     // "Asynchronous Product" -> lts(x=>x, AsynchronousProduct, x=>("<"+ x.main.init+", "+x.toCompare.getOrElse(x.main.empty).init+">"), _.toString),
+    "Run Semantics (Synchornous Product)" -> steps(e=>e, SynchronousProduct, x => Show.toMermaid_twoGraphs_Bissi(x,"AAAA"), _.toString, Mermaid),
     "Synchronous Product" -> lts(x=>x, SynchronousProduct, indexedViewSt, _.toString),
     // "Synchronous Product" -> lts(x=>x, SynchronousProduct, x=>("<"+ x.main.init+", "+x.toCompare.getOrElse(x.main.empty).init+">"), _.toString),
-    "Intrusive Product" -> lts(x=>x, PI, indexedViewSt, _.toString),
+    "Run Semantics (Asynchornous Intrusive Product)" -> steps(e=>e, IntrusiveProductA, x => Show.toMermaid_Intrusive(x), _.toString, Mermaid),
+    "Asynchornous Intrusive Product" -> lts(x=>x, IntrusiveProductA, indexedViewSt, _.toString),
+    "Run Semantics (Synchornous Intrusive Product)" -> steps(e=>e, IntrusiveProductS, x => Show.toMermaid_Intrusive(x), _.toString, Mermaid),
+    "Synchornous Intrusive Product" -> lts(x=>x, IntrusiveProductS, indexedViewSt, _.toString),
    )
+
 
     private var index = 0  
     def indexedViewSt(x: System): String = {

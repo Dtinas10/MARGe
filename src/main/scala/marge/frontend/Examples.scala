@@ -168,7 +168,7 @@ object Examples:
     |ln = {
     |  ((0,0,act),(0,0,act),Circ,OFF),
     |  ((0,0,act),((0,0,act),(0,0,act),Circ,OFF), Bullet,ON)}
-    |~
+    |||
     |init = 1;
     |l0 = { 1 --> 2 by act,
     |2 --> 3 by act};
@@ -196,7 +196,7 @@ object Examples:
     |			s1 --> s2 by b,
     |      s2 --> s0 by d};
     |ln = {((s0,s1,a),(s1,s2,b),Bullet,OFF)}
-    |~
+    |||
     |init = w0;
     |l0 = { w0 --> w1 by a,
     |w1 --> w0 by c};
@@ -210,14 +210,14 @@ object Examples:
     |			s1 --> s2 by b,
     |      s2 -.-> s0 by d};
     |ln = {((s0,s1,a),(s1,s2,b),Bullet,OFF)}
-    |~
+    |||
     |init = w0;
     |l0 = { w0 --> w1 by a,
     |w1 --> w0 by c};
     |ln = {((w0,w1,a),(w0,w1,a),Circ,OFF),
     |      ((w0,w1,a),((w0,w1,a),(w0,w1,a),Circ,OFF),Bullet,ON)}
-    |~
-    |lnI={((s0,s1,a),(w1,w0,c),Bullet,OFF)}
+    |||
+    |lnI={((w1,w0,c),(s1,s2,b),Bullet,ON)}
     """.stripMargin
 
 
@@ -228,7 +228,7 @@ object Examples:
     |   s2 --> s0 by c};
     |ln = {((s0,s1,a),(s1,s2,b),Bullet,ON),
     |      (((s0,s1,a),(s1,s2,b),Bullet,ON),(s2,s0,c),Bullet,OFF)}
-    |~
+    |||
     |init = w;
     |l0 = { w --> w by a};
     |ln = {((w,w,a),(w,w,a),Bullet,OFF)}
@@ -243,7 +243,7 @@ object Examples:
     |ln = {((select,soda,tau),(select,soda,tau),Circ,OFF),
     |      ((select,beer,tau),(select,beer,tau),Bullet,OFF),
     |      ((select,soda,tau),((select,soda,tau),(select,soda,tau),Circ,OFF),Bullet,ON)}
-    |~
+    |||
     |init = user;
     |l0 = { user --> select by insert_coin,
     |       select --> user by get_product};
