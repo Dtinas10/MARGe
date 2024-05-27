@@ -9865,6 +9865,71 @@ function $h_Lmarge_backend_Semantics$package$() {
   /*<skip>*/
 }
 $h_Lmarge_backend_Semantics$package$.prototype = $c_Lmarge_backend_Semantics$package$.prototype;
+$c_Lmarge_backend_Semantics$package$.prototype.updateActive__Lmarge_syntax_Program$RxGr__sci_Set__sci_Set = (function(gr, es) {
+  var toActivate = $as_sci_Set($n($n(es).withFilter__F1__sc_WithFilter(new $c_sjsr_AnonFunction1(((x$1) => {
+    var x$1$1 = $as_Lmarge_syntax_Program$Edge(x$1);
+    if ((x$1$1 instanceof $c_Lmarge_syntax_Program$Edge$HyperEdge)) {
+      var x$1$2 = $as_Lmarge_syntax_Program$Edge$HyperEdge(x$1$1);
+      var this$3 = $n(x$1$2);
+      var this$4 = $n(x$1$2);
+      var this$5 = $n(x$1$2);
+      var this$6 = $n(x$1$2);
+      var x11 = this$6.Lmarge_syntax_Program$Edge$HyperEdge__f_activate;
+      if ((x11 === true)) {
+        return true
+      }
+    };
+    return false
+  })))).map__F1__O(new $c_sjsr_AnonFunction1(((x$1$2$1) => {
+    var x$1$3 = $as_Lmarge_syntax_Program$Edge(x$1$2$1);
+    if ((x$1$3 instanceof $c_Lmarge_syntax_Program$Edge$HyperEdge)) {
+      var x$1$4 = $as_Lmarge_syntax_Program$Edge$HyperEdge(x$1$3);
+      var this$8 = $n(x$1$4);
+      var this$9 = $n(x$1$4);
+      var x16 = this$9.Lmarge_syntax_Program$Edge$HyperEdge__f_to;
+      var this$10 = $n(x$1$4);
+      var this$11 = $n(x$1$4);
+      var x18 = this$11.Lmarge_syntax_Program$Edge$HyperEdge__f_activate;
+      if ((x18 === true)) {
+        return x16
+      }
+    };
+    throw new $c_s_MatchError(x$1$3)
+  }))));
+  var toDeactivate = $as_sci_Set($n($n(es).withFilter__F1__sc_WithFilter(new $c_sjsr_AnonFunction1(((x$1$3$1) => {
+    var x$1$5 = $as_Lmarge_syntax_Program$Edge(x$1$3$1);
+    if ((x$1$5 instanceof $c_Lmarge_syntax_Program$Edge$HyperEdge)) {
+      var x$1$6 = $as_Lmarge_syntax_Program$Edge$HyperEdge(x$1$5);
+      var this$13 = $n(x$1$6);
+      var this$14 = $n(x$1$6);
+      var this$15 = $n(x$1$6);
+      var this$16 = $n(x$1$6);
+      var x25 = this$16.Lmarge_syntax_Program$Edge$HyperEdge__f_activate;
+      if ((x25 === false)) {
+        return true
+      }
+    };
+    return false
+  })))).map__F1__O(new $c_sjsr_AnonFunction1(((x$1$4$1) => {
+    var x$1$7 = $as_Lmarge_syntax_Program$Edge(x$1$4$1);
+    if ((x$1$7 instanceof $c_Lmarge_syntax_Program$Edge$HyperEdge)) {
+      var x$1$8 = $as_Lmarge_syntax_Program$Edge$HyperEdge(x$1$7);
+      var this$18 = $n(x$1$8);
+      var this$19 = $n(x$1$8);
+      var x30 = this$19.Lmarge_syntax_Program$Edge$HyperEdge__f_to;
+      var this$20 = $n(x$1$8);
+      var this$21 = $n(x$1$8);
+      var x32 = this$21.Lmarge_syntax_Program$Edge$HyperEdge__f_activate;
+      if ((x32 === false)) {
+        return x30
+      }
+    };
+    throw new $c_s_MatchError(x$1$7)
+  }))));
+  var this$22 = $n($n(gr).Lmarge_syntax_Program$RxGr__f_active);
+  var this$23 = $n($as_sci_SetOps(this$22.concat__sc_IterableOnce__sc_SetOps(toActivate)));
+  return $as_sci_Set(this$23.removedAll__sc_IterableOnce__sci_SetOps(toDeactivate))
+});
 var $d_Lmarge_backend_Semantics$package$ = new $TypeData().initClass({
   Lmarge_backend_Semantics$package$: 0
 }, false, "marge.backend.Semantics$package$", {
@@ -9884,13 +9949,10 @@ function $c_Lmarge_frontend_Examples$() {
   this.Lmarge_frontend_Examples$__f_gabbayExample = null;
   this.Lmarge_frontend_Examples$__f_counter = null;
   this.Lmarge_frontend_Examples$__f_featureModel = null;
-  this.Lmarge_frontend_Examples$__f_vendingMachine = null;
   this.Lmarge_frontend_Examples$__f_conflict = null;
   this.Lmarge_frontend_Examples$__f_bissimulation = null;
-  this.Lmarge_frontend_Examples$__f_VMPaper = null;
   this.Lmarge_frontend_Examples$__f_product = null;
   this.Lmarge_frontend_Examples$__f_product3 = null;
-  this.Lmarge_frontend_Examples$__f_product2 = null;
   this.Lmarge_frontend_Examples$__f_VM_U = null;
   $n_Lmarge_frontend_Examples$ = this;
   $m_sc_StringOps$();
@@ -9902,16 +9964,19 @@ function $c_Lmarge_frontend_Examples$() {
   $m_sc_StringOps$().stripMargin$extension__T__C__T("init = n1;\r\n      |l0={\r\n      |  n1 --> t1 by -,\r\n      |  t1 --> c1 by -,\r\n      |  c1 --> n1 by -,\r\n      |  n2 --> t2 by -,\r\n      |  t2 --> c2 by -,\r\n      |  c2 --> n2 by -};\r\n      |ln={\r\n      |  ((c1,n1,-),(t2,c2,-),Bullet,ON),\r\n      |  ((c2,n2,-),(t1,c1,-),Bullet,ON),\r\n      |  ((t1,c1,-),(t2,c2,-),Bullet,ON),\r\n      |  ((t2,c2,-),(t1,c1,-),Bullet,ON)}\r\n    ", 124);
   this.Lmarge_frontend_Examples$__f_counter = ($m_sc_StringOps$(), $m_sc_StringOps$().stripMargin$extension__T__C__T("init = 0;\r\n      |l0 = { 0 --> 0 by act };\r\n      |ln = {\r\n      |  ((0,0,act),(0,0,act),Circ,OFF),\r\n      |  ((0,0,act),((0,0,act),(0,0,act),Circ,OFF), Circ,ON),\r\n      |  ((0,0,act),((0,0,act),((0,0,act),(0,0,act),Circ,OFF), Circ,ON),Bullet,ON)}\r\n    ", 124));
   this.Lmarge_frontend_Examples$__f_featureModel = ($m_sc_StringOps$(), $m_sc_StringOps$().stripMargin$extension__T__C__T("init = setup;\r\n      |l0 = {\r\n      |  setup --> setup by safe,   \r\n      |  setup --> setup by unsafe,\r\n      |  setup --> setup by encrypt,     \r\n      |  setup --> setup by dencrypt,\r\n      |  setup --> ready by -,\r\n      |  ready --> setup by -,\r\n      |  ready --> received by receive,\r\n      |  received --> routed-safe by route,\r\n      |  received --> routed-unsafe by route,\r\n      |  routed-safe --> sent by send,\r\n      |  routed-unsafe --> sent by send,\r\n      |  routed-unsafe --> sent-encrypt by send,\r\n      |  sent-encrypt --> ready by ready,\r\n      |  sent --> ready by ready };\r\n      |\r\n      |ln = {\r\n      |  ((setup,setup,safe),(received,routed-safe,route), Bullet, ON),\r\n      |  ((setup,setup,safe),(received,routed-unsafe,route), Bullet, OFF),\r\n      |  ((setup,setup,unsafe),(received,routed-safe,route), Bullet, OFF),\r\n      |  ((setup,setup,unsafe),(received,routed-unsafe,route), Bullet, ON),\r\n      |  ((setup,setup,encrypt),(routed-unsafe,sent,send), Bullet, OFF),\r\n      |  ((setup,setup,encrypt),(routed-unsafe,sent-encrypt,send), Bullet, ON),\r\n      |  ((setup,setup,dencrypt),(routed-unsafe,sent,send), Bullet, ON),\r\n      |  ((setup,setup,dencrypt),(routed-unsafe,sent-encrypt,send), Bullet, OFF)}\r\n    ", 124));
-  this.Lmarge_frontend_Examples$__f_vendingMachine = ($m_sc_StringOps$(), $m_sc_StringOps$().stripMargin$extension__T__C__T("init = Insert;\r\n      |l0 = {\r\n      |  Insert --> Cofee by 0.5$,\r\n      |  Insert --> Apple by 0.5$,\r\n      |  Insert --> Chocolate by 1$,\r\n      |  Cofee --> Insert by Get_cofee,\r\n      |  Apple --> Insert by Get_apple,\r\n      |  Chocolate --> Insert by Get_choc};\r\n      |ln = {\r\n      |  ((Insert,Chocolate,1$),(Insert,Cofee,0.5$),Bullet,OFF),\r\n      |  ((Insert,Chocolate,1$),(Insert,Apple,0.5$),Bullet,OFF),\r\n      |  ((Insert,Chocolate,1$),(Insert,Chocolate,1$),Bullet,OFF),\r\n      |  ((Insert,Cofee,0.5$),(Insert,Cofee,0.5$),Circ,OFF),\r\n      |  ((Insert,Cofee,0.5$),(Insert,Chocolate,1$),Bullet,OFF),\r\n      |  ((Insert,Cofee,0.5$),((Insert,Cofee,0.5$),(Insert,Cofee,0.5$),Circ,OFF),Bullet,ON),\r\n      |  ((Insert,Cofee,0.5$),((Insert,Apple,0.5$),(Insert,Apple,0.5$),Circ,OFF),Bullet,ON),\r\n      |  ((Insert,Apple,0.5$),(Insert,Apple,0.5$),Circ,OFF),\r\n      |  ((Insert,Apple,0.5$),(Insert,Chocolate,1$),Bullet,OFF),\r\n      |  ((Insert,Apple,0.5$),((Insert,Apple,0.5$),(Insert,Apple,0.5$),Circ,OFF),Bullet,ON),\r\n      |  ((Insert,Apple,0.5$),((Insert,Cofee,0.5$),(Insert,Cofee,0.5$),Circ,OFF),Bullet,ON),\r\n      |  ((Insert,Apple,0.5$),(Insert,Cofee,0.5$),Circ,OFF),\r\n      |  ((Insert,Cofee,0.5$),(Insert,Apple,0.5$),Circ,OFF),\r\n      |  ((Insert,Apple,0.5$),((Insert,Apple,0.5$),(Insert,Cofee,0.5$),Circ,OFF),Bullet,ON),\r\n      |  ((Insert,Cofee,0.5$),((Insert,Apple,0.5$),(Insert,Cofee,0.5$),Circ,OFF),Bullet,ON),\r\n      |  ((Insert,Apple,0.5$),((Insert,Cofee,0.5$),(Insert,Apple,0.5$),Circ,OFF),Bullet,ON),\r\n      |  ((Insert,Cofee,0.5$),((Insert,Cofee,0.5$),(Insert,Apple,0.5$),Circ,OFF),Bullet,ON)}\r\n    ", 124));
+  $m_sc_StringOps$();
+  $m_sc_StringOps$().stripMargin$extension__T__C__T("init = Insert;\r\n      |l0 = {\r\n      |  Insert --> Cofee by 0.5$,\r\n      |  Insert --> Apple by 0.5$,\r\n      |  Insert --> Chocolate by 1$,\r\n      |  Cofee --> Insert by Get_cofee,\r\n      |  Apple --> Insert by Get_apple,\r\n      |  Chocolate --> Insert by Get_choc};\r\n      |ln = {\r\n      |  ((Insert,Chocolate,1$),(Insert,Cofee,0.5$),Bullet,OFF),\r\n      |  ((Insert,Chocolate,1$),(Insert,Apple,0.5$),Bullet,OFF),\r\n      |  ((Insert,Chocolate,1$),(Insert,Chocolate,1$),Bullet,OFF),\r\n      |  ((Insert,Cofee,0.5$),(Insert,Cofee,0.5$),Circ,OFF),\r\n      |  ((Insert,Cofee,0.5$),(Insert,Chocolate,1$),Bullet,OFF),\r\n      |  ((Insert,Cofee,0.5$),((Insert,Cofee,0.5$),(Insert,Cofee,0.5$),Circ,OFF),Bullet,ON),\r\n      |  ((Insert,Cofee,0.5$),((Insert,Apple,0.5$),(Insert,Apple,0.5$),Circ,OFF),Bullet,ON),\r\n      |  ((Insert,Apple,0.5$),(Insert,Apple,0.5$),Circ,OFF),\r\n      |  ((Insert,Apple,0.5$),(Insert,Chocolate,1$),Bullet,OFF),\r\n      |  ((Insert,Apple,0.5$),((Insert,Apple,0.5$),(Insert,Apple,0.5$),Circ,OFF),Bullet,ON),\r\n      |  ((Insert,Apple,0.5$),((Insert,Cofee,0.5$),(Insert,Cofee,0.5$),Circ,OFF),Bullet,ON),\r\n      |  ((Insert,Apple,0.5$),(Insert,Cofee,0.5$),Circ,OFF),\r\n      |  ((Insert,Cofee,0.5$),(Insert,Apple,0.5$),Circ,OFF),\r\n      |  ((Insert,Apple,0.5$),((Insert,Apple,0.5$),(Insert,Cofee,0.5$),Circ,OFF),Bullet,ON),\r\n      |  ((Insert,Cofee,0.5$),((Insert,Apple,0.5$),(Insert,Cofee,0.5$),Circ,OFF),Bullet,ON),\r\n      |  ((Insert,Apple,0.5$),((Insert,Cofee,0.5$),(Insert,Apple,0.5$),Circ,OFF),Bullet,ON),\r\n      |  ((Insert,Cofee,0.5$),((Insert,Cofee,0.5$),(Insert,Apple,0.5$),Circ,OFF),Bullet,ON)}\r\n    ", 124);
   $m_sc_StringOps$();
   $m_sc_StringOps$().stripMargin$extension__T__C__T("init = Insert;\r\n      |l0 = {\r\n      |  Insert --> Cofee by 0.5$,\r\n      |  Insert --> Chips by 1$,\r\n      |  Insert --> Chocolate by 1$,\r\n      |  Cofee --> Insert by Get_cofee,\r\n      |  Chips --> Insert by Get_apple,\r\n      |  Chocolate --> Insert by Get_choc};\r\n      |ln = {\r\n      |  ((Insert,Chocolate,1$),(Insert,Cofee,0.5$),Bullet,OFF),\r\n      |  ((Insert,Chocolate,1$),(Insert,Chips,1$),Bullet,OFF),\r\n      |  ((Insert,Chocolate,1$),(Insert,Chocolate,1$),Bullet,OFF),\r\n      |  ((Insert,Cofee,0.5$),(Insert,Cofee,0.5$),Circ,OFF),\r\n      |  ((Insert,Cofee,0.5$),(Insert,Chocolate,1$),Bullet,OFF),\r\n      |  ((Insert,Cofee,0.5$),(Insert,Chips,1$),Bullet,OFF),\r\n      |  ((Insert,Cofee,0.5$),((Insert,Cofee,0.5$),(Insert,Cofee,0.5$),Circ,OFF),Bullet,ON),\r\n      |  ((Insert,Chips,1$),(Insert,Cofee,0.5$),Bullet,OFF),\r\n      |  ((Insert,Chips,1$),(Insert,Chips,1$),Bullet,OFF),\r\n      |  ((Insert,Chips,1$),(Insert,Chocolate,1$),Bullet,OFF)}\r\n    ", 124);
   this.Lmarge_frontend_Examples$__f_conflict = ($m_sc_StringOps$(), $m_sc_StringOps$().stripMargin$extension__T__C__T("init = s;\r\n    |l0 = {\r\n    |  s --> s0 by a,\r\n    |  s0 --> s1 by a,\r\n    |  s1 -.-> s2 by b};\r\n    |ln ={\r\n    |  ((s0,s1,a),(s1,s2,b),Bullet,ON),\r\n    |  ((s0,s1,a),(s1,s2,b),Bullet,OFF)}\r\n    ", 124));
-  this.Lmarge_frontend_Examples$__f_bissimulation = ($m_sc_StringOps$(), $m_sc_StringOps$().stripMargin$extension__T__C__T("init = 0;\r\n    |l0 = { 0 --> 0 by act };\r\n    |ln = {\r\n    |  ((0,0,act),(0,0,act),Circ,OFF),\r\n    |  ((0,0,act),((0,0,act),(0,0,act),Circ,OFF), Bullet,ON)}\r\n    |~\r\n    |init = 1;\r\n    |l0 = { 1 --> 2 by act,\r\n    |2 --> 3 by act};\r\n    |ln = {}\r\n    ", 124));
-  this.Lmarge_frontend_Examples$__f_VMPaper = ($m_sc_StringOps$(), $m_sc_StringOps$().stripMargin$extension__T__C__T("init = Insert;\r\n    |l0 = {\r\n    |  Insert --> Cofee by 0.5$,\r\n    |  Insert --> Chocolate by 1$,\r\n    |  Cofee --> Insert by Get_cofee,\r\n    |  Chocolate --> Insert by Get_choc};\r\n    |ln = {\r\n    |  ((Insert,Chocolate,1$),(Insert,Cofee,0.5$),Bullet,OFF),\r\n    |  ((Insert,Chocolate,1$),(Insert,Chocolate,1$),Bullet,OFF),\r\n    |  ((Insert,Cofee,0.5$),(Insert,Cofee,0.5$),Circ,OFF),\r\n    |  ((Insert,Cofee,0.5$),(Insert,Chocolate,1$),Bullet,OFF),\r\n    |  ((Insert,Cofee,0.5$),((Insert,Cofee,0.5$),(Insert,Cofee,0.5$),Circ,OFF),Bullet,ON)}\r\n    ", 124));
-  this.Lmarge_frontend_Examples$__f_product = ($m_sc_StringOps$(), $m_sc_StringOps$().stripMargin$extension__T__C__T("init = s0;\r\n    |l0 = { s0 --> s1 by a,\r\n    |\t\t\ts1 --> s2 by b,\r\n    |      s2 --> s0 by d};\r\n    |ln = {((s0,s1,a),(s1,s2,b),Bullet,OFF)}\r\n    |~\r\n    |init = w0;\r\n    |l0 = { w0 --> w1 by a,\r\n    |w1 --> w0 by c};\r\n    |ln = {((w0,w1,a),(w0,w1,a),Circ,OFF),\r\n    |      ((w0,w1,a),((w0,w1,a),(w0,w1,a),Circ,OFF),Bullet,ON)}\r\n    ", 124));
-  this.Lmarge_frontend_Examples$__f_product3 = ($m_sc_StringOps$(), $m_sc_StringOps$().stripMargin$extension__T__C__T("init = s0;\r\n    |l0 = { s0 --> s1 by a,\r\n    |\t\t\ts1 --> s2 by b,\r\n    |      s2 --> s0 by d};\r\n    |ln = {((s0,s1,a),(s1,s2,b),Bullet,OFF)}\r\n    |~\r\n    |init = w0;\r\n    |l0 = { w0 --> w1 by a,\r\n    |w1 --> w0 by c};\r\n    |ln = {((w0,w1,a),(w0,w1,a),Circ,OFF),\r\n    |      ((w0,w1,a),((w0,w1,a),(w0,w1,a),Circ,OFF),Bullet,ON)}\r\n    |~\r\n    |lnI={((s0,s1,a),(w1,w0,c),Bullet,OFF)}\r\n    ", 124));
-  this.Lmarge_frontend_Examples$__f_product2 = ($m_sc_StringOps$(), $m_sc_StringOps$().stripMargin$extension__T__C__T("init = s0;\r\n    |l0 = { s0 --> s1 by a,\r\n    |   s1 -.-> s2 by b,\r\n    |   s2 --> s0 by c};\r\n    |ln = {((s0,s1,a),(s1,s2,b),Bullet,ON),\r\n    |      (((s0,s1,a),(s1,s2,b),Bullet,ON),(s2,s0,c),Bullet,OFF)}\r\n    |~\r\n    |init = w;\r\n    |l0 = { w --> w by a};\r\n    |ln = {((w,w,a),(w,w,a),Bullet,OFF)}\r\n    ", 124));
-  this.Lmarge_frontend_Examples$__f_VM_U = ($m_sc_StringOps$(), $m_sc_StringOps$().stripMargin$extension__T__C__T("init = pay;\r\n    |l0 = { pay --> select by insert_coin,\r\n    |   select --> soda by tau,\r\n    |   select --> beer by tau,\r\n    |   soda --> pay by get_soda,\r\n    |   beer --> pay by get_beer};\r\n    |ln = {((select,soda,tau),(select,soda,tau),Circ,OFF),\r\n    |      ((select,beer,tau),(select,beer,tau),Bullet,OFF),\r\n    |      ((select,soda,tau),((select,soda,tau),(select,soda,tau),Circ,OFF),Bullet,ON)}\r\n    |~\r\n    |init = user;\r\n    |l0 = { user --> select by insert_coin,\r\n    |       select --> user by get_product};\r\n    |ln = {}\r\n    ", 124))
+  this.Lmarge_frontend_Examples$__f_bissimulation = ($m_sc_StringOps$(), $m_sc_StringOps$().stripMargin$extension__T__C__T("init = 0;\r\n    |l0 = { 0 --> 0 by act };\r\n    |ln = {\r\n    |  ((0,0,act),(0,0,act),Circ,OFF),\r\n    |  ((0,0,act),((0,0,act),(0,0,act),Circ,OFF), Bullet,ON)}\r\n    |||\r\n    |init = 1;\r\n    |l0 = { 1 --> 2 by act,\r\n    |2 --> 3 by act};\r\n    |ln = {}\r\n    ", 124));
+  $m_sc_StringOps$();
+  $m_sc_StringOps$().stripMargin$extension__T__C__T("init = Insert;\r\n    |l0 = {\r\n    |  Insert --> Cofee by 0.5$,\r\n    |  Insert --> Chocolate by 1$,\r\n    |  Cofee --> Insert by Get_cofee,\r\n    |  Chocolate --> Insert by Get_choc};\r\n    |ln = {\r\n    |  ((Insert,Chocolate,1$),(Insert,Cofee,0.5$),Bullet,OFF),\r\n    |  ((Insert,Chocolate,1$),(Insert,Chocolate,1$),Bullet,OFF),\r\n    |  ((Insert,Cofee,0.5$),(Insert,Cofee,0.5$),Circ,OFF),\r\n    |  ((Insert,Cofee,0.5$),(Insert,Chocolate,1$),Bullet,OFF),\r\n    |  ((Insert,Cofee,0.5$),((Insert,Cofee,0.5$),(Insert,Cofee,0.5$),Circ,OFF),Bullet,ON)}\r\n    ", 124);
+  this.Lmarge_frontend_Examples$__f_product = ($m_sc_StringOps$(), $m_sc_StringOps$().stripMargin$extension__T__C__T("init = s0;\r\n    |l0 = { s0 --> s1 by a,\r\n    |\t\t\ts1 --> s2 by b,\r\n    |      s2 --> s0 by d};\r\n    |ln = {((s0,s1,a),(s1,s2,b),Bullet,OFF)}\r\n    |||\r\n    |init = w0;\r\n    |l0 = { w0 --> w1 by a,\r\n    |w1 --> w0 by c};\r\n    |ln = {((w0,w1,a),(w0,w1,a),Circ,OFF),\r\n    |      ((w0,w1,a),((w0,w1,a),(w0,w1,a),Circ,OFF),Bullet,ON)}\r\n    ", 124));
+  this.Lmarge_frontend_Examples$__f_product3 = ($m_sc_StringOps$(), $m_sc_StringOps$().stripMargin$extension__T__C__T("init = s0;\r\n    |l0 = { s0 --> s1 by a,\r\n    |\t\t\ts1 --> s2 by b,\r\n    |      s2 -.-> s0 by d};\r\n    |ln = {((s0,s1,a),(s1,s2,b),Bullet,OFF)}\r\n    |||\r\n    |init = w0;\r\n    |l0 = { w0 --> w1 by a,\r\n    |w1 --> w0 by c};\r\n    |ln = {((w0,w1,a),(w0,w1,a),Circ,OFF),\r\n    |      ((w0,w1,a),((w0,w1,a),(w0,w1,a),Circ,OFF),Bullet,ON)}\r\n    |||\r\n    |lnI={((w1,w0,c),(s1,s2,b),Bullet,ON)}\r\n    ", 124));
+  $m_sc_StringOps$();
+  $m_sc_StringOps$().stripMargin$extension__T__C__T("init = s0;\r\n    |l0 = { s0 --> s1 by a,\r\n    |   s1 -.-> s2 by b,\r\n    |   s2 --> s0 by c};\r\n    |ln = {((s0,s1,a),(s1,s2,b),Bullet,ON),\r\n    |      (((s0,s1,a),(s1,s2,b),Bullet,ON),(s2,s0,c),Bullet,OFF)}\r\n    |||\r\n    |init = w;\r\n    |l0 = { w --> w by a};\r\n    |ln = {((w,w,a),(w,w,a),Bullet,OFF)}\r\n    ", 124);
+  this.Lmarge_frontend_Examples$__f_VM_U = ($m_sc_StringOps$(), $m_sc_StringOps$().stripMargin$extension__T__C__T("init = pay;\r\n    |l0 = { pay --> select by insert_coin,\r\n    |   select --> soda by tau,\r\n    |   select --> beer by tau,\r\n    |   soda --> pay by get_soda,\r\n    |   beer --> pay by get_beer};\r\n    |ln = {((select,soda,tau),(select,soda,tau),Circ,OFF),\r\n    |      ((select,beer,tau),(select,beer,tau),Bullet,OFF),\r\n    |      ((select,soda,tau),((select,soda,tau),(select,soda,tau),Circ,OFF),Bullet,ON)}\r\n    |||\r\n    |init = user;\r\n    |l0 = { user --> select by insert_coin,\r\n    |       select --> user by get_product};\r\n    |ln = {}\r\n    ", 124))
 }
 $c_Lmarge_frontend_Examples$.prototype = new $h_O();
 $c_Lmarge_frontend_Examples$.prototype.constructor = $c_Lmarge_frontend_Examples$;
@@ -10026,6 +10091,10 @@ function $p_Lmarge_syntax_Parser$__edgeaction__Lcats_parse_Parser($thiz) {
   var acc = new $c_Lcats_parse_Accumulator$$anon$1();
   var this$3 = $n($m_Lcats_parse_Parser$().repAs__Lcats_parse_Parser__I__Lcats_parse_Accumulator__Lcats_parse_Parser(this$1, 1, acc));
   return $m_Lcats_parse_Parser$().string__Lcats_parse_Parser__Lcats_parse_Parser(this$3)
+}
+function $p_Lmarge_syntax_Parser$__div__Lcats_parse_Parser($thiz) {
+  var this$1 = $n($m_Lcats_parse_Parser$().string__T__Lcats_parse_Parser("||"));
+  return $m_Lcats_parse_Parser$().string__Lcats_parse_Parser__Lcats_parse_Parser(this$1)
 }
 function $p_Lmarge_syntax_Parser$__bullet2__Lcats_parse_Parser($thiz) {
   var this$2 = $n($m_Lcats_parse_Parser$().string__T__Lcats_parse_Parser("-->"));
@@ -10583,7 +10652,7 @@ function $p_Lmarge_syntax_Parser$__program__Lcats_parse_Parser($thiz) {
   var this$1 = $n($p_Lmarge_syntax_Parser$__oneProgram__Lcats_parse_Parser($thiz));
   var b = $thiz.Lmarge_syntax_Parser$__f_sps;
   var this$4 = $n(this$1.between__Lcats_parse_Parser0__Lcats_parse_Parser0__Lcats_parse_Parser(b, b));
-  var this$2 = $n($m_Lcats_parse_Parser$().char__C__Lcats_parse_Parser(126));
+  var this$2 = $n($p_Lmarge_syntax_Parser$__div__Lcats_parse_Parser($thiz));
   var b$1 = $thiz.Lmarge_syntax_Parser$__f_sps;
   var $$x1 = this$2.between__Lcats_parse_Parser0__Lcats_parse_Parser0__Lcats_parse_Parser(b$1, b$1);
   var this$3 = $n($p_Lmarge_syntax_Parser$__oneProgram__Lcats_parse_Parser($thiz));
@@ -10591,7 +10660,7 @@ function $p_Lmarge_syntax_Parser$__program__Lcats_parse_Parser($thiz) {
   var that = $n($n($$x1).$times$greater__Lcats_parse_Parser0__Lcats_parse_Parser(this$3.between__Lcats_parse_Parser0__Lcats_parse_Parser0__Lcats_parse_Parser(b$2, b$2))).$qmark__Lcats_parse_Parser0();
   $m_Lcats_parse_Parser$();
   var this$9 = new $c_Lcats_parse_Parser$Impl$Prod(this$4, that);
-  var this$7 = $n($m_Lcats_parse_Parser$().char__C__Lcats_parse_Parser(126));
+  var this$7 = $n($p_Lmarge_syntax_Parser$__div__Lcats_parse_Parser($thiz));
   var b$3 = $thiz.Lmarge_syntax_Parser$__f_sps;
   var $$x2 = this$7.between__Lcats_parse_Parser0__Lcats_parse_Parser0__Lcats_parse_Parser(b$3, b$3);
   var this$8 = $n($p_Lmarge_syntax_Parser$__levelNI__Lcats_parse_Parser($thiz));
@@ -11698,6 +11767,9 @@ $c_Lmarge_syntax_Show$.prototype.toMermaid_Intrusive__Lmarge_syntax_Program$Syst
   };
   var g$1 = $n(st).Lmarge_syntax_Program$System__f_main;
   return (($p_Lmarge_syntax_Show$___toMermaid__Lmarge_syntax_Program$RxGr__T__T__T__I__sci_Map__T(this, g$1, "flowchart LR \n subgraph First Graph  \n direction LR \n", "", "pluslines", 0, $as_sci_Map($n($n(newst).Lmarge_syntax_Program$System__f_intro)._1__O())) + "\n end") + s)
+});
+$c_Lmarge_syntax_Show$.prototype.toMermaid_twoGraphs__Lmarge_syntax_Program$RxGr__Lmarge_syntax_Program$RxGr__T__T = (function(g1, g2, id) {
+  return ((("" + $p_Lmarge_syntax_Show$___toMermaid__Lmarge_syntax_Program$RxGr__T__T__T__I__sci_Map__T(this, g1, "flowchart LR \n subgraph Global View  \n direction LR \n", "", id, 0, ($n($m_s_Predef$().s_Predef$__f_Map), $m_sci_Map$EmptyMap$()))) + $p_Lmarge_syntax_Show$___toMermaid__Lmarge_syntax_Program$RxGr__T__T__T__I__sci_Map__T(this, g2, "\n end \n subgraph Local View \n direction LR \n", ".", id, 0, ($n($m_s_Predef$().s_Predef$__f_Map), $m_sci_Map$EmptyMap$()))) + "\n end")
 });
 var $d_Lmarge_syntax_Show$ = new $TypeData().initClass({
   Lmarge_syntax_Show$: 0
@@ -21974,83 +22046,18 @@ function $m_Lmarge_backend_AsynchronousProduct$() {
   };
   return $n_Lmarge_backend_AsynchronousProduct$
 }
-function $p_Lmarge_backend_PI$__updateActive__Lmarge_syntax_Program$RxGr__sci_Set__sci_Set($thiz, gr, es) {
-  var toActivate = $as_sci_Set($n($n(es).withFilter__F1__sc_WithFilter(new $c_sjsr_AnonFunction1(((x$1) => {
-    var x$1$1 = $as_Lmarge_syntax_Program$Edge(x$1);
-    if ((x$1$1 instanceof $c_Lmarge_syntax_Program$Edge$HyperEdge)) {
-      var x$1$2 = $as_Lmarge_syntax_Program$Edge$HyperEdge(x$1$1);
-      var this$3 = $n(x$1$2);
-      var this$4 = $n(x$1$2);
-      var this$5 = $n(x$1$2);
-      var this$6 = $n(x$1$2);
-      var x11 = this$6.Lmarge_syntax_Program$Edge$HyperEdge__f_activate;
-      if ((x11 === true)) {
-        return true
-      }
-    };
-    return false
-  })))).map__F1__O(new $c_sjsr_AnonFunction1(((x$1$2$1) => {
-    var x$1$3 = $as_Lmarge_syntax_Program$Edge(x$1$2$1);
-    if ((x$1$3 instanceof $c_Lmarge_syntax_Program$Edge$HyperEdge)) {
-      var x$1$4 = $as_Lmarge_syntax_Program$Edge$HyperEdge(x$1$3);
-      var this$8 = $n(x$1$4);
-      var this$9 = $n(x$1$4);
-      var x16 = this$9.Lmarge_syntax_Program$Edge$HyperEdge__f_to;
-      var this$10 = $n(x$1$4);
-      var this$11 = $n(x$1$4);
-      var x18 = this$11.Lmarge_syntax_Program$Edge$HyperEdge__f_activate;
-      if ((x18 === true)) {
-        return x16
-      }
-    };
-    throw new $c_s_MatchError(x$1$3)
-  }))));
-  var toDeactivate = $as_sci_Set($n($n(es).withFilter__F1__sc_WithFilter(new $c_sjsr_AnonFunction1(((x$1$3$1) => {
-    var x$1$5 = $as_Lmarge_syntax_Program$Edge(x$1$3$1);
-    if ((x$1$5 instanceof $c_Lmarge_syntax_Program$Edge$HyperEdge)) {
-      var x$1$6 = $as_Lmarge_syntax_Program$Edge$HyperEdge(x$1$5);
-      var this$13 = $n(x$1$6);
-      var this$14 = $n(x$1$6);
-      var this$15 = $n(x$1$6);
-      var this$16 = $n(x$1$6);
-      var x25 = this$16.Lmarge_syntax_Program$Edge$HyperEdge__f_activate;
-      if ((x25 === false)) {
-        return true
-      }
-    };
-    return false
-  })))).map__F1__O(new $c_sjsr_AnonFunction1(((x$1$4$1) => {
-    var x$1$7 = $as_Lmarge_syntax_Program$Edge(x$1$4$1);
-    if ((x$1$7 instanceof $c_Lmarge_syntax_Program$Edge$HyperEdge)) {
-      var x$1$8 = $as_Lmarge_syntax_Program$Edge$HyperEdge(x$1$7);
-      var this$18 = $n(x$1$8);
-      var this$19 = $n(x$1$8);
-      var x30 = this$19.Lmarge_syntax_Program$Edge$HyperEdge__f_to;
-      var this$20 = $n(x$1$8);
-      var this$21 = $n(x$1$8);
-      var x32 = this$21.Lmarge_syntax_Program$Edge$HyperEdge__f_activate;
-      if ((x32 === false)) {
-        return x30
-      }
-    };
-    throw new $c_s_MatchError(x$1$7)
-  }))));
-  var this$22 = $n($n(gr).Lmarge_syntax_Program$RxGr__f_active);
-  var this$23 = $n($as_sci_SetOps(this$22.concat__sc_IterableOnce__sc_SetOps(toActivate)));
-  return $as_sci_Set(this$23.removedAll__sc_IterableOnce__sci_SetOps(toDeactivate))
-}
 /** @constructor */
-function $c_Lmarge_backend_PI$() {
+function $c_Lmarge_backend_IntrusiveProductA$() {
   /*<skip>*/
 }
-$c_Lmarge_backend_PI$.prototype = new $h_O();
-$c_Lmarge_backend_PI$.prototype.constructor = $c_Lmarge_backend_PI$;
+$c_Lmarge_backend_IntrusiveProductA$.prototype = new $h_O();
+$c_Lmarge_backend_IntrusiveProductA$.prototype.constructor = $c_Lmarge_backend_IntrusiveProductA$;
 /** @constructor */
-function $h_Lmarge_backend_PI$() {
+function $h_Lmarge_backend_IntrusiveProductA$() {
   /*<skip>*/
 }
-$h_Lmarge_backend_PI$.prototype = $c_Lmarge_backend_PI$.prototype;
-$c_Lmarge_backend_PI$.prototype.next__Lmarge_syntax_Program$System__sci_Set = (function(st) {
+$h_Lmarge_backend_IntrusiveProductA$.prototype = $c_Lmarge_backend_IntrusiveProductA$.prototype;
+$c_Lmarge_backend_IntrusiveProductA$.prototype.next__Lmarge_syntax_Program$System__sci_Set = (function(st) {
   var elem = $n(st).Lmarge_syntax_Program$System__f_main;
   var g = new $c_sr_ObjectRef(elem);
   var this$2 = $n($n(st).Lmarge_syntax_Program$System__f_toCompare);
@@ -22080,17 +22087,21 @@ $c_Lmarge_backend_PI$.prototype.next__Lmarge_syntax_Program$System__sci_Set = (f
   })))));
   var nextedg2 = $m_sci_Set$().from__sc_IterableOnce__sci_Set($as_sc_IterableOnce(this$10));
   var elem$4 = $as_Lmarge_syntax_Program$RxGr(g2.sr_ObjectRef__f_elem);
-  var gg = new $c_sr_ObjectRef(elem$4);
+  var gg2 = new $c_sr_ObjectRef(elem$4);
   $n(nextedg1).foreach__F1__V(new $c_sjsr_AnonFunction1(((i) => {
     var i$1 = $as_Lmarge_syntax_Program$Edge$SimpleEdge(i);
     if ($n($n($as_sci_Map(intro.sr_ObjectRef__f_elem)).keySet__sci_Set()).contains__O__Z(i$1)) {
       var se = $n($as_Lmarge_syntax_Program$RxGr(g2.sr_ObjectRef__f_elem)).Lmarge_syntax_Program$RxGr__f_se;
       var he = $n($as_Lmarge_syntax_Program$RxGr(g2.sr_ObjectRef__f_elem)).Lmarge_syntax_Program$RxGr__f_he;
       var init = $n($as_Lmarge_syntax_Program$RxGr(g2.sr_ObjectRef__f_elem)).Lmarge_syntax_Program$RxGr__f_init;
-      var active = $p_Lmarge_backend_PI$__updateActive__Lmarge_syntax_Program$RxGr__sci_Set__sci_Set(this, $as_Lmarge_syntax_Program$RxGr(g2.sr_ObjectRef__f_elem), $as_sci_Set($n($as_sci_Map(intro.sr_ObjectRef__f_elem)).apply__O__O(i$1)));
+      var active = $m_Lmarge_backend_Semantics$package$().updateActive__Lmarge_syntax_Program$RxGr__sci_Set__sci_Set($as_Lmarge_syntax_Program$RxGr(g2.sr_ObjectRef__f_elem), $as_sci_Set($n($as_sci_Map(intro.sr_ObjectRef__f_elem)).apply__O__O(i$1)));
       var ev$18 = new $c_Lmarge_syntax_Program$RxGr(se, he, init, active);
-      gg.sr_ObjectRef__f_elem = ev$18;
+      gg2.sr_ObjectRef__f_elem = ev$18;
       ev$18 = null
+    } else {
+      var ev$19 = $as_Lmarge_syntax_Program$RxGr(g2.sr_ObjectRef__f_elem);
+      gg2.sr_ObjectRef__f_elem = ev$19;
+      ev$19 = null
     };
     var k = $m_Lmarge_syntax_Program$().step__Lmarge_syntax_Program$RxGr__Lmarge_syntax_Program$Edge$SimpleEdge__s_Option($as_Lmarge_syntax_Program$RxGr(g.sr_ObjectRef__f_elem), i$1);
     var x = k;
@@ -22109,45 +22120,48 @@ $c_Lmarge_backend_PI$.prototype.next__Lmarge_syntax_Program$System__sci_Set = (f
         var $$x1 = new $c_s_Some($as_Lmarge_syntax_Program$RxGr($n(_$17)._1__O()))
       };
       var main = $as_Lmarge_syntax_Program$RxGr($n($$x1).get__O());
-      var toCompare = $m_s_Option$().apply__O__s_Option($as_Lmarge_syntax_Program$RxGr(gg.sr_ObjectRef__f_elem));
+      var toCompare = $m_s_Option$().apply__O__s_Option($as_Lmarge_syntax_Program$RxGr(gg2.sr_ObjectRef__f_elem));
       var intro$1 = $n(st).Lmarge_syntax_Program$System__f_intro;
       var _2 = new $c_Lmarge_syntax_Program$System(main, toCompare, intro$1);
       var elems = $n($$x2).wrapRefArray__AO__sci_ArraySeq(new ($d_T2.getArrayOf().constr)([new $c_T2(_1, _2)]));
       var that = this$16.from__sc_IterableOnce__sci_Set(elems);
-      var ev$19 = $as_sci_Set(this$17.concat__sc_IterableOnce__sc_SetOps(that));
-      s.sr_ObjectRef__f_elem = ev$19;
-      ev$19 = null
+      var ev$20 = $as_sci_Set(this$17.concat__sc_IterableOnce__sc_SetOps(that));
+      s.sr_ObjectRef__f_elem = ev$20;
+      ev$20 = null
     }
   })));
-  var ev$20 = $as_Lmarge_syntax_Program$RxGr(g.sr_ObjectRef__f_elem);
-  gg.sr_ObjectRef__f_elem = ev$20;
-  ev$20 = null;
+  var elem$5 = $as_Lmarge_syntax_Program$RxGr(g.sr_ObjectRef__f_elem);
+  var gg1 = new $c_sr_ObjectRef(elem$5);
   $n(nextedg2).foreach__F1__V(new $c_sjsr_AnonFunction1(((j) => {
     var j$1 = $as_Lmarge_syntax_Program$Edge$SimpleEdge(j);
     if ($n($n($as_sci_Map(intro.sr_ObjectRef__f_elem)).keySet__sci_Set()).contains__O__Z(j$1)) {
       var se$1 = $n($as_Lmarge_syntax_Program$RxGr(g.sr_ObjectRef__f_elem)).Lmarge_syntax_Program$RxGr__f_se;
       var he$1 = $n($as_Lmarge_syntax_Program$RxGr(g.sr_ObjectRef__f_elem)).Lmarge_syntax_Program$RxGr__f_he;
       var init$1 = $n($as_Lmarge_syntax_Program$RxGr(g.sr_ObjectRef__f_elem)).Lmarge_syntax_Program$RxGr__f_init;
-      var active$1 = $p_Lmarge_backend_PI$__updateActive__Lmarge_syntax_Program$RxGr__sci_Set__sci_Set(this, $as_Lmarge_syntax_Program$RxGr(g.sr_ObjectRef__f_elem), $as_sci_Set($n($as_sci_Map(intro.sr_ObjectRef__f_elem)).apply__O__O(j$1)));
+      var active$1 = $m_Lmarge_backend_Semantics$package$().updateActive__Lmarge_syntax_Program$RxGr__sci_Set__sci_Set($as_Lmarge_syntax_Program$RxGr(g.sr_ObjectRef__f_elem), $as_sci_Set($n($as_sci_Map(intro.sr_ObjectRef__f_elem)).apply__O__O(j$1)));
       var ev$21 = new $c_Lmarge_syntax_Program$RxGr(se$1, he$1, init$1, active$1);
-      gg.sr_ObjectRef__f_elem = ev$21;
+      gg1.sr_ObjectRef__f_elem = ev$21;
       ev$21 = null
+    } else {
+      var ev$22 = $as_Lmarge_syntax_Program$RxGr(g.sr_ObjectRef__f_elem);
+      gg1.sr_ObjectRef__f_elem = ev$22;
+      ev$22 = null
     };
     var k$1 = $m_Lmarge_syntax_Program$().step__Lmarge_syntax_Program$RxGr__Lmarge_syntax_Program$Edge$SimpleEdge__s_Option($as_Lmarge_syntax_Program$RxGr(g2.sr_ObjectRef__f_elem), j$1);
     var x$1 = k$1;
     var x$2$1 = $m_s_None$();
     if ((!((x$1 !== null) && $n(x$1).equals__O__Z(x$2$1)))) {
-      var this$23 = $n($as_sci_Set(s.sr_ObjectRef__f_elem));
-      var this$22 = $n($m_s_Predef$().s_Predef$__f_Set);
+      var this$24 = $n($as_sci_Set(s.sr_ObjectRef__f_elem));
+      var this$23 = $n($m_s_Predef$().s_Predef$__f_Set);
       var $$x5 = $m_sr_ScalaRunTime$();
       var _1$1 = $n(j$1).Lmarge_syntax_Program$Edge$SimpleEdge__f_action;
-      var main$1 = $as_Lmarge_syntax_Program$RxGr(gg.sr_ObjectRef__f_elem);
+      var main$1 = $as_Lmarge_syntax_Program$RxGr(gg1.sr_ObjectRef__f_elem);
       var $$x4 = $m_s_Option$();
-      var this$19 = $n(k$1);
-      if (this$19.isEmpty__Z()) {
+      var this$20 = $n(k$1);
+      if (this$20.isEmpty__Z()) {
         var $$x3 = $m_s_None$()
       } else {
-        var arg1$1 = this$19.get__O();
+        var arg1$1 = this$20.get__O();
         var _$18 = $as_T2(arg1$1);
         var $$x3 = new $c_s_Some($as_Lmarge_syntax_Program$RxGr($n(_$18)._1__O()))
       };
@@ -22155,28 +22169,245 @@ $c_Lmarge_backend_PI$.prototype.next__Lmarge_syntax_Program$System__sci_Set = (f
       var intro$2 = $n(st).Lmarge_syntax_Program$System__f_intro;
       var _2$1 = new $c_Lmarge_syntax_Program$System(main$1, toCompare$1, intro$2);
       var elems$1 = $n($$x5).wrapRefArray__AO__sci_ArraySeq(new ($d_T2.getArrayOf().constr)([new $c_T2(_1$1, _2$1)]));
-      var that$1 = this$22.from__sc_IterableOnce__sci_Set(elems$1);
-      var ev$22 = $as_sci_Set(this$23.concat__sc_IterableOnce__sc_SetOps(that$1));
-      s.sr_ObjectRef__f_elem = ev$22;
-      ev$22 = null
+      var that$1 = this$23.from__sc_IterableOnce__sci_Set(elems$1);
+      var ev$23 = $as_sci_Set(this$24.concat__sc_IterableOnce__sc_SetOps(that$1));
+      s.sr_ObjectRef__f_elem = ev$23;
+      ev$23 = null
     }
   })));
   return $as_sci_Set(s.sr_ObjectRef__f_elem)
 });
-var $d_Lmarge_backend_PI$ = new $TypeData().initClass({
-  Lmarge_backend_PI$: 0
-}, false, "marge.backend.PI$", {
-  Lmarge_backend_PI$: 1,
+var $d_Lmarge_backend_IntrusiveProductA$ = new $TypeData().initClass({
+  Lmarge_backend_IntrusiveProductA$: 0
+}, false, "marge.backend.IntrusiveProductA$", {
+  Lmarge_backend_IntrusiveProductA$: 1,
   O: 1,
   Lcaos_sos_SOS: 1
 });
-$c_Lmarge_backend_PI$.prototype.$classData = $d_Lmarge_backend_PI$;
-var $n_Lmarge_backend_PI$;
-function $m_Lmarge_backend_PI$() {
-  if ((!$n_Lmarge_backend_PI$)) {
-    $n_Lmarge_backend_PI$ = new $c_Lmarge_backend_PI$()
+$c_Lmarge_backend_IntrusiveProductA$.prototype.$classData = $d_Lmarge_backend_IntrusiveProductA$;
+var $n_Lmarge_backend_IntrusiveProductA$;
+function $m_Lmarge_backend_IntrusiveProductA$() {
+  if ((!$n_Lmarge_backend_IntrusiveProductA$)) {
+    $n_Lmarge_backend_IntrusiveProductA$ = new $c_Lmarge_backend_IntrusiveProductA$()
   };
-  return $n_Lmarge_backend_PI$
+  return $n_Lmarge_backend_IntrusiveProductA$
+}
+/** @constructor */
+function $c_Lmarge_backend_IntrusiveProductS$() {
+  /*<skip>*/
+}
+$c_Lmarge_backend_IntrusiveProductS$.prototype = new $h_O();
+$c_Lmarge_backend_IntrusiveProductS$.prototype.constructor = $c_Lmarge_backend_IntrusiveProductS$;
+/** @constructor */
+function $h_Lmarge_backend_IntrusiveProductS$() {
+  /*<skip>*/
+}
+$h_Lmarge_backend_IntrusiveProductS$.prototype = $c_Lmarge_backend_IntrusiveProductS$.prototype;
+$c_Lmarge_backend_IntrusiveProductS$.prototype.next__Lmarge_syntax_Program$System__sci_Set = (function(st) {
+  var elem = $n(st).Lmarge_syntax_Program$System__f_main;
+  var g = new $c_sr_ObjectRef(elem);
+  var this$2 = $n($n(st).Lmarge_syntax_Program$System__f_toCompare);
+  var elem$1 = $as_Lmarge_syntax_Program$RxGr((this$2.isEmpty__Z() ? $n($as_Lmarge_syntax_Program$RxGr(g.sr_ObjectRef__f_elem)).empty__Lmarge_syntax_Program$RxGr() : this$2.get__O()));
+  var g2 = new $c_sr_ObjectRef(elem$1);
+  var elem$2 = $as_sci_Map($n($n(st).Lmarge_syntax_Program$System__f_intro)._1__O());
+  var intro = new $c_sr_ObjectRef(elem$2);
+  $n($m_s_Predef$().s_Predef$__f_Set);
+  var elem$3 = $m_sci_Set$EmptySet$();
+  var s = new $c_sr_ObjectRef(elem$3);
+  var this$7 = $n($as_Lmarge_syntax_Program$RxGr(g.sr_ObjectRef__f_elem));
+  var this$8 = $n($as_sc_IterableOnceOps($n($n(this$7.getSe__T__sci_Set(this$7.Lmarge_syntax_Program$RxGr__f_init)).withFilter__F1__sc_WithFilter(new $c_sjsr_AnonFunction1(((edge) => {
+    var edge$1 = $as_Lmarge_syntax_Program$Edge$SimpleEdge(edge);
+    return $n($n($as_Lmarge_syntax_Program$RxGr(g.sr_ObjectRef__f_elem)).Lmarge_syntax_Program$RxGr__f_active).contains__O__Z(edge$1)
+  })))).map__F1__O(new $c_sjsr_AnonFunction1(((edge$2) => {
+    var edge$3 = $as_Lmarge_syntax_Program$Edge$SimpleEdge(edge$2);
+    return edge$3
+  })))));
+  var nextedg1 = $m_sci_Set$().from__sc_IterableOnce__sci_Set($as_sc_IterableOnce(this$8));
+  var this$9 = $n($as_Lmarge_syntax_Program$RxGr(g2.sr_ObjectRef__f_elem));
+  var this$10 = $n($as_sc_IterableOnceOps($n($n(this$9.getSe__T__sci_Set(this$9.Lmarge_syntax_Program$RxGr__f_init)).withFilter__F1__sc_WithFilter(new $c_sjsr_AnonFunction1(((edge$3$1) => {
+    var edge$4 = $as_Lmarge_syntax_Program$Edge$SimpleEdge(edge$3$1);
+    return $n($n($as_Lmarge_syntax_Program$RxGr(g2.sr_ObjectRef__f_elem)).Lmarge_syntax_Program$RxGr__f_active).contains__O__Z(edge$4)
+  })))).map__F1__O(new $c_sjsr_AnonFunction1(((edge$4$1) => {
+    var edge$5 = $as_Lmarge_syntax_Program$Edge$SimpleEdge(edge$4$1);
+    return edge$5
+  })))));
+  var nextedg2 = $m_sci_Set$().from__sc_IterableOnce__sci_Set($as_sc_IterableOnce(this$10));
+  var actions1 = $n($as_Lmarge_syntax_Program$RxGr(g.sr_ObjectRef__f_elem)).actions__sci_Set();
+  var actions2 = $n($as_Lmarge_syntax_Program$RxGr(g2.sr_ObjectRef__f_elem)).actions__sci_Set();
+  var elem$4 = $as_Lmarge_syntax_Program$RxGr(g2.sr_ObjectRef__f_elem);
+  var gg2 = new $c_sr_ObjectRef(elem$4);
+  $n(nextedg1).foreach__F1__V(new $c_sjsr_AnonFunction1(((i) => {
+    var i$1 = $as_Lmarge_syntax_Program$Edge$SimpleEdge(i);
+    if ($n($n($as_sci_Map(intro.sr_ObjectRef__f_elem)).keySet__sci_Set()).contains__O__Z(i$1)) {
+      var se = $n($as_Lmarge_syntax_Program$RxGr(g2.sr_ObjectRef__f_elem)).Lmarge_syntax_Program$RxGr__f_se;
+      var he = $n($as_Lmarge_syntax_Program$RxGr(g2.sr_ObjectRef__f_elem)).Lmarge_syntax_Program$RxGr__f_he;
+      var init = $n($as_Lmarge_syntax_Program$RxGr(g2.sr_ObjectRef__f_elem)).Lmarge_syntax_Program$RxGr__f_init;
+      var active = $m_Lmarge_backend_Semantics$package$().updateActive__Lmarge_syntax_Program$RxGr__sci_Set__sci_Set($as_Lmarge_syntax_Program$RxGr(g2.sr_ObjectRef__f_elem), $as_sci_Set($n($as_sci_Map(intro.sr_ObjectRef__f_elem)).apply__O__O(i$1)));
+      var ev$24 = new $c_Lmarge_syntax_Program$RxGr(se, he, init, active);
+      gg2.sr_ObjectRef__f_elem = ev$24;
+      ev$24 = null
+    } else {
+      var ev$25 = $as_Lmarge_syntax_Program$RxGr(g2.sr_ObjectRef__f_elem);
+      gg2.sr_ObjectRef__f_elem = ev$25;
+      ev$25 = null
+    };
+    var k = $m_Lmarge_syntax_Program$().step__Lmarge_syntax_Program$RxGr__Lmarge_syntax_Program$Edge$SimpleEdge__s_Option($as_Lmarge_syntax_Program$RxGr(g.sr_ObjectRef__f_elem), i$1);
+    var x = k;
+    var x$2 = $m_s_None$();
+    if (((!((x !== null) && $n(x).equals__O__Z(x$2))) && (!$n(actions2).contains__O__Z($n(i$1).Lmarge_syntax_Program$Edge$SimpleEdge__f_action)))) {
+      var this$17 = $n($as_sci_Set(s.sr_ObjectRef__f_elem));
+      var this$16 = $n($m_s_Predef$().s_Predef$__f_Set);
+      var $$x2 = $m_sr_ScalaRunTime$();
+      var _1 = $n(i$1).Lmarge_syntax_Program$Edge$SimpleEdge__f_action;
+      var this$13 = $n(k);
+      if (this$13.isEmpty__Z()) {
+        var $$x1 = $m_s_None$()
+      } else {
+        var arg1 = this$13.get__O();
+        var _$19 = $as_T2(arg1);
+        var $$x1 = new $c_s_Some($as_Lmarge_syntax_Program$RxGr($n(_$19)._1__O()))
+      };
+      var main = $as_Lmarge_syntax_Program$RxGr($n($$x1).get__O());
+      var toCompare = $m_s_Option$().apply__O__s_Option($as_Lmarge_syntax_Program$RxGr(gg2.sr_ObjectRef__f_elem));
+      var intro$1 = $n(st).Lmarge_syntax_Program$System__f_intro;
+      var _2 = new $c_Lmarge_syntax_Program$System(main, toCompare, intro$1);
+      var elems = $n($$x2).wrapRefArray__AO__sci_ArraySeq(new ($d_T2.getArrayOf().constr)([new $c_T2(_1, _2)]));
+      var that = this$16.from__sc_IterableOnce__sci_Set(elems);
+      var ev$26 = $as_sci_Set(this$17.concat__sc_IterableOnce__sc_SetOps(that));
+      s.sr_ObjectRef__f_elem = ev$26;
+      ev$26 = null
+    }
+  })));
+  var elem$5 = $as_Lmarge_syntax_Program$RxGr(g.sr_ObjectRef__f_elem);
+  var gg1 = new $c_sr_ObjectRef(elem$5);
+  $n(nextedg2).foreach__F1__V(new $c_sjsr_AnonFunction1(((j) => {
+    var j$1 = $as_Lmarge_syntax_Program$Edge$SimpleEdge(j);
+    if ($n($n($as_sci_Map(intro.sr_ObjectRef__f_elem)).keySet__sci_Set()).contains__O__Z(j$1)) {
+      var se$1 = $n($as_Lmarge_syntax_Program$RxGr(g.sr_ObjectRef__f_elem)).Lmarge_syntax_Program$RxGr__f_se;
+      var he$1 = $n($as_Lmarge_syntax_Program$RxGr(g.sr_ObjectRef__f_elem)).Lmarge_syntax_Program$RxGr__f_he;
+      var init$1 = $n($as_Lmarge_syntax_Program$RxGr(g.sr_ObjectRef__f_elem)).Lmarge_syntax_Program$RxGr__f_init;
+      var active$1 = $m_Lmarge_backend_Semantics$package$().updateActive__Lmarge_syntax_Program$RxGr__sci_Set__sci_Set($as_Lmarge_syntax_Program$RxGr(g.sr_ObjectRef__f_elem), $as_sci_Set($n($as_sci_Map(intro.sr_ObjectRef__f_elem)).apply__O__O(j$1)));
+      var ev$27 = new $c_Lmarge_syntax_Program$RxGr(se$1, he$1, init$1, active$1);
+      gg1.sr_ObjectRef__f_elem = ev$27;
+      ev$27 = null
+    } else {
+      var ev$28 = $as_Lmarge_syntax_Program$RxGr(g.sr_ObjectRef__f_elem);
+      gg1.sr_ObjectRef__f_elem = ev$28;
+      ev$28 = null
+    };
+    var k$1 = $m_Lmarge_syntax_Program$().step__Lmarge_syntax_Program$RxGr__Lmarge_syntax_Program$Edge$SimpleEdge__s_Option($as_Lmarge_syntax_Program$RxGr(g2.sr_ObjectRef__f_elem), j$1);
+    var x$1 = k$1;
+    var x$2$1 = $m_s_None$();
+    if (((!((x$1 !== null) && $n(x$1).equals__O__Z(x$2$1))) && (!$n(actions1).contains__O__Z($n(j$1).Lmarge_syntax_Program$Edge$SimpleEdge__f_action)))) {
+      var this$24 = $n($as_sci_Set(s.sr_ObjectRef__f_elem));
+      var this$23 = $n($m_s_Predef$().s_Predef$__f_Set);
+      var $$x5 = $m_sr_ScalaRunTime$();
+      var _1$1 = $n(j$1).Lmarge_syntax_Program$Edge$SimpleEdge__f_action;
+      var main$1 = $as_Lmarge_syntax_Program$RxGr(gg1.sr_ObjectRef__f_elem);
+      var $$x4 = $m_s_Option$();
+      var this$20 = $n(k$1);
+      if (this$20.isEmpty__Z()) {
+        var $$x3 = $m_s_None$()
+      } else {
+        var arg1$1 = this$20.get__O();
+        var _$20 = $as_T2(arg1$1);
+        var $$x3 = new $c_s_Some($as_Lmarge_syntax_Program$RxGr($n(_$20)._1__O()))
+      };
+      var toCompare$1 = $n($$x4).apply__O__s_Option($n($$x3).get__O());
+      var intro$2 = $n(st).Lmarge_syntax_Program$System__f_intro;
+      var _2$1 = new $c_Lmarge_syntax_Program$System(main$1, toCompare$1, intro$2);
+      var elems$1 = $n($$x5).wrapRefArray__AO__sci_ArraySeq(new ($d_T2.getArrayOf().constr)([new $c_T2(_1$1, _2$1)]));
+      var that$1 = this$23.from__sc_IterableOnce__sci_Set(elems$1);
+      var ev$29 = $as_sci_Set(this$24.concat__sc_IterableOnce__sc_SetOps(that$1));
+      s.sr_ObjectRef__f_elem = ev$29;
+      ev$29 = null
+    }
+  })));
+  var inter = $as_sci_Set($n(actions1).intersect__sc_Set__sc_SetOps(actions2));
+  if ((!$n(inter).isEmpty__Z())) {
+    $n($n($as_Lmarge_syntax_Program$RxGr(g.sr_ObjectRef__f_elem)).nextEdgAction__sci_Set__sci_Set(inter)).foreach__F1__V(new $c_sjsr_AnonFunction1(((i$2) => {
+      var i$3 = $as_Lmarge_syntax_Program$Edge$SimpleEdge(i$2);
+      $n($n($as_Lmarge_syntax_Program$RxGr(g2.sr_ObjectRef__f_elem)).nextEdgAction__sci_Set__sci_Set(inter)).foreach__F1__V(new $c_sjsr_AnonFunction1(((j$2) => {
+        var j$3 = $as_Lmarge_syntax_Program$Edge$SimpleEdge(j$2);
+        if (($n(i$3).Lmarge_syntax_Program$Edge$SimpleEdge__f_action === $n(j$3).Lmarge_syntax_Program$Edge$SimpleEdge__f_action)) {
+          var kk1 = $m_Lmarge_syntax_Program$().step__Lmarge_syntax_Program$RxGr__Lmarge_syntax_Program$Edge$SimpleEdge__s_Option($as_Lmarge_syntax_Program$RxGr(g.sr_ObjectRef__f_elem), i$3);
+          var kk2 = $m_Lmarge_syntax_Program$().step__Lmarge_syntax_Program$RxGr__Lmarge_syntax_Program$Edge$SimpleEdge__s_Option($as_Lmarge_syntax_Program$RxGr(g2.sr_ObjectRef__f_elem), j$3);
+          var x$3 = kk1;
+          var x$2$2 = $m_s_None$();
+          if ((!((x$3 !== null) && $n(x$3).equals__O__Z(x$2$2)))) {
+            var x$3$1 = kk2;
+            var x$4 = $m_s_None$();
+            var $$x6 = (!((x$3$1 !== null) && $n(x$3$1).equals__O__Z(x$4)))
+          } else {
+            var $$x6 = false
+          };
+          if ($$x6) {
+            var this$25 = $n(kk1);
+            if (this$25.isEmpty__Z()) {
+              var $$x7 = $m_s_None$()
+            } else {
+              var arg1$2 = this$25.get__O();
+              var _$21 = $as_T2(arg1$2);
+              var $$x7 = new $c_s_Some($as_Lmarge_syntax_Program$RxGr($n(_$21)._1__O()))
+            };
+            var k1 = $as_Lmarge_syntax_Program$RxGr($n($$x7).get__O());
+            var this$26 = $n(kk2);
+            if (this$26.isEmpty__Z()) {
+              var $$x8 = $m_s_None$()
+            } else {
+              var arg1$3 = this$26.get__O();
+              var _$22 = $as_T2(arg1$3);
+              var $$x8 = new $c_s_Some($as_Lmarge_syntax_Program$RxGr($n(_$22)._1__O()))
+            };
+            var k2 = $as_Lmarge_syntax_Program$RxGr($n($$x8).get__O());
+            if ($n($n($as_sci_Map(intro.sr_ObjectRef__f_elem)).keySet__sci_Set()).contains__O__Z(i$3)) {
+              var se$2 = $n(k2).Lmarge_syntax_Program$RxGr__f_se;
+              var he$2 = $n(k2).Lmarge_syntax_Program$RxGr__f_he;
+              var init$2 = $n(k2).Lmarge_syntax_Program$RxGr__f_init;
+              var active$2 = $m_Lmarge_backend_Semantics$package$().updateActive__Lmarge_syntax_Program$RxGr__sci_Set__sci_Set(k2, $as_sci_Set($n($as_sci_Map(intro.sr_ObjectRef__f_elem)).apply__O__O(i$3)));
+              k2 = new $c_Lmarge_syntax_Program$RxGr(se$2, he$2, init$2, active$2)
+            };
+            if ($n($n($as_sci_Map(intro.sr_ObjectRef__f_elem)).keySet__sci_Set()).contains__O__Z(j$3)) {
+              var se$3 = $n(k1).Lmarge_syntax_Program$RxGr__f_se;
+              var he$3 = $n(k1).Lmarge_syntax_Program$RxGr__f_he;
+              var init$3 = $n(k1).Lmarge_syntax_Program$RxGr__f_init;
+              var active$3 = $m_Lmarge_backend_Semantics$package$().updateActive__Lmarge_syntax_Program$RxGr__sci_Set__sci_Set(k1, $as_sci_Set($n($as_sci_Map(intro.sr_ObjectRef__f_elem)).apply__O__O(j$3)));
+              k1 = new $c_Lmarge_syntax_Program$RxGr(se$3, he$3, init$3, active$3)
+            };
+            var this$32 = $n($as_sci_Set(s.sr_ObjectRef__f_elem));
+            var this$31 = $n($m_s_Predef$().s_Predef$__f_Set);
+            var $$x9 = $m_sr_ScalaRunTime$();
+            var _1$2 = $n(i$3).Lmarge_syntax_Program$Edge$SimpleEdge__f_action;
+            var main$2 = k1;
+            var toCompare$2 = $m_s_Option$().apply__O__s_Option(k2);
+            var intro$3 = $n(st).Lmarge_syntax_Program$System__f_intro;
+            var _2$2 = new $c_Lmarge_syntax_Program$System(main$2, toCompare$2, intro$3);
+            var elems$2 = $n($$x9).wrapRefArray__AO__sci_ArraySeq(new ($d_T2.getArrayOf().constr)([new $c_T2(_1$2, _2$2)]));
+            var that$2 = this$31.from__sc_IterableOnce__sci_Set(elems$2);
+            var ev$30 = $as_sci_Set(this$32.concat__sc_IterableOnce__sc_SetOps(that$2));
+            s.sr_ObjectRef__f_elem = ev$30;
+            ev$30 = null
+          }
+        }
+      })))
+    })))
+  };
+  return $as_sci_Set(s.sr_ObjectRef__f_elem)
+});
+var $d_Lmarge_backend_IntrusiveProductS$ = new $TypeData().initClass({
+  Lmarge_backend_IntrusiveProductS$: 0
+}, false, "marge.backend.IntrusiveProductS$", {
+  Lmarge_backend_IntrusiveProductS$: 1,
+  O: 1,
+  Lcaos_sos_SOS: 1
+});
+$c_Lmarge_backend_IntrusiveProductS$.prototype.$classData = $d_Lmarge_backend_IntrusiveProductS$;
+var $n_Lmarge_backend_IntrusiveProductS$;
+function $m_Lmarge_backend_IntrusiveProductS$() {
+  if ((!$n_Lmarge_backend_IntrusiveProductS$)) {
+    $n_Lmarge_backend_IntrusiveProductS$ = new $c_Lmarge_backend_IntrusiveProductS$()
+  };
+  return $n_Lmarge_backend_IntrusiveProductS$
 }
 /** @constructor */
 function $c_Lmarge_backend_Semantics$() {
@@ -22240,165 +22471,6 @@ function $m_Lmarge_backend_Semantics$() {
     $n_Lmarge_backend_Semantics$ = new $c_Lmarge_backend_Semantics$()
   };
   return $n_Lmarge_backend_Semantics$
-}
-/** @constructor */
-function $c_Lmarge_backend_SemanticsTwo$() {
-  /*<skip>*/
-}
-$c_Lmarge_backend_SemanticsTwo$.prototype = new $h_O();
-$c_Lmarge_backend_SemanticsTwo$.prototype.constructor = $c_Lmarge_backend_SemanticsTwo$;
-/** @constructor */
-function $h_Lmarge_backend_SemanticsTwo$() {
-  /*<skip>*/
-}
-$h_Lmarge_backend_SemanticsTwo$.prototype = $c_Lmarge_backend_SemanticsTwo$.prototype;
-$c_Lmarge_backend_SemanticsTwo$.prototype.next__Lmarge_syntax_Program$System__sci_Set = (function(st) {
-  var x1 = $n(st).Lmarge_syntax_Program$System__f_toCompare;
-  var x = $m_s_None$();
-  if ((x === x1)) {
-    return $m_Lmarge_backend_Warnings$().next__Lmarge_syntax_Program$System__sci_Set(st)
-  };
-  var elem = $n(st).Lmarge_syntax_Program$System__f_main;
-  var g = new $c_sr_ObjectRef(elem);
-  var this$2 = $n($n(st).Lmarge_syntax_Program$System__f_toCompare);
-  var elem$1 = $as_Lmarge_syntax_Program$RxGr((this$2.isEmpty__Z() ? $n($as_Lmarge_syntax_Program$RxGr(g.sr_ObjectRef__f_elem)).empty__Lmarge_syntax_Program$RxGr() : this$2.get__O()));
-  var g2 = new $c_sr_ObjectRef(elem$1);
-  $n($m_s_Predef$().s_Predef$__f_Set);
-  var elem$2 = $m_sci_Set$EmptySet$();
-  var s = new $c_sr_ObjectRef(elem$2);
-  var actions1 = $n($as_Lmarge_syntax_Program$RxGr(g.sr_ObjectRef__f_elem)).actions__sci_Set();
-  var actions2 = $n($as_Lmarge_syntax_Program$RxGr(g2.sr_ObjectRef__f_elem)).actions__sci_Set();
-  var this$6 = $n($as_Lmarge_syntax_Program$RxGr(g.sr_ObjectRef__f_elem));
-  $n(this$6.getSe__T__sci_Set(this$6.Lmarge_syntax_Program$RxGr__f_init)).foreach__F1__V(new $c_sjsr_AnonFunction1(((i) => {
-    var i$1 = $as_Lmarge_syntax_Program$Edge$SimpleEdge(i);
-    var k = $m_Lmarge_syntax_Program$().step__Lmarge_syntax_Program$RxGr__Lmarge_syntax_Program$Edge$SimpleEdge__s_Option($as_Lmarge_syntax_Program$RxGr(g.sr_ObjectRef__f_elem), i$1);
-    var x$1 = k;
-    var x$2 = $m_s_None$();
-    if (((!((x$1 !== null) && $n(x$1).equals__O__Z(x$2))) && (!$n(actions2).contains__O__Z($n(i$1).Lmarge_syntax_Program$Edge$SimpleEdge__f_action)))) {
-      var this$11 = $n($as_sci_Set(s.sr_ObjectRef__f_elem));
-      var this$10 = $n($m_s_Predef$().s_Predef$__f_Set);
-      var $$x2 = $m_sr_ScalaRunTime$();
-      var _1 = $n(i$1).Lmarge_syntax_Program$Edge$SimpleEdge__f_action;
-      var this$7 = $n(k);
-      if (this$7.isEmpty__Z()) {
-        var $$x1 = $m_s_None$()
-      } else {
-        var arg1 = this$7.get__O();
-        var _$4 = $as_T2(arg1);
-        var $$x1 = new $c_s_Some($as_Lmarge_syntax_Program$RxGr($n(_$4)._1__O()))
-      };
-      var main = $as_Lmarge_syntax_Program$RxGr($n($$x1).get__O());
-      var toCompare = $m_s_Option$().apply__O__s_Option($as_Lmarge_syntax_Program$RxGr(g2.sr_ObjectRef__f_elem));
-      var intro = $m_Lmarge_syntax_Program$System$().$lessinit$greater$default$3__T2();
-      var _2 = new $c_Lmarge_syntax_Program$System(main, toCompare, intro);
-      var elems = $n($$x2).wrapRefArray__AO__sci_ArraySeq(new ($d_T2.getArrayOf().constr)([new $c_T2(_1, _2)]));
-      var that = this$10.from__sc_IterableOnce__sci_Set(elems);
-      var ev$4 = $as_sci_Set(this$11.concat__sc_IterableOnce__sc_SetOps(that));
-      s.sr_ObjectRef__f_elem = ev$4;
-      ev$4 = null
-    }
-  })));
-  var this$12 = $n($as_Lmarge_syntax_Program$RxGr(g2.sr_ObjectRef__f_elem));
-  $n(this$12.getSe__T__sci_Set(this$12.Lmarge_syntax_Program$RxGr__f_init)).foreach__F1__V(new $c_sjsr_AnonFunction1(((i$2) => {
-    var i$3 = $as_Lmarge_syntax_Program$Edge$SimpleEdge(i$2);
-    var k$1 = $m_Lmarge_syntax_Program$().step__Lmarge_syntax_Program$RxGr__Lmarge_syntax_Program$Edge$SimpleEdge__s_Option($as_Lmarge_syntax_Program$RxGr(g2.sr_ObjectRef__f_elem), i$3);
-    var x$3 = k$1;
-    var x$2$1 = $m_s_None$();
-    if (((!((x$3 !== null) && $n(x$3).equals__O__Z(x$2$1))) && (!$n(actions1).contains__O__Z($n(i$3).Lmarge_syntax_Program$Edge$SimpleEdge__f_action)))) {
-      var this$17 = $n($as_sci_Set(s.sr_ObjectRef__f_elem));
-      var this$16 = $n($m_s_Predef$().s_Predef$__f_Set);
-      var $$x5 = $m_sr_ScalaRunTime$();
-      var _1$1 = $n(i$3).Lmarge_syntax_Program$Edge$SimpleEdge__f_action;
-      var main$1 = $as_Lmarge_syntax_Program$RxGr(g.sr_ObjectRef__f_elem);
-      var $$x4 = $m_s_Option$();
-      var this$13 = $n(k$1);
-      if (this$13.isEmpty__Z()) {
-        var $$x3 = $m_s_None$()
-      } else {
-        var arg1$1 = this$13.get__O();
-        var _$5 = $as_T2(arg1$1);
-        var $$x3 = new $c_s_Some($as_Lmarge_syntax_Program$RxGr($n(_$5)._1__O()))
-      };
-      var toCompare$1 = $n($$x4).apply__O__s_Option($n($$x3).get__O());
-      var intro$1 = $m_Lmarge_syntax_Program$System$().$lessinit$greater$default$3__T2();
-      var _2$1 = new $c_Lmarge_syntax_Program$System(main$1, toCompare$1, intro$1);
-      var elems$1 = $n($$x5).wrapRefArray__AO__sci_ArraySeq(new ($d_T2.getArrayOf().constr)([new $c_T2(_1$1, _2$1)]));
-      var that$1 = this$16.from__sc_IterableOnce__sci_Set(elems$1);
-      var ev$5 = $as_sci_Set(this$17.concat__sc_IterableOnce__sc_SetOps(that$1));
-      s.sr_ObjectRef__f_elem = ev$5;
-      ev$5 = null
-    }
-  })));
-  var inter = $as_sci_Set($n(actions1).intersect__sc_Set__sc_SetOps(actions2));
-  if ((!$n(inter).isEmpty__Z())) {
-    $n($n($as_Lmarge_syntax_Program$RxGr(g.sr_ObjectRef__f_elem)).nextEdgAction__sci_Set__sci_Set(inter)).foreach__F1__V(new $c_sjsr_AnonFunction1(((i$3$1) => {
-      var i$4 = $as_Lmarge_syntax_Program$Edge$SimpleEdge(i$3$1);
-      $n($n($as_Lmarge_syntax_Program$RxGr(g2.sr_ObjectRef__f_elem)).nextEdgAction__sci_Set__sci_Set(inter)).foreach__F1__V(new $c_sjsr_AnonFunction1(((j) => {
-        var j$1 = $as_Lmarge_syntax_Program$Edge$SimpleEdge(j);
-        if (($n(i$4).Lmarge_syntax_Program$Edge$SimpleEdge__f_action === $n(j$1).Lmarge_syntax_Program$Edge$SimpleEdge__f_action)) {
-          var k1 = $m_Lmarge_syntax_Program$().step__Lmarge_syntax_Program$RxGr__Lmarge_syntax_Program$Edge$SimpleEdge__s_Option($as_Lmarge_syntax_Program$RxGr(g.sr_ObjectRef__f_elem), i$4);
-          var k2 = $m_Lmarge_syntax_Program$().step__Lmarge_syntax_Program$RxGr__Lmarge_syntax_Program$Edge$SimpleEdge__s_Option($as_Lmarge_syntax_Program$RxGr(g2.sr_ObjectRef__f_elem), j$1);
-          var x$4 = k1;
-          var x$2$2 = $m_s_None$();
-          if ((!((x$4 !== null) && $n(x$4).equals__O__Z(x$2$2)))) {
-            var x$3$1 = k2;
-            var x$4$1 = $m_s_None$();
-            var $$x6 = (!((x$3$1 !== null) && $n(x$3$1).equals__O__Z(x$4$1)))
-          } else {
-            var $$x6 = false
-          };
-          if ($$x6) {
-            var this$23 = $n($as_sci_Set(s.sr_ObjectRef__f_elem));
-            var this$22 = $n($m_s_Predef$().s_Predef$__f_Set);
-            var $$x10 = $m_sr_ScalaRunTime$();
-            var _1$2 = $n(i$4).Lmarge_syntax_Program$Edge$SimpleEdge__f_action;
-            var this$18 = $n(k1);
-            if (this$18.isEmpty__Z()) {
-              var $$x7 = $m_s_None$()
-            } else {
-              var arg1$2 = this$18.get__O();
-              var _$6 = $as_T2(arg1$2);
-              var $$x7 = new $c_s_Some($as_Lmarge_syntax_Program$RxGr($n(_$6)._1__O()))
-            };
-            var main$2 = $as_Lmarge_syntax_Program$RxGr($n($$x7).get__O());
-            var $$x9 = $m_s_Option$();
-            var this$19 = $n(k2);
-            if (this$19.isEmpty__Z()) {
-              var $$x8 = $m_s_None$()
-            } else {
-              var arg1$3 = this$19.get__O();
-              var _$7 = $as_T2(arg1$3);
-              var $$x8 = new $c_s_Some($as_Lmarge_syntax_Program$RxGr($n(_$7)._1__O()))
-            };
-            var toCompare$2 = $n($$x9).apply__O__s_Option($n($$x8).get__O());
-            var intro$2 = $m_Lmarge_syntax_Program$System$().$lessinit$greater$default$3__T2();
-            var _2$2 = new $c_Lmarge_syntax_Program$System(main$2, toCompare$2, intro$2);
-            var elems$2 = $n($$x10).wrapRefArray__AO__sci_ArraySeq(new ($d_T2.getArrayOf().constr)([new $c_T2(_1$2, _2$2)]));
-            var that$2 = this$22.from__sc_IterableOnce__sci_Set(elems$2);
-            var ev$6 = $as_sci_Set(this$23.concat__sc_IterableOnce__sc_SetOps(that$2));
-            s.sr_ObjectRef__f_elem = ev$6;
-            ev$6 = null
-          }
-        }
-      })))
-    })))
-  };
-  return $as_sci_Set(s.sr_ObjectRef__f_elem)
-});
-var $d_Lmarge_backend_SemanticsTwo$ = new $TypeData().initClass({
-  Lmarge_backend_SemanticsTwo$: 0
-}, false, "marge.backend.SemanticsTwo$", {
-  Lmarge_backend_SemanticsTwo$: 1,
-  O: 1,
-  Lcaos_sos_SOS: 1
-});
-$c_Lmarge_backend_SemanticsTwo$.prototype.$classData = $d_Lmarge_backend_SemanticsTwo$;
-var $n_Lmarge_backend_SemanticsTwo$;
-function $m_Lmarge_backend_SemanticsTwo$() {
-  if ((!$n_Lmarge_backend_SemanticsTwo$)) {
-    $n_Lmarge_backend_SemanticsTwo$ = new $c_Lmarge_backend_SemanticsTwo$()
-  };
-  return $n_Lmarge_backend_SemanticsTwo$
 }
 /** @constructor */
 function $c_Lmarge_backend_SynchronousProduct$() {
@@ -22659,144 +22731,164 @@ function $c_Lmarge_frontend_CaosConfig$() {
   this.Lmarge_frontend_CaosConfig$__f_documentation = null;
   $n_Lmarge_frontend_CaosConfig$ = this;
   $f_Lcaos_frontend_Configurator__$init$__V(this);
-  this.Lmarge_frontend_CaosConfig$__f_name = "Animator of Multi-Action Reactive Graphs (MARGe)";
+  this.Lmarge_frontend_CaosConfig$__f_name = "Animator of Labelled Reactive Graphs";
   this.Lmarge_frontend_CaosConfig$__f_languageName = "Input program";
   this.Lmarge_frontend_CaosConfig$__f_parser = new $c_sjsr_AnonFunction1(((str) => {
     var str$1 = $as_T(str);
     return $m_Lmarge_syntax_Parser$().parseProgram__T__Lmarge_syntax_Program$System(str$1)
   }));
   $n($m_s_package$().s_package$__f_List);
-  var $$x17 = $m_sr_ScalaRunTime$();
-  var $$x16 = $m_Lcaos_frontend_Configurator$();
+  var $$x12 = $m_sr_ScalaRunTime$();
+  var $$x11 = $m_Lcaos_frontend_Configurator$();
   var y = $m_Lmarge_frontend_Examples$().Lmarge_frontend_Examples$__f_gabbayExample;
-  var self = new $c_T2("Gabbay Example", y);
-  var $$x15 = $n($$x16).toExampleDesc__T2__Lcaos_frontend_Configurator$Example(new $c_T2(self, "Figure 7.4 in Dov M Gabbay, Cognitive Technologies Reactive Kripke Semantics"));
-  var $$x14 = $m_Lcaos_frontend_Configurator$();
+  var self = new $c_T2("Penguin", y);
+  var $$x10 = $n($$x11).toExampleDesc__T2__Lcaos_frontend_Configurator$Example(new $c_T2(self, "Figure 7.4 in Dov M Gabbay, Cognitive Technologies Reactive Kripke Semantics"));
+  var $$x9 = $m_Lcaos_frontend_Configurator$();
   var y$1 = $m_Lmarge_frontend_Examples$().Lmarge_frontend_Examples$__f_counter;
   var self$1 = new $c_T2("Counter", y$1);
-  var $$x13 = $n($$x14).toExampleDesc__T2__Lcaos_frontend_Configurator$Example(new $c_T2(self$1, "Run 3 times only the action *act*"));
-  var $$x12 = $m_Lcaos_frontend_Configurator$();
+  var $$x8 = $n($$x9).toExampleDesc__T2__Lcaos_frontend_Configurator$Example(new $c_T2(self$1, "Run 3 times only the action *act*"));
+  var $$x7 = $m_Lcaos_frontend_Configurator$();
   var y$2 = $m_Lmarge_frontend_Examples$().Lmarge_frontend_Examples$__f_featureModel;
   var self$2 = new $c_T2("Feature Model", y$2);
-  var $$x11 = $n($$x12).toExampleDesc__T2__Lcaos_frontend_Configurator$Example(new $c_T2(self$2, "Fig 1 in Maxime Cordy et al. Model Checking Adaptive Software with Featured Transition Systems"));
-  var $$x10 = $m_Lcaos_frontend_Configurator$();
-  var y$3 = $m_Lmarge_frontend_Examples$().Lmarge_frontend_Examples$__f_vendingMachine;
-  var self$3 = new $c_T2("VM", y$3);
-  var $$x9 = $n($$x10).toExampleDesc__T2__Lcaos_frontend_Configurator$Example(new $c_T2(self$3, "We have 1$ only to spend in the vending machine and we need to decide the best option between cofee, chocolate and apple."));
-  var $$x8 = $m_Lcaos_frontend_Configurator$();
-  var y$4 = $m_Lmarge_frontend_Examples$().Lmarge_frontend_Examples$__f_VMPaper;
-  var self$4 = new $c_T2("VM2", y$4);
-  var $$x7 = $n($$x8).toExampleDesc__T2__Lcaos_frontend_Configurator$Example(new $c_T2(self$4, "Example of Vending Machine presented in Reactive Graphs in action"));
-  var $$x6 = $m_Lcaos_frontend_Configurator$();
-  var y$5 = $m_Lmarge_frontend_Examples$().Lmarge_frontend_Examples$__f_conflict;
-  var self$5 = new $c_T2("Conflicts", y$5);
-  var $$x5 = $n($$x6).toExampleDesc__T2__Lcaos_frontend_Configurator$Example(new $c_T2(self$5, "Example of Reactive Graph with a conflict."));
-  var y$6 = $m_Lmarge_frontend_Examples$().Lmarge_frontend_Examples$__f_bissimulation;
-  var nameCode = new $c_T2("Bissim", y$6);
+  var $$x6 = $n($$x7).toExampleDesc__T2__Lcaos_frontend_Configurator$Example(new $c_T2(self$2, "Fig 1 in Maxime Cordy et al. Model Checking Adaptive Software with Featured Transition Systems"));
+  var $$x5 = $m_Lcaos_frontend_Configurator$();
+  var y$3 = $m_Lmarge_frontend_Examples$().Lmarge_frontend_Examples$__f_conflict;
+  var self$3 = new $c_T2("Conflicts", y$3);
+  var $$x4 = $n($$x5).toExampleDesc__T2__Lcaos_frontend_Configurator$Example(new $c_T2(self$3, "Example of Reactive Graph with a conflict."));
+  var y$4 = $m_Lmarge_frontend_Examples$().Lmarge_frontend_Examples$__f_bissimulation;
+  var nameCode = new $c_T2("Bissi", y$4);
   var example = $as_T(nameCode.T2__f__2);
   var name = $as_T(nameCode.T2__f__1);
-  var $$x4 = new $c_Lcaos_frontend_Configurator$Example(example, name, "");
-  var y$7 = $m_Lmarge_frontend_Examples$().Lmarge_frontend_Examples$__f_product;
-  var nameCode$1 = new $c_T2("Product", y$7);
+  var $$x3 = new $c_Lcaos_frontend_Configurator$Example(example, name, "");
+  var y$5 = $m_Lmarge_frontend_Examples$().Lmarge_frontend_Examples$__f_VM_U;
+  var nameCode$1 = new $c_T2("VM_U", y$5);
   var example$1 = $as_T(nameCode$1.T2__f__2);
   var name$1 = $as_T(nameCode$1.T2__f__1);
-  var $$x3 = new $c_Lcaos_frontend_Configurator$Example(example$1, name$1, "");
-  var y$8 = $m_Lmarge_frontend_Examples$().Lmarge_frontend_Examples$__f_product2;
-  var nameCode$2 = new $c_T2("Product2", y$8);
+  var $$x2 = new $c_Lcaos_frontend_Configurator$Example(example$1, name$1, "");
+  var y$6 = $m_Lmarge_frontend_Examples$().Lmarge_frontend_Examples$__f_product;
+  var nameCode$2 = new $c_T2("Product", y$6);
   var example$2 = $as_T(nameCode$2.T2__f__2);
   var name$2 = $as_T(nameCode$2.T2__f__1);
-  var $$x2 = new $c_Lcaos_frontend_Configurator$Example(example$2, name$2, "");
-  var y$9 = $m_Lmarge_frontend_Examples$().Lmarge_frontend_Examples$__f_product3;
-  var nameCode$3 = new $c_T2("Intrusive Product", y$9);
+  var $$x1 = new $c_Lcaos_frontend_Configurator$Example(example$2, name$2, "");
+  var y$7 = $m_Lmarge_frontend_Examples$().Lmarge_frontend_Examples$__f_product3;
+  var nameCode$3 = new $c_T2("Intrusive Product", y$7);
   var example$3 = $as_T(nameCode$3.T2__f__2);
   var name$3 = $as_T(nameCode$3.T2__f__1);
-  var $$x1 = new $c_Lcaos_frontend_Configurator$Example(example$3, name$3, "");
-  var y$10 = $m_Lmarge_frontend_Examples$().Lmarge_frontend_Examples$__f_VM_U;
-  var nameCode$4 = new $c_T2("VM_U", y$10);
-  var example$4 = $as_T(nameCode$4.T2__f__2);
-  var name$4 = $as_T(nameCode$4.T2__f__1);
-  var elems = $n($$x17).wrapRefArray__AO__sci_ArraySeq(new ($d_Lcaos_frontend_Configurator$Example.getArrayOf().constr)([$$x15, $$x13, $$x11, $$x9, $$x7, $$x5, $$x4, $$x3, $$x2, $$x1, new $c_Lcaos_frontend_Configurator$Example(example$4, name$4, "")]));
+  var elems = $n($$x12).wrapRefArray__AO__sci_ArraySeq(new ($d_Lcaos_frontend_Configurator$Example.getArrayOf().constr)([$$x10, $$x8, $$x6, $$x4, $$x3, $$x2, $$x1, new $c_Lcaos_frontend_Configurator$Example(example$3, name$3, "")]));
   this.Lmarge_frontend_CaosConfig$__f_examples = $m_sci_Nil$().prependedAll__sc_IterableOnce__sci_List(elems);
   $n($m_s_package$().s_package$__f_List);
-  var $$x31 = $m_sr_ScalaRunTime$();
-  var this$51 = $n($m_Lcaos_frontend_Configurator$().view__F1__Lcaos_view_ViewType__Lcaos_frontend_widgets_WidgetInfo(new $c_sjsr_AnonFunction1(((x) => {
+  var $$x33 = $m_sr_ScalaRunTime$();
+  var this$39 = $n($m_Lcaos_frontend_Configurator$().view__F1__Lcaos_view_ViewType__Lcaos_frontend_widgets_WidgetInfo(new $c_sjsr_AnonFunction1(((x) => {
     var x$1 = $as_Lmarge_syntax_Program$System(x);
-    var this$48 = $m_Lmarge_syntax_Show$();
+    var this$36 = $m_Lmarge_syntax_Show$();
     var g = $n(x$1).Lmarge_syntax_Program$System__f_main;
-    return $p_Lmarge_syntax_Show$___toMermaid__Lmarge_syntax_Program$RxGr__T__T__T__I__sci_Map__T(this$48, g, "flowchart LR \n", "", "", 0, ($n($m_s_Predef$().s_Predef$__f_Map), $m_sci_Map$EmptyMap$()))
+    return $p_Lmarge_syntax_Show$___toMermaid__Lmarge_syntax_Program$RxGr__T__T__T__I__sci_Map__T(this$36, g, "flowchart LR \n", "", "", 0, ($n($m_s_Predef$().s_Predef$__f_Map), $m_sci_Map$EmptyMap$()))
   })), new $c_Lcaos_view_Code("haskell")));
-  var y$11 = $f_Lcaos_frontend_widgets_WidgetInfo__moveTo__I__Lcaos_frontend_widgets_WidgetInfo(this$51, 1);
-  var $$x30 = new $c_T2("View pretty data", y$11);
-  var this$54 = $n($m_Lcaos_frontend_Configurator$().view__F1__Lcaos_view_ViewType__Lcaos_frontend_widgets_WidgetInfo(new $c_sjsr_AnonFunction1(((_$1) => {
+  var y$8 = $f_Lcaos_frontend_widgets_WidgetInfo__moveTo__I__Lcaos_frontend_widgets_WidgetInfo(this$39, 1);
+  var $$x32 = new $c_T2("View Pretty Data", y$8);
+  var this$42 = $n($m_Lcaos_frontend_Configurator$().view__F1__Lcaos_view_ViewType__Lcaos_frontend_widgets_WidgetInfo(new $c_sjsr_AnonFunction1(((_$1) => {
     var _$1$1 = $as_Lmarge_syntax_Program$System(_$1);
     return $m_Lmarge_syntax_Program$().findDeadlockTracePP__Lmarge_syntax_Program$System__I__T(_$1$1, 500)
   })), $m_Lcaos_view_Text$()));
-  var y$12 = $f_Lcaos_frontend_widgets_WidgetInfo__moveTo__I__Lcaos_frontend_widgets_WidgetInfo(this$54, 1);
-  var $$x29 = new $c_T2("Dead Locks", y$12);
-  var this$57 = $n($m_Lcaos_frontend_Configurator$().view__F1__Lcaos_view_ViewType__Lcaos_frontend_widgets_WidgetInfo(new $c_sjsr_AnonFunction1(((_$2) => {
+  var y$9 = $f_Lcaos_frontend_widgets_WidgetInfo__moveTo__I__Lcaos_frontend_widgets_WidgetInfo(this$42, 1);
+  var $$x31 = new $c_T2("Dead Locks", y$9);
+  var this$45 = $n($m_Lcaos_frontend_Configurator$().view__F1__Lcaos_view_ViewType__Lcaos_frontend_widgets_WidgetInfo(new $c_sjsr_AnonFunction1(((_$2) => {
     var _$2$1 = $as_Lmarge_syntax_Program$System(_$2);
     return $m_Lmarge_syntax_Program$().findIncoPP__Lmarge_syntax_Program$System__I__T(_$2$1, 500)
   })), $m_Lcaos_view_Text$()));
-  var y$13 = $f_Lcaos_frontend_widgets_WidgetInfo__moveTo__I__Lcaos_frontend_widgets_WidgetInfo(this$57, 1);
-  var $$x28 = new $c_T2("Conflicts / Contradictory effects", y$13);
-  var y$14 = $m_Lcaos_frontend_Configurator$().view__F1__Lcaos_view_ViewType__Lcaos_frontend_widgets_WidgetInfo(new $c_sjsr_AnonFunction1(((x$2) => {
+  var y$10 = $f_Lcaos_frontend_widgets_WidgetInfo__moveTo__I__Lcaos_frontend_widgets_WidgetInfo(this$45, 1);
+  var $$x30 = new $c_T2("Conflicts / Contradictory Effects", y$10);
+  var y$11 = $m_Lcaos_frontend_Configurator$().view__F1__Lcaos_view_ViewType__Lcaos_frontend_widgets_WidgetInfo(new $c_sjsr_AnonFunction1(((x$2) => {
     var x$3 = $as_Lmarge_syntax_Program$System(x$2);
     return $m_Lmarge_syntax_Show$().toMermaid_Intrusive__Lmarge_syntax_Program$System__T(x$3)
   })), $m_Lcaos_view_Mermaid$());
-  var $$x27 = new $c_T2("Global Structure View", y$14);
-  var y$15 = $m_Lcaos_frontend_Configurator$().view__F1__Lcaos_view_ViewType__Lcaos_frontend_widgets_WidgetInfo(new $c_sjsr_AnonFunction1(((x$3$1) => {
+  var $$x29 = new $c_T2("Global Structure View", y$11);
+  var y$12 = $m_Lcaos_frontend_Configurator$().view__F1__Lcaos_view_ViewType__Lcaos_frontend_widgets_WidgetInfo(new $c_sjsr_AnonFunction1(((x$3$1) => {
     var x$4 = $as_Lmarge_syntax_Program$System(x$3$1);
-    var $$x25 = $m_Lmarge_syntax_Show$();
+    var $$x27 = $m_Lmarge_syntax_Show$();
     var main = $n($n(x$4).Lmarge_syntax_Program$System__f_main).getLevel0__Lmarge_syntax_Program$RxGr();
-    var $$x24 = $m_s_Option$();
-    var this$62 = $n($n(x$4).Lmarge_syntax_Program$System__f_toCompare);
+    var $$x26 = $m_s_Option$();
+    var this$50 = $n($n(x$4).Lmarge_syntax_Program$System__f_toCompare);
     var default$1 = new $c_sjsr_AnonFunction0((() => $n($n(x$4).Lmarge_syntax_Program$System__f_main).empty__Lmarge_syntax_Program$RxGr()));
-    var toCompare = $n($$x24).apply__O__s_Option($n($as_Lmarge_syntax_Program$RxGr((this$62.isEmpty__Z() ? default$1.apply__O() : this$62.get__O()))).getLevel0__Lmarge_syntax_Program$RxGr());
+    var toCompare = $n($$x26).apply__O__s_Option($n($as_Lmarge_syntax_Program$RxGr((this$50.isEmpty__Z() ? default$1.apply__O() : this$50.get__O()))).getLevel0__Lmarge_syntax_Program$RxGr());
     var intro = $m_Lmarge_syntax_Program$System$().$lessinit$greater$default$3__T2();
-    return $n($$x25).toMermaid_twoGraphs_Bissi__Lmarge_syntax_Program$System__T__T(new $c_Lmarge_syntax_Program$System(main, toCompare, intro), "TG")
+    return $n($$x27).toMermaid_twoGraphs_Bissi__Lmarge_syntax_Program$System__T__T(new $c_Lmarge_syntax_Program$System(main, toCompare, intro), "TG")
   })), $m_Lcaos_view_Mermaid$());
-  var $$x26 = new $c_T2("Local Structure View", y$15);
-  var y$16 = $m_Lcaos_frontend_Configurator$().steps__F1__Lcaos_sos_SOS__F1__F1__Lcaos_view_ViewType__Lcaos_frontend_widgets_WidgetInfo(new $c_sjsr_AnonFunction1(((e) => {
+  var $$x28 = new $c_T2("Local Structure View", y$12);
+  var y$13 = $m_Lcaos_frontend_Configurator$().steps__F1__Lcaos_sos_SOS__F1__F1__Lcaos_view_ViewType__Lcaos_frontend_widgets_WidgetInfo(new $c_sjsr_AnonFunction1(((e) => {
     var e$1 = $as_Lmarge_syntax_Program$System(e);
     return e$1
-  })), $m_Lmarge_backend_SemanticsTwo$(), new $c_sjsr_AnonFunction1(((x$4$1) => {
+  })), $m_Lmarge_backend_Warnings$(), new $c_sjsr_AnonFunction1(((x$4$1) => {
     var x$5 = $as_Lmarge_syntax_Program$System(x$4$1);
-    return $m_Lmarge_syntax_Show$().toMermaid_twoGraphs_Bissi__Lmarge_syntax_Program$System__T__T(x$5, "AAAA")
+    var this$54 = $m_Lmarge_syntax_Show$();
+    var g$1 = $n(x$5).Lmarge_syntax_Program$System__f_main;
+    return $p_Lmarge_syntax_Show$___toMermaid__Lmarge_syntax_Program$RxGr__T__T__T__I__sci_Map__T(this$54, g$1, "flowchart LR \n", "", "", 0, ($n($m_s_Predef$().s_Predef$__f_Map), $m_sci_Map$EmptyMap$()))
   })), new $c_sjsr_AnonFunction1(((_$3) => {
     var _$3$1 = $as_T(_$3);
-    var this$66 = $n(_$3$1);
-    return this$66
+    var this$56 = $n(_$3$1);
+    return this$56
   })), $m_Lcaos_view_Mermaid$());
-  var $$x23 = new $c_T2("Run semantics", y$16);
-  var y$17 = $m_Lcaos_frontend_Configurator$().steps__F1__Lcaos_sos_SOS__F1__F1__Lcaos_view_ViewType__Lcaos_frontend_widgets_WidgetInfo(new $c_sjsr_AnonFunction1(((e$2) => {
+  var $$x25 = new $c_T2("Run Semantics (First Graph)", y$13);
+  var y$14 = $m_Lcaos_frontend_Configurator$().steps__F1__Lcaos_sos_SOS__F1__F1__Lcaos_view_ViewType__Lcaos_frontend_widgets_WidgetInfo(new $c_sjsr_AnonFunction1(((e$2) => {
     var e$3 = $as_Lmarge_syntax_Program$System(e$2);
-    return e$3
-  })), $m_Lmarge_backend_PI$(), new $c_sjsr_AnonFunction1(((x$5$1) => {
-    var x$6 = $as_Lmarge_syntax_Program$System(x$5$1);
-    return $m_Lmarge_syntax_Show$().toMermaid_Intrusive__Lmarge_syntax_Program$System__T(x$6)
-  })), new $c_sjsr_AnonFunction1(((_$4) => {
-    var _$4$1 = $as_T(_$4);
-    var this$69 = $n(_$4$1);
-    return this$69
-  })), $m_Lcaos_view_Mermaid$());
-  var $$x22 = new $c_T2("Run Semantics With Intrusive Edges", y$17);
-  var y$18 = $m_Lcaos_frontend_Configurator$().view__F1__Lcaos_view_ViewType__Lcaos_frontend_widgets_WidgetInfo(new $c_sjsr_AnonFunction1(((x$6$1) => {
-    var x$7 = $as_Lmarge_syntax_Program$System(x$6$1);
-    var this$72 = $m_Lmarge_syntax_Show$();
-    var g$1 = $m_Lmarge_syntax_Program$().lts__Lmarge_syntax_Program$RxGr__Lmarge_syntax_Program$RxGr($n(x$7).Lmarge_syntax_Program$System__f_main);
-    return $p_Lmarge_syntax_Show$___toMermaid__Lmarge_syntax_Program$RxGr__T__T__T__I__sci_Map__T(this$72, g$1, "flowchart LR \n", "", "", 0, ($n($m_s_Predef$().s_Predef$__f_Map), $m_sci_Map$EmptyMap$()))
-  })), $m_Lcaos_view_Mermaid$());
-  var $$x21 = new $c_T2("Generated LTS", y$18);
-  var y$19 = $m_Lcaos_frontend_Configurator$().compareStrongBisim__Lcaos_sos_SOS__Lcaos_sos_SOS__F1__F1__F1__F1__F1__I__Lcaos_frontend_widgets_WidgetInfo($m_Lmarge_backend_Semantics$(), $m_Lmarge_backend_Semantics$(), new $c_sjsr_AnonFunction1(((e$3$1) => {
-    var e$4 = $as_Lmarge_syntax_Program$System(e$3$1);
-    var main$1 = $n(e$4).Lmarge_syntax_Program$System__f_main;
+    var this$59 = $n($n(e$3).Lmarge_syntax_Program$System__f_toCompare);
+    var default$2 = new $c_sjsr_AnonFunction0((() => $n($n(e$3).Lmarge_syntax_Program$System__f_main).empty__Lmarge_syntax_Program$RxGr()));
+    var main$1 = $as_Lmarge_syntax_Program$RxGr((this$59.isEmpty__Z() ? default$2.apply__O() : this$59.get__O()));
     var toCompare$1 = $m_s_None$();
     var intro$1 = $m_Lmarge_syntax_Program$System$().$lessinit$greater$default$3__T2();
     return new $c_Lmarge_syntax_Program$System(main$1, toCompare$1, intro$1)
-  })), new $c_sjsr_AnonFunction1(((e$4$1) => {
+  })), $m_Lmarge_backend_Warnings$(), new $c_sjsr_AnonFunction1(((x$5$1) => {
+    var x$6 = $as_Lmarge_syntax_Program$System(x$5$1);
+    var this$61 = $m_Lmarge_syntax_Show$();
+    var g$2 = $n(x$6).Lmarge_syntax_Program$System__f_main;
+    return $p_Lmarge_syntax_Show$___toMermaid__Lmarge_syntax_Program$RxGr__T__T__T__I__sci_Map__T(this$61, g$2, "flowchart LR \n", "", "", 0, ($n($m_s_Predef$().s_Predef$__f_Map), $m_sci_Map$EmptyMap$()))
+  })), new $c_sjsr_AnonFunction1(((_$4) => {
+    var _$4$1 = $as_T(_$4);
+    var this$63 = $n(_$4$1);
+    return this$63
+  })), $m_Lcaos_view_Mermaid$());
+  var $$x24 = new $c_T2("Run Semantics (Second Graph)", y$14);
+  var y$15 = $m_Lcaos_frontend_Configurator$().steps__F1__Lcaos_sos_SOS__F1__F1__Lcaos_view_ViewType__Lcaos_frontend_widgets_WidgetInfo(new $c_sjsr_AnonFunction1(((e$3$1) => {
+    var e$4 = $as_Lmarge_syntax_Program$System(e$3$1);
+    return e$4
+  })), $m_Lmarge_backend_IntrusiveProductA$(), new $c_sjsr_AnonFunction1(((x$6$1) => {
+    var x$7 = $as_Lmarge_syntax_Program$System(x$6$1);
+    return $m_Lmarge_syntax_Show$().toMermaid_Intrusive__Lmarge_syntax_Program$System__T(x$7)
+  })), new $c_sjsr_AnonFunction1(((_$5) => {
+    var _$5$1 = $as_T(_$5);
+    var this$66 = $n(_$5$1);
+    return this$66
+  })), $m_Lcaos_view_Mermaid$());
+  var $$x23 = new $c_T2("Run Semantics With Intrusive Edges", y$15);
+  var y$16 = $m_Lcaos_frontend_Configurator$().steps__F1__Lcaos_sos_SOS__F1__F1__Lcaos_view_ViewType__Lcaos_frontend_widgets_WidgetInfo(new $c_sjsr_AnonFunction1(((e$4$1) => {
     var e$5 = $as_Lmarge_syntax_Program$System(e$4$1);
-    var this$81 = $n($n(e$5).Lmarge_syntax_Program$System__f_toCompare);
-    var default$2 = new $c_sjsr_AnonFunction0((() => {
+    return e$5
+  })), $m_Lmarge_backend_Semantics$(), new $c_sjsr_AnonFunction1(((x$7$1) => {
+    var x$8 = $as_Lmarge_syntax_Program$System(x$7$1);
+    return $m_Lmarge_syntax_Show$().toMermaid_twoGraphs__Lmarge_syntax_Program$RxGr__Lmarge_syntax_Program$RxGr__T__T($n(x$8).Lmarge_syntax_Program$System__f_main, $n($n(x$8).Lmarge_syntax_Program$System__f_main).getLevel0__Lmarge_syntax_Program$RxGr(), "RSLS")
+  })), new $c_sjsr_AnonFunction1(((_$6) => {
+    var _$6$1 = $as_T(_$6);
+    var this$69 = $n(_$6$1);
+    return this$69
+  })), $m_Lcaos_view_Mermaid$());
+  var $$x22 = new $c_T2("Run Semantics With Local Structure", y$16);
+  var y$17 = $m_Lcaos_frontend_Configurator$().view__F1__Lcaos_view_ViewType__Lcaos_frontend_widgets_WidgetInfo(new $c_sjsr_AnonFunction1(((x$8$1) => {
+    var x$9 = $as_Lmarge_syntax_Program$System(x$8$1);
+    var this$72 = $m_Lmarge_syntax_Show$();
+    var g$3 = $m_Lmarge_syntax_Program$().lts__Lmarge_syntax_Program$RxGr__Lmarge_syntax_Program$RxGr($n(x$9).Lmarge_syntax_Program$System__f_main);
+    return $p_Lmarge_syntax_Show$___toMermaid__Lmarge_syntax_Program$RxGr__T__T__T__I__sci_Map__T(this$72, g$3, "flowchart LR \n", "", "", 0, ($n($m_s_Predef$().s_Predef$__f_Map), $m_sci_Map$EmptyMap$()))
+  })), $m_Lcaos_view_Mermaid$());
+  var $$x21 = new $c_T2("Generated LTS", y$17);
+  var y$18 = $m_Lcaos_frontend_Configurator$().compareStrongBisim__Lcaos_sos_SOS__Lcaos_sos_SOS__F1__F1__F1__F1__F1__I__Lcaos_frontend_widgets_WidgetInfo($m_Lmarge_backend_Semantics$(), $m_Lmarge_backend_Semantics$(), new $c_sjsr_AnonFunction1(((e$5$1) => {
+    var e$6 = $as_Lmarge_syntax_Program$System(e$5$1);
+    var main$2 = $n(e$6).Lmarge_syntax_Program$System__f_main;
+    var toCompare$2 = $m_s_None$();
+    var intro$2 = $m_Lmarge_syntax_Program$System$().$lessinit$greater$default$3__T2();
+    return new $c_Lmarge_syntax_Program$System(main$2, toCompare$2, intro$2)
+  })), new $c_sjsr_AnonFunction1(((e$6$1) => {
+    var e$7 = $as_Lmarge_syntax_Program$System(e$6$1);
+    var this$81 = $n($n(e$7).Lmarge_syntax_Program$System__f_toCompare);
+    var default$3 = new $c_sjsr_AnonFunction0((() => {
       $n($m_s_Predef$().s_Predef$__f_Map);
       var se = $m_sci_Map$EmptyMap$();
       $n($m_s_Predef$().s_Predef$__f_Map);
@@ -22805,74 +22897,134 @@ function $c_Lmarge_frontend_CaosConfig$() {
       var active = $m_sci_Set$EmptySet$();
       return new $c_Lmarge_syntax_Program$RxGr(se, he, " ", active)
     }));
-    var main$2 = $as_Lmarge_syntax_Program$RxGr((this$81.isEmpty__Z() ? default$2.apply__O() : this$81.get__O()));
-    var toCompare$2 = $m_s_None$();
-    var intro$2 = $m_Lmarge_syntax_Program$System$().$lessinit$greater$default$3__T2();
-    return new $c_Lmarge_syntax_Program$System(main$2, toCompare$2, intro$2)
+    var main$3 = $as_Lmarge_syntax_Program$RxGr((this$81.isEmpty__Z() ? default$3.apply__O() : this$81.get__O()));
+    var toCompare$3 = $m_s_None$();
+    var intro$3 = $m_Lmarge_syntax_Program$System$().$lessinit$greater$default$3__T2();
+    return new $c_Lmarge_syntax_Program$System(main$3, toCompare$3, intro$3)
   })), new $c_sjsr_AnonFunction1(((s) => {
     var s$1 = $as_Lmarge_syntax_Program$System(s);
     return $n($n(s$1).Lmarge_syntax_Program$System__f_main).Lmarge_syntax_Program$RxGr__f_init
   })), new $c_sjsr_AnonFunction1(((s$2) => {
     var s$3 = $as_Lmarge_syntax_Program$System(s$2);
     return $n($n(s$3).Lmarge_syntax_Program$System__f_main).Lmarge_syntax_Program$RxGr__f_init
-  })), new $c_sjsr_AnonFunction1(((_$5) => {
-    var _$5$1 = $as_T(_$5);
-    var this$85 = $n(_$5$1);
-    return this$85
-  })), 5000);
-  var $$x20 = new $c_T2("Find strong bisimulation (given a program \"A ~ B\")", y$19);
-  var y$20 = $m_Lcaos_frontend_Configurator$().lts__F1__Lcaos_sos_SOS__F1__F1__I__Lcaos_frontend_widgets_WidgetInfo(new $c_sjsr_AnonFunction1(((x$7$1) => {
-    var x$8 = $as_Lmarge_syntax_Program$System(x$7$1);
-    return x$8
-  })), $m_Lmarge_backend_AsynchronousProduct$(), new $c_sjsr_AnonFunction1(((x$8$1) => {
-    var x$9 = $as_Lmarge_syntax_Program$System(x$8$1);
-    return this.indexedViewSt__Lmarge_syntax_Program$System__T(x$9)
-  })), new $c_sjsr_AnonFunction1(((_$6) => {
-    var _$6$1 = $as_T(_$6);
-    var this$88 = $n(_$6$1);
-    return this$88
-  })), 80);
-  var $$x19 = new $c_T2("Asynchronous Product", y$20);
-  var y$21 = $m_Lcaos_frontend_Configurator$().lts__F1__Lcaos_sos_SOS__F1__F1__I__Lcaos_frontend_widgets_WidgetInfo(new $c_sjsr_AnonFunction1(((x$9$1) => {
-    var x$10 = $as_Lmarge_syntax_Program$System(x$9$1);
-    return x$10
-  })), $m_Lmarge_backend_SynchronousProduct$(), new $c_sjsr_AnonFunction1(((x$10$1) => {
-    var x$11 = $as_Lmarge_syntax_Program$System(x$10$1);
-    return this.indexedViewSt__Lmarge_syntax_Program$System__T(x$11)
   })), new $c_sjsr_AnonFunction1(((_$7) => {
     var _$7$1 = $as_T(_$7);
-    var this$91 = $n(_$7$1);
-    return this$91
-  })), 80);
-  var $$x18 = new $c_T2("Synchronous Product", y$21);
-  var y$22 = $m_Lcaos_frontend_Configurator$().lts__F1__Lcaos_sos_SOS__F1__F1__I__Lcaos_frontend_widgets_WidgetInfo(new $c_sjsr_AnonFunction1(((x$11$1) => {
-    var x$12 = $as_Lmarge_syntax_Program$System(x$11$1);
-    return x$12
-  })), $m_Lmarge_backend_PI$(), new $c_sjsr_AnonFunction1(((x$12$1) => {
-    var x$13 = $as_Lmarge_syntax_Program$System(x$12$1);
-    return this.indexedViewSt__Lmarge_syntax_Program$System__T(x$13)
+    var this$85 = $n(_$7$1);
+    return this$85
+  })), 5000);
+  var $$x20 = new $c_T2("Find Strong Bisimulation (given a program \"A ~ B\")", y$18);
+  var y$19 = $m_Lcaos_frontend_Configurator$().steps__F1__Lcaos_sos_SOS__F1__F1__Lcaos_view_ViewType__Lcaos_frontend_widgets_WidgetInfo(new $c_sjsr_AnonFunction1(((e$7$1) => {
+    var e$8 = $as_Lmarge_syntax_Program$System(e$7$1);
+    return e$8
+  })), $m_Lmarge_backend_AsynchronousProduct$(), new $c_sjsr_AnonFunction1(((x$9$1) => {
+    var x$10 = $as_Lmarge_syntax_Program$System(x$9$1);
+    return $m_Lmarge_syntax_Show$().toMermaid_twoGraphs_Bissi__Lmarge_syntax_Program$System__T__T(x$10, "AAAA")
   })), new $c_sjsr_AnonFunction1(((_$8) => {
     var _$8$1 = $as_T(_$8);
-    var this$94 = $n(_$8$1);
-    return this$94
+    var this$88 = $n(_$8$1);
+    return this$88
+  })), $m_Lcaos_view_Mermaid$());
+  var $$x19 = new $c_T2("Run Semantics (Asynchornous Product)", y$19);
+  var y$20 = $m_Lcaos_frontend_Configurator$().lts__F1__Lcaos_sos_SOS__F1__F1__I__Lcaos_frontend_widgets_WidgetInfo(new $c_sjsr_AnonFunction1(((x$10$1) => {
+    var x$11 = $as_Lmarge_syntax_Program$System(x$10$1);
+    return x$11
+  })), $m_Lmarge_backend_AsynchronousProduct$(), new $c_sjsr_AnonFunction1(((x$11$1) => {
+    var x$12 = $as_Lmarge_syntax_Program$System(x$11$1);
+    return this.indexedViewSt__Lmarge_syntax_Program$System__T(x$12)
+  })), new $c_sjsr_AnonFunction1(((_$9) => {
+    var _$9$1 = $as_T(_$9);
+    var this$91 = $n(_$9$1);
+    return this$91
   })), 80);
-  var elems$1 = $n($$x31).wrapRefArray__AO__sci_ArraySeq(new ($d_T2.getArrayOf().constr)([$$x30, $$x29, $$x28, $$x27, $$x26, $$x23, $$x22, $$x21, $$x20, $$x19, $$x18, new $c_T2("Intrusive Product", y$22)]));
+  var $$x18 = new $c_T2("Asynchronous Product", y$20);
+  var y$21 = $m_Lcaos_frontend_Configurator$().steps__F1__Lcaos_sos_SOS__F1__F1__Lcaos_view_ViewType__Lcaos_frontend_widgets_WidgetInfo(new $c_sjsr_AnonFunction1(((e$8$1) => {
+    var e$9 = $as_Lmarge_syntax_Program$System(e$8$1);
+    return e$9
+  })), $m_Lmarge_backend_SynchronousProduct$(), new $c_sjsr_AnonFunction1(((x$12$1) => {
+    var x$13 = $as_Lmarge_syntax_Program$System(x$12$1);
+    return $m_Lmarge_syntax_Show$().toMermaid_twoGraphs_Bissi__Lmarge_syntax_Program$System__T__T(x$13, "AAAA")
+  })), new $c_sjsr_AnonFunction1(((_$10) => {
+    var _$10$1 = $as_T(_$10);
+    var this$94 = $n(_$10$1);
+    return this$94
+  })), $m_Lcaos_view_Mermaid$());
+  var $$x17 = new $c_T2("Run Semantics (Synchornous Product)", y$21);
+  var y$22 = $m_Lcaos_frontend_Configurator$().lts__F1__Lcaos_sos_SOS__F1__F1__I__Lcaos_frontend_widgets_WidgetInfo(new $c_sjsr_AnonFunction1(((x$13$1) => {
+    var x$14 = $as_Lmarge_syntax_Program$System(x$13$1);
+    return x$14
+  })), $m_Lmarge_backend_SynchronousProduct$(), new $c_sjsr_AnonFunction1(((x$14$1) => {
+    var x$15 = $as_Lmarge_syntax_Program$System(x$14$1);
+    return this.indexedViewSt__Lmarge_syntax_Program$System__T(x$15)
+  })), new $c_sjsr_AnonFunction1(((_$11) => {
+    var _$11$1 = $as_T(_$11);
+    var this$97 = $n(_$11$1);
+    return this$97
+  })), 80);
+  var $$x16 = new $c_T2("Synchronous Product", y$22);
+  var y$23 = $m_Lcaos_frontend_Configurator$().steps__F1__Lcaos_sos_SOS__F1__F1__Lcaos_view_ViewType__Lcaos_frontend_widgets_WidgetInfo(new $c_sjsr_AnonFunction1(((e$9$1) => {
+    var e$10 = $as_Lmarge_syntax_Program$System(e$9$1);
+    return e$10
+  })), $m_Lmarge_backend_IntrusiveProductA$(), new $c_sjsr_AnonFunction1(((x$15$1) => {
+    var x$16 = $as_Lmarge_syntax_Program$System(x$15$1);
+    return $m_Lmarge_syntax_Show$().toMermaid_Intrusive__Lmarge_syntax_Program$System__T(x$16)
+  })), new $c_sjsr_AnonFunction1(((_$12) => {
+    var _$12$1 = $as_T(_$12);
+    var this$100 = $n(_$12$1);
+    return this$100
+  })), $m_Lcaos_view_Mermaid$());
+  var $$x15 = new $c_T2("Run Semantics (Asynchornous Intrusive Product)", y$23);
+  var y$24 = $m_Lcaos_frontend_Configurator$().lts__F1__Lcaos_sos_SOS__F1__F1__I__Lcaos_frontend_widgets_WidgetInfo(new $c_sjsr_AnonFunction1(((x$16$1) => {
+    var x$17 = $as_Lmarge_syntax_Program$System(x$16$1);
+    return x$17
+  })), $m_Lmarge_backend_IntrusiveProductA$(), new $c_sjsr_AnonFunction1(((x$17$1) => {
+    var x$18 = $as_Lmarge_syntax_Program$System(x$17$1);
+    return this.indexedViewSt__Lmarge_syntax_Program$System__T(x$18)
+  })), new $c_sjsr_AnonFunction1(((_$13) => {
+    var _$13$1 = $as_T(_$13);
+    var this$103 = $n(_$13$1);
+    return this$103
+  })), 80);
+  var $$x14 = new $c_T2("Asynchornous Intrusive Product", y$24);
+  var y$25 = $m_Lcaos_frontend_Configurator$().steps__F1__Lcaos_sos_SOS__F1__F1__Lcaos_view_ViewType__Lcaos_frontend_widgets_WidgetInfo(new $c_sjsr_AnonFunction1(((e$10$1) => {
+    var e$11 = $as_Lmarge_syntax_Program$System(e$10$1);
+    return e$11
+  })), $m_Lmarge_backend_IntrusiveProductS$(), new $c_sjsr_AnonFunction1(((x$18$1) => {
+    var x$19 = $as_Lmarge_syntax_Program$System(x$18$1);
+    return $m_Lmarge_syntax_Show$().toMermaid_Intrusive__Lmarge_syntax_Program$System__T(x$19)
+  })), new $c_sjsr_AnonFunction1(((_$14) => {
+    var _$14$1 = $as_T(_$14);
+    var this$106 = $n(_$14$1);
+    return this$106
+  })), $m_Lcaos_view_Mermaid$());
+  var $$x13 = new $c_T2("Run Semantics (Synchornous Intrusive Product)", y$25);
+  var y$26 = $m_Lcaos_frontend_Configurator$().lts__F1__Lcaos_sos_SOS__F1__F1__I__Lcaos_frontend_widgets_WidgetInfo(new $c_sjsr_AnonFunction1(((x$19$1) => {
+    var x$20 = $as_Lmarge_syntax_Program$System(x$19$1);
+    return x$20
+  })), $m_Lmarge_backend_IntrusiveProductS$(), new $c_sjsr_AnonFunction1(((x$20$1) => {
+    var x$21 = $as_Lmarge_syntax_Program$System(x$20$1);
+    return this.indexedViewSt__Lmarge_syntax_Program$System__T(x$21)
+  })), new $c_sjsr_AnonFunction1(((_$15) => {
+    var _$15$1 = $as_T(_$15);
+    var this$109 = $n(_$15$1);
+    return this$109
+  })), 80);
+  var elems$1 = $n($$x33).wrapRefArray__AO__sci_ArraySeq(new ($d_T2.getArrayOf().constr)([$$x32, $$x31, $$x30, $$x29, $$x28, $$x25, $$x24, $$x23, $$x22, $$x21, $$x20, $$x19, $$x18, $$x17, $$x16, $$x15, $$x14, $$x13, new $c_T2("Synchornous Intrusive Product", y$26)]));
   this.Lmarge_frontend_CaosConfig$__f_widgets = $m_sci_Nil$().prependedAll__sc_IterableOnce__sci_List(elems$1);
   this.Lmarge_frontend_CaosConfig$__f_index = 0;
-  this.Lmarge_frontend_CaosConfig$__f_footer = ($m_sc_StringOps$(), $m_sc_StringOps$().stripMargin$extension__T__C__T("Simple animator of Multi Action Reactive Graphs, meant to exemplify the\r\n      | CAOS libraries, used to generate this website.", 124));
+  this.Lmarge_frontend_CaosConfig$__f_footer = ($m_sc_StringOps$(), $m_sc_StringOps$().stripMargin$extension__T__C__T("Simple animator of Labelled Reactive Graphs, meant to exemplify the\r\n      | CAOS libraries, used to generate this website.", 124));
   $m_sc_StringOps$();
   $m_sc_StringOps$().stripMargin$extension__T__C__T(" ", 124);
-  var $$x34 = $m_Lcaos_frontend_Configurator$();
+  var $$x36 = $m_Lcaos_frontend_Configurator$();
   $n($m_s_package$().s_package$__f_List);
-  var $$x33 = $m_sr_ScalaRunTime$();
-  var self$6 = this.Lmarge_frontend_CaosConfig$__f_languageName;
-  var self$7 = new $c_T2(self$6, "More information on the syntax of Reactive Graph");
+  var $$x35 = $m_sr_ScalaRunTime$();
+  var self$4 = this.Lmarge_frontend_CaosConfig$__f_languageName;
+  var self$5 = new $c_T2(self$4, "More information on the syntax of Reactive Graph");
   $m_sc_StringOps$();
-  var y$23 = $m_sc_StringOps$().stripMargin$extension__T__C__T("|A program <code>RG</code> is a Reactive Graph with a syntax that follows the following template:\r\n       |<pre>\r\n       |init = Initial State;\r\n       |l0 = {\r\n       |    State from  --> State to by action, \r\n       |    };\r\n       |ln = {\r\n       |    (HE from, HE to, active, function),\r\n       |    }\r\n       |</pre>\r\n       |\r\n       |where:\r\n       |</p><code>init</code> is the initial state; </p>\r\n       |</p><code>l0</code> is a set of level 0 edges (E); use <code>--></code> to represent an enabled edge and <code>-.-></code> a disable edge; </p>\r\n       |</p><code>ln</code> is a set of hyper edges (GE); these can start and end in either E or another HE. \r\n       | An HE is defined recursively, i.e., both the \"from\" and the \"to\" fields can be another HE, or a simpler E in the base case;</p>\r\n       |</p><code>action</code> is a string that labels an E; it can have only letters in lower or upper case,  digits, and the symbols <code>_</code>, <code><</code>, <code>></code>, <code>.</code>, <code>-</code>, <code>\u20ac</code>, and <code>$</code>; </p>\r\n       |</p><code>funtion</code> is either <code>ON</code> or <code>OFF</code>; representing whether the HE enables or disables the target edge, respectively.</p>\r\n       ", 124);
-  var $$x32 = new $c_T2(self$7, y$23);
-  var self$8 = new $c_T2("Find strong bisimulation (given a program \"A ~ B\")", "More information on this widget");
-  var elems$2 = $n($$x33).wrapRefArray__AO__sci_ArraySeq(new ($d_T2.getArrayOf().constr)([$$x32, new $c_T2(self$8, "<p>When the input consists of the comparison of 2 programs separated by <code>~</code>, this widget searches for a (strong) bisimulation between these 2 programs, providing either a concrete bisimulation or an explanation of where it failed.</p><p>When only a program is provided, it compares it against the empty process <code>0</code>.</p>")]));
-  this.Lmarge_frontend_CaosConfig$__f_documentation = $n($$x34).toDocumentation__sci_List__Lcaos_frontend_Documentation($m_sci_Nil$().prependedAll__sc_IterableOnce__sci_List(elems$2))
+  var y$27 = $m_sc_StringOps$().stripMargin$extension__T__C__T("|A program <code>RG</code> is a Reactive Graph with a syntax that follows the following template:\r\n       |<pre>\r\n       |init = Initial State;\r\n       |l0 = {\r\n       |    State from  --> State to by action, \r\n       |    };\r\n       |ln = {\r\n       |    (HE from, HE to, active, function),\r\n       |    }\r\n       |</pre>\r\n       |\r\n       |where:\r\n       |</p><code>init</code> is the initial state; </p>\r\n       |</p><code>l0</code> is a set of level 0 edges (E); use <code>--></code> to represent an enabled edge and <code>-.-></code> a disable edge; </p>\r\n       |</p><code>ln</code> is a set of hyper edges (GE); these can start and end in either E or another HE. \r\n       | An HE is defined recursively, i.e., both the \"from\" and the \"to\" fields can be another HE, or a simpler E in the base case;</p>\r\n       |</p><code>action</code> is a string that labels an E; it can have only letters in lower or upper case,  digits, and the symbols <code>_</code>, <code><</code>, <code>></code>, <code>.</code>, <code>-</code>, <code>\u20ac</code>, and <code>$</code>; </p>\r\n       |</p><code>funtion</code> is either <code>ON</code> or <code>OFF</code>; representing whether the HE enables or disables the target edge, respectively.</p>\r\n       ", 124);
+  var $$x34 = new $c_T2(self$5, y$27);
+  var self$6 = new $c_T2("Find strong bisimulation (given a program \"A ~ B\")", "More information on this widget");
+  var elems$2 = $n($$x35).wrapRefArray__AO__sci_ArraySeq(new ($d_T2.getArrayOf().constr)([$$x34, new $c_T2(self$6, "<p>When the input consists of the comparison of 2 programs separated by <code>~</code>, this widget searches for a (strong) bisimulation between these 2 programs, providing either a concrete bisimulation or an explanation of where it failed.</p><p>When only a program is provided, it compares it against the empty process <code>0</code>.</p>")]));
+  this.Lmarge_frontend_CaosConfig$__f_documentation = $n($$x36).toDocumentation__sci_List__Lcaos_frontend_Documentation($m_sci_Nil$().prependedAll__sc_IterableOnce__sci_List(elems$2))
 }
 $c_Lmarge_frontend_CaosConfig$.prototype = new $h_O();
 $c_Lmarge_frontend_CaosConfig$.prototype.constructor = $c_Lmarge_frontend_CaosConfig$;
