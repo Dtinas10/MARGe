@@ -251,7 +251,33 @@ object Program:
         val newMiss = (miss - nextSt) ++ more.map(kv=>(kv._2,Some(kv._1->nextSt)))
         findIncoTrace(newMiss, know + (nextSt->parent), maxit - 1)
 
+  def findDeterPP(g:System,maxit: Int = 500): String =
+    findDeterTrace(Map(g-> None),Map(),maxit)(using marge.backend.Semantics) match
+      case (_,None,0) => s"Determinism found, but stopped after $maxit states."
+      case (_,None,n) => s"Determinism found after ${maxit-n} states"
+      case (trace,Some(g),n) => s"Found no Determinism @ ${g} ${trace.map(ap=>s"\n   <-[${ap._1}]- ${ap._2}").mkString}"
 
+
+  private def findDeterTrace[Act, St](miss: Map[St,Option[(Act,St)]],
+                              know: Map[St,Option[(Act,St)]],
+                              maxit: Int)(using sos: SOS[Act, St]): (Seq[(Act,St)],Option[St], Int) =
+    def buildTrace(parent:Option[(Act,St)]): List[(Act,St)] =
+      parent match
+        case None => List[(Act,St)]()
+        case Some((act,prev)) => (act,prev)::buildTrace(know.getOrElse(prev,None))
+
+    if maxit <= 0 then (Nil,None, 0) // reached maximum iterations
+    else miss.headOption match
+      case None => (Nil,None, maxit) // no more states to traverse
+      case Some((nextSt,_)) if know contains nextSt => // next state exists but is known
+        findDeterTrace(miss - nextSt, know, maxit)
+      case Some((nextSt,parent)) => // next state exists and is new
+        val more = sos.next(nextSt)
+        if more.map(_._1).size != more.size         
+        then (buildTrace(parent),Some(nextSt), maxit)
+        else
+          val newMiss = (miss - nextSt) ++ more.map(kv=>(kv._2,Some(kv._1->nextSt)))
+          findDeterTrace(newMiss, know + (nextSt->parent), maxit - 1)
 
   
   // def AsynchronousProduct(st:System): RxGr = {
