@@ -100,7 +100,7 @@ object CaosConfig extends Configurator[System]:
     "Run Semantics (Second Graph)" -> steps(e=> System(e.toCompare.getOrElse(e.main.empty),None), Warnings, x => Show.toMermaid(x.main,""), _.toString, Mermaid),
     // "Run Semantics" -> steps(e=>e, SemanticsTwo, x => Show.toMermaid_twoGraphs_Bissi(x,"AAAA"), _.toString, Mermaid),
     "Run Semantics With Intrusive Edges" -> steps(e=>e, IntrusiveProductA, x => Show.toMermaid_Intrusive(x), _.toString, Mermaid),
-    "Run Semantics With Local Structure" -> steps(e=>e, Semantics, x => Show.toMermaid_twoGraphs(x.main,x.main.getLevel0,"RSLS"), _.toString, Mermaid),
+    "Run Semantics With Local Structure" -> steps(e=>e, Semantics, x => Show.toMermaid_twoGraphs_Bissi(System(x.main,Option(x.main.getLevel0)),"RSLS"), _.toString, Mermaid),
     // "Build LTS" -> lts(x=>x, Semantics, x=>x.main.init, _.toString),
     "Generated LTS" -> view[System](x => Show.toMermaid(Program.lts(x.main),""), Mermaid),
     // "Build LTS (explore)" -> ltsExplore(e=>e, Semantics, x=>x.main.init, _.toString),
