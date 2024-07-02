@@ -153,10 +153,10 @@ object SynchronousProduct extends SOS[String,System]:
         }
       }
     s
-
+ 
 
   
-object Warnings extends SOS[String,System]:
+object Warnings2 extends SOS[String,System]:
   def next[A>:String](st : System): Set[(A,System)] =
     val g: RxGr = st.main 
     var s: Set[(A,System)] = Set.empty
@@ -169,6 +169,22 @@ object Warnings extends SOS[String,System]:
           case None => 
               s = s ++ Set((s"${exclamationMark}Warning$exclamationMark: $cross ${i.action}",System(g.empty,st.toCompare)))        
           case Some(t) => s = s 
+          }  
+    }
+    s
+object Warnings extends SOS[String,System]:
+  def next[A>:String](st : System): Set[(A,System)] =
+    val g: RxGr = st.main 
+    var s: Set[(A,System)] = Set.empty
+    for (i<- g.nextEdg) {
+      var k = step(g,i)
+      if k != None then
+        s = s ++ Set((i.action,System(k.map(_._1).get,st.toCompare)))
+      else 
+        g.se.get(g.init) match{
+          case Some(t) => 
+              s = s ++ Set((s"${exclamationMark}Warning$exclamationMark: $cross ${i.action}",System(g.empty,st.toCompare)))        
+          case None => s = s 
           }  
     }
     s
@@ -190,7 +206,7 @@ object IntrusiveProductA extends SOS[String,System]:
       if k != None  then
         s = s ++ Set((i.action,System(k.map(_._1).get,Option(gg2),st.intro)))
     }
-    var gg1 = g
+    var gg1:RxGr = g
     for ( j <- nextedg2) {
       if intro.keySet.contains(j) then  gg1 = RxGr(g.se,g.he,g.init,updateActive(g,intro(j)))
       else gg1 = g
